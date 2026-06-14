@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body{
+    background:#0a0a0a;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    color:white;
+}
+</style>
+
+</head>
+<body>
+
+<div class="bg-zinc-900 p-8 rounded-2xl w-full max-w-md">
+
+    <h1 class="text-3xl font-bold text-center mb-6">
+        NeoPay Admin Login
+    </h1>
+
+    <input
+        type="password"
+        id="adminPassword"
+        placeholder="Enter Admin Password"
+        class="w-full p-4 rounded-xl bg-zinc-800 border border-zinc-700 outline-none">
+
+    <button
+        onclick="loginAdmin()"
+        class="w-full mt-4 bg-red-600 hover:bg-red-700 p-4 rounded-xl font-bold">
+        Login
+    </button>
+
+</div>
+
+<script>
+
+const ADMIN_PASSWORD = "OSV";
+
+function loginAdmin(){
+
+    const password =
+    document.getElementById("adminPassword").value;
+
+    if(password === ADMIN_PASSWORD){
+
+        localStorage.setItem(
+            "adminLoggedIn",
+            "true"
+        );
+
+        window.location.href = "admin.html";
+
+    }else{
+
+        alert("Incorrect Password");
+
+    }
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Welcome - NeoPay Finance</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: #350b0b;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Glow Effects */
+
+        .glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+        }
+
+        .glow-1 {
+            background: #ff0000;
+            top: -120px;
+            right: -120px;
+        }
+
+        .glow-2 {
+            background: #FFD700;
+            bottom: -120px;
+            left: -120px;
+        }
+
+        /* Glass */
+
+        .glass {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(255, 255, 255, .08);
+            backdrop-filter: blur(20px);
+        }
+
+        /* Bonus Card Glow */
+
+        .bonus-card {
+            box-shadow: 0 0 50px rgba(255, 0, 0, .2);
+        }
+
+        /* Button */
+
+        .btn {
+            background: linear-gradient(90deg, #ff0000, #c1121f);
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .logo-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #ff0000, #c1121f);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            box-shadow: 0 0 30px rgba(255, 0, 0, .3);
+        }
+
+        .amount {
+            text-shadow: 0 0 25px rgba(255, 0, 0, .5);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Glow Background -->
+
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <div class="min-h-screen flex items-center justify-center px-4 relative z-10">
+
+        <div class="w-full max-w-md">
+
+            <!-- Celebration -->
+
+            <div class="text-center mb-6">
+
+
+                <div class="logo-box mb-5">
+                    <img src="/logo.jpg" alt="">
+                </div>
+
+                <h1 class="text-4xl font-black">
+                    NeoPay
+                    <span class="text-red-500">
+                        Finance
+                    </span>
+                </h1>
+
+                <h2 class="text-3xl font-bold mt-5">
+                    Welcome,
+                    <span id="welcomeName"></span>!
+                </h2>
+
+                <p class="text-gray-400 mt-3">
+                    Your account has been created successfully
+                </p>
+
+            </div>
+
+            <!-- Bonus Card -->
+
+            <div class="glass bonus-card rounded-3xl p-6 mb-6 text-center">
+
+                <div class="flex justify-center mb-3">
+                    <i class='bx bx-gift text-red-500 text-3xl'></i>
+                </div>
+
+                <p class="text-gray-400 mb-3">
+                    Welcome Bonus
+                </p>
+
+                <div class="bg-black rounded-2xl py-5">
+
+                    <h3 class="amount text-5xl font-black text-red-500">
+                        ₦160,000
+                    </h3>
+
+                </div>
+
+                <p class="text-gray-500 mt-4 text-sm">
+                    Added to your wallet balance
+                </p>
+
+            </div>
+
+            <!-- User Info -->
+
+            <div class="glass rounded-2xl p-5 mb-6">
+
+                <!-- User ID -->
+                <div class="flex justify-between items-center mb-4">
+
+                    <span class="text-gray-400">
+                        User ID
+                    </span>
+
+                    <div class="flex items-center gap-2">
+
+                        <span id="userId" class="font-semibold"></span>
+
+                        <button onclick="copyText('userId')" class="text-red-500 hover:text-red-400 text-xl">
+                            <i class='bx bx-copy'></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Referral Code -->
+                <div class="flex justify-between items-center">
+
+                    <span class="text-gray-400">
+                        Referral Code
+                    </span>
+
+                    <div class="flex items-center gap-2">
+
+                        <span id="referralCode" class="font-semibold text-red-500">
+                        </span>
+
+                        <button onclick="copyText('referralCode')" class="text-red-500 hover:text-red-400 text-xl">
+                            <i class='bx bx-copy'></i>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Button -->
+
+            <a href="/dashboard.html">
+            <button class="btn w-full py-4 rounded-xl font-bold text-white">
+                Go To Dashboard →
+            </button>
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script>
+function copyText(elementId) {
+
+    const text =
+        document.getElementById(elementId).textContent;
+
+    navigator.clipboard.writeText(text)
+        .then(() => {
+
+            const original =
+                document.getElementById(elementId).textContent;
+
+            const element =
+                document.getElementById(elementId);
+
+            element.textContent = "Copied!";
+
+            setTimeout(() => {
+                element.textContent = original;
+            }, 1500);
+
+        })
+        .catch(() => {
+            alert("Copy failed");
+        });
+
+}
+</script>
+
+
+    <script>
+        // User Name
+        const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        if (user) {
+            document.getElementById("welcomeName").textContent =
+                user.firstName;
+        }
+
+        // User ID
+        function generateUserID() {
+            return "NP" + Math.floor(100000 + Math.random() * 900000);
+        }
+
+        // Referral Code
+        function generateReferralCode() {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            let code = "REF";
+
+            for (let i = 0; i < 6; i++) {
+                code += chars[Math.floor(Math.random() * chars.length)];
+            }
+
+            return code;
+        }
+
+        let userId = localStorage.getItem("userId");
+        let referralCode = localStorage.getItem("referralCode");
+
+        if (!userId) {
+            userId = generateUserID();
+            localStorage.setItem("userId", userId);
+        }
+
+        if (!referralCode) {
+            referralCode = generateReferralCode();
+            localStorage.setItem("referralCode", referralCode);
+        }
+
+        document.getElementById("userId").textContent = userId;
+        document.getElementById("referralCode").textContent = referralCode;
+    </script>
+
+</body>
+
+</html>

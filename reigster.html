@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeoPay Finance - Create Account</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050505;
+            overflow-x: hidden;
+            min-height: 100vh;
+            color: white;
+        }
+
+        /* Background Glow */
+        .bg-glow {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: 0;
+        }
+
+        .glow-1 {
+            background: #ff0000;
+            top: -150px;
+            right: -150px;
+        }
+
+        .glow-2 {
+            background: #FFD700;
+            bottom: -150px;
+            left: -150px;
+        }
+
+        /* Glass Card */
+        .glass {
+            background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, .08);
+            box-shadow: 0 0 50px rgba(255, 215, 0, .08);
+        }
+
+        /* Inputs */
+        .input-box {
+            width: 100%;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .08);
+            color: white;
+            border-radius: 14px;
+            padding: 15px;
+            outline: none;
+            transition: .3s;
+        }
+
+        .input-box:focus {
+            border-color: #FFD700;
+            box-shadow: 0 0 20px rgba(255, 215, 0, .25);
+        }
+
+        /* Gold Text */
+        .gold-text {
+            background: linear-gradient(90deg, #FFD700, #FFF6A0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Button */
+        .register-btn {
+            background: linear-gradient(90deg, #c1121f, #ff0000, #FFD700);
+            background-size: 300%;
+            animation: gradientMove 5s linear infinite;
+            transition: .3s;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        @keyframes gradientMove {
+            from {
+                background-position: 0%;
+            }
+
+            to {
+                background-position: 300%;
+            }
+        }
+
+        .label {
+            display: block;
+            margin-bottom: 8px;
+            color: #d1d5db;
+            font-size: 14px;
+        }
+
+        .logo-box {
+            width: 85px;
+            height: 85px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #c1121f, #FFD700);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
+
+        .radio-card {
+            border: 1px solid rgba(255, 255, 255, .1);
+            transition: .3s;
+        }
+
+        input[type="radio"]:checked+.radio-card {
+            background: #c1121f;
+            border-color: #c1121f;
+        }
+
+        .checkbox {
+            accent-color: #FFD700;
+        }
+
+        @media(max-width:640px) {
+
+            .glass {
+                padding: 25px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- BACKGROUND GLOW -->
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <!-- CENTER CONTAINER -->
+    <div class="min-h-screen flex items-center justify-center px-4 py-10 relative z-10">
+
+        <div class="glass w-full max-w-xl rounded-[30px] p-8">
+
+            <!-- LOGO -->
+            <div class="text-center mb-8">
+
+                <div class="logo-box mb-5">
+                    <img src="/logo.jpg" alt="">
+                </div>
+
+                <h1 class="text-4xl font-black">
+                    NeoPay <span class="gold-text">Finance</span>
+                </h1>
+
+                <p class="text-gray-400 mt-2">
+                    Create your account and start earning online
+                </p>
+
+            </div>
+
+            <!-- FORM -->
+            <form id="registerForm" class="space-y-5">
+
+                <!-- Names -->
+                <div class="grid md:grid-cols-2 gap-4">
+
+                    <div>
+                        <label class="label">
+                            First Name *
+                        </label>
+
+                        <input id="firstName" type="text" placeholder="John" class="input-box">
+                    </div>
+
+                    <div>
+                        <label class="label">
+                            Last Name *
+                        </label>
+
+                        <input id="lastName" type="text" placeholder="Doe" class="input-box">
+                    </div>
+
+                </div>
+
+                <!-- Phone -->
+                <div>
+                    <label class="label">
+                        Phone Number *
+                    </label>
+
+                    <input id="phone" type="tel" placeholder="08012345678" class="input-box">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="label">
+                        Email Address *
+                    </label>
+
+                    <input id="email" type="email" placeholder="example@gmail.com" class="input-box">
+                </div>
+
+                <!-- Password -->
+                <div class="relative">
+
+                    <label class="label">
+                        Password *
+                    </label>
+
+                    <input id="password" type="password" placeholder="Enter password" class="input-box">
+
+                    <i onclick="togglePassword('password',this)"
+                        class='bx bx-show absolute right-4 top-[52px] cursor-pointer text-gray-400 text-xl'>
+                    </i>
+
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="relative">
+
+                    <label class="label">
+                        Confirm Password *
+                    </label>
+
+                    <input id="confirmPassword" type="password" placeholder="Confirm password" class="input-box">
+
+                    <i onclick="togglePassword('confirmPassword',this)"
+                        class='bx bx-show absolute right-4 top-[52px] cursor-pointer text-gray-400 text-xl'>
+                    </i>
+
+                </div>
+
+                <!-- Country -->
+                <div>
+
+                    <label class="label">
+                        Country *
+                    </label>
+
+                    <select class="input-box bg-[#111]">
+
+                        <option value="">
+                            Select Country
+                        </option>
+
+                        <option>Nigeria</option>
+                        <option>Ghana</option>
+                        <option>Kenya</option>
+                        <option>South Africa</option>
+                        <option>Cameroon</option>
+                        <option>Uganda</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Account Type -->
+                <div>
+
+                    <label class="label">
+                        Account Type *
+                    </label>
+
+                    <div class="grid grid-cols-2 gap-4">
+
+                        <label class="cursor-pointer">
+
+                            <input type="radio" name="accountType" class="hidden">
+
+                            <div class="radio-card text-center py-4 rounded-xl">
+                                Individual
+                            </div>
+
+                        </label>
+
+                        <label class="cursor-pointer">
+
+                            <input type="radio" name="accountType" class="hidden">
+
+                            <div class="radio-card text-center py-4 rounded-xl">
+                                Business
+                            </div>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+                <!-- Referral -->
+                <div>
+
+                    <label class="label">
+                        Referral Code (Optional)
+                    </label>
+
+                    <input type="text" placeholder="Enter referral code" class="input-box">
+
+                </div>
+
+                <!-- Terms -->
+                <div class="flex items-start gap-3">
+
+                    <input type="checkbox" class="checkbox mt-1">
+
+                    <p class="text-gray-400 text-sm">
+                        I agree to the Terms & Conditions and Privacy Policy.
+                    </p>
+
+                </div>
+
+                <!-- Button -->
+
+                <button type="button" onclick="registerUser()"
+                    class="register-btn w-full py-4 rounded-xl font-bold text-white">
+                    Create NeoPay Account
+                </button>
+                <!-- Login -->
+                <div class="text-center text-gray-400">
+
+                    Already have an account?
+
+                    <a href="login.html" class="text-yellow-400 font-semibold hover:text-yellow-300">
+
+                        Sign In
+
+                    </a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script>
+function registerUser() {
+
+    const firstName =
+        document.getElementById("firstName").value;
+
+    const lastName =
+        document.getElementById("lastName").value;
+
+    const phone =
+        document.getElementById("phone").value;
+
+    const email =
+        document.getElementById("email").value;
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    if (!firstName || !lastName || !phone || !email) {
+        alert("Please fill all required fields");
+        return;
+    }
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    const user = {
+        firstName,
+        lastName,
+        phone,
+        email
+    };
+
+    localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify(user)
+    );
+
+    window.location.href = "welcome.html";
+}
+</script>
+
+
+<script>
+function togglePassword(inputId, icon) {
+
+    const input = document.getElementById(inputId);
+
+    if (input.type === "password") {
+
+        input.type = "text";
+
+        icon.classList.remove("bx-show");
+        icon.classList.add("bx-hide");
+
+    } else {
+
+        input.type = "password";
+
+        icon.classList.remove("bx-hide");
+        icon.classList.add("bx-show");
+    }
+}
+</script>
+</body>
+
+</html>

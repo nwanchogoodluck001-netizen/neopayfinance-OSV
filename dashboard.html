@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NeoPay Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        body {
+            background: #462929;
+            color: white;
+            font-family: Inter, sans-serif;
+        }
+
+        .balance-card {
+            background: linear-gradient(135deg,
+                    #c1121f,
+                    #ff0000,
+                    #ffb703);
+        }
+
+        .action-card {
+            background: #111111;
+            transition: .3s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .bottom-nav {
+            background: #0f0f0f;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="max-w-md mx-auto min-h-screen pb-24">
+
+        <!-- HEADER -->
+        <div class="flex justify-between items-center p-5">
+
+            <div class="flex items-center gap-2">
+
+                <div class="w-9 h-9 rounded-lg bg-red-600 flex items-center justify-center">
+                    <img src="/logo.jpg" alt="">
+                </div>
+
+                <h1 class="font-bold text-xl">
+                    NeoPay
+                </h1>
+
+            </div>
+
+            <div class="w-10 h-10 rounded-full border border-red-500 flex items-center justify-center">
+                <span id="avatarInitial">N</span>
+            </div>
+
+        </div>
+
+        <!-- WELCOME -->
+        <div class="px-5 mb-5">
+
+            <h2 class="text-xl font-bold">
+                Welcome back,
+                <span id="userName">User</span> 👋
+            </h2>
+
+        </div>
+
+        <!-- BALANCE CARD -->
+        <div class="px-5">
+
+            <div class="balance-card rounded-3xl p-5">
+
+                <p class="text-sm opacity-90">
+                    Total Balance
+                </p>
+
+                <div class="flex justify-between items-center mt-2">
+                    <h1 id="balance" class="text-4xl font-black">
+                        ₦160,000
+                    </h1>
+
+                    <button id="toggleBalance">
+                        <i class='bx bx-hide text-3xl'></i>
+                    </button>
+                </div>
+
+                <p id="userId" class="text-sm mt-2 opacity-90">
+                    ID: USER12345
+                </p>
+
+                <div class="grid grid-cols-2 gap-3 mt-5">
+
+                    <button class="feature-lock bg-white/60 py-3 rounded-xl font-semibold">
+                        Upgrade
+                    </button>
+
+                    <button class="feature-lock bg-black/20 py-3 rounded-xl font-semibold">
+                        Transfer
+                    </button>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ACTIONS -->
+        <div class="grid grid-cols-3 gap-3 p-5">
+
+            <a href="/payment.html">
+            <div class="action-card rounded-2xl p-4 text-center">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-red-600 flex items-center justify-center">
+                    <i class='bx bx-purchase-tag text-2xl'></i>
+                </div>
+                <p class="text-xs mt-3">Buy NFK Code</p>
+            </div>
+            </a>
+
+            <div class="action-card rounded-2xl p-4 text-center feature-lock">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-purple-600 flex items-center justify-center">
+                    <i class='bx bx-task text-2xl'></i>
+                </div>
+                <p class="text-xs mt-3">Daily Tasks</p>
+            </div>
+
+            <div class="action-card rounded-2xl p-4 text-center feature-lock">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-blue-600 flex items-center justify-center">
+                    <i class='bx bx-gift text-2xl'></i>
+                </div>
+                <p class="text-xs mt-3">Refer & Earn</p>
+            </div>
+
+            <div class="action-card rounded-2xl p-4 text-center feature-lock">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-green-600 flex items-center justify-center">
+                    <i class='bx bx-group text-2xl'></i>
+                </div>
+                <p class="text-xs mt-3">Community</p>
+            </div>
+
+            <div class="action-card rounded-2xl p-4 text-center feature-lock">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-orange-500 flex items-center justify-center">
+                    <i class='bx bx-history text-2xl'></i>
+                </div>
+                <p class="text-xs mt-3">History</p>
+            </div>
+
+            <div class="action-card rounded-2xl p-4 text-center feature-lock">
+                <div class="w-12 h-12 mx-auto rounded-xl bg-cyan-500 flex items-center justify-center">
+                    <i class='bx bx-headphone text-2xl'></i>
+                </div>
+                <p class="text-xs mt-3">Support</p>
+            </div>
+
+        </div>
+
+        <!-- PROMO CARD -->
+        <div class="px-5">
+
+            <div class="rounded-3xl p-5 bg-gradient-to-r from-red-950 to-red-900">
+
+                <h3 class="font-bold text-xl">
+                    Start earning with
+                    <span class="text-red-400">
+                        NeoPay
+                    </span>
+                    today!
+                </h3>
+
+                <p class="text-gray-300 mt-2 text-sm">
+                    Turn your phone into your money machine.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BOTTOM NAV -->
+    <!-- 
+<div class="bottom-nav fixed bottom-0 left-0 right-0">
+
+    <div class="max-w-md mx-auto">
+
+        <div class="grid grid-cols-5 py-3">
+
+            <div class="text-center text-red-500">
+                <i class='bx bx-home text-xl'></i>
+                <p class="text-[10px]">Home</p>
+            </div>
+
+            <div class="text-center">
+                <i class='bx bx-purchase-tag text-xl'></i>
+                <p class="text-[10px]">NFK</p>
+            </div>
+
+            <div class="text-center">
+                <i class='bx bx-gift text-xl'></i>
+                <p class="text-[10px]">Refer</p>
+            </div>
+
+            <div class="text-center">
+                <i class='bx bx-group text-xl'></i>
+                <p class="text-[10px]">Community</p>
+            </div>
+
+            <div class="text-center">
+                <i class='bx bx-history text-xl'></i>
+                <p class="text-[10px]">History</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div> -->
+
+    <script>
+
+        // Load User
+
+        const userName =
+            localStorage.getItem("userName") || "User";
+
+        document.getElementById("userName")
+            .textContent = userName;
+
+        document.getElementById("avatarInitial")
+            .textContent =
+            userName.charAt(0).toUpperCase();
+
+        // Generate ID
+
+        const userId =
+            localStorage.getItem("userId") ||
+            "USER" +
+            Math.floor(100000 + Math.random() * 900000);
+
+        localStorage.setItem(
+            "userId",
+            userId
+        );
+
+        document.getElementById("userId")
+            .textContent =
+            "ID: " + userId;
+
+        // Balance
+
+        const balance =
+            localStorage.getItem("balance") ||
+            160000;
+
+        document.getElementById("balance")
+            .textContent =
+            "₦" +
+            Number(balance).toLocaleString();
+
+        let hidden = false;
+
+        document
+            .getElementById("toggleBalance")
+            .addEventListener("click", () => {
+
+                hidden = !hidden;
+
+                document.getElementById("balance")
+                    .textContent = hidden
+                        ? "₦******"
+                        : "₦" + Number(balance).toLocaleString();
+
+            });
+
+    </script>
+
+
+<!-- ACTIVATION POPUP -->
+
+<div
+id="activationModal"
+class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-5">
+
+    <div class="bg-white text-black rounded-3xl p-6 w-full max-w-sm text-center">
+
+        <div class="w-16 h-16 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-4">
+
+            <i class='bx bx-lock-alt text-3xl text-red-600'></i>
+
+        </div>
+
+        <h2 class="text-2xl font-bold">
+            Account Not Activated
+        </h2>
+
+        <p class="text-gray-600 mt-3">
+            Activate your account with NFK Code to access this feature.
+        </p>
+
+        <a href="/payment.html">
+        <button
+        id="activateNow"
+        class="w-full mt-5 bg-red-600 text-white py-3 rounded-xl font-bold">
+
+            Activate Now
+
+        </button>
+        </a>
+
+        <button
+        id="closeModal"
+        class="w-full mt-3 bg-gray-200 py-3 rounded-xl font-semibold">
+
+            Close
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+    /* ACTIVATION POPUP */
+
+const modal =
+document.getElementById(
+"activationModal"
+);
+
+document
+.querySelectorAll(".feature-lock")
+.forEach(item => {
+
+    item.addEventListener(
+    "click",
+    () => {
+
+        modal.classList.remove(
+        "hidden"
+        );
+
+        modal.classList.add(
+        "flex"
+        );
+
+    });
+
+});
+
+document
+.getElementById("closeModal")
+.addEventListener(
+"click",
+() => {
+
+    modal.classList.add(
+    "hidden"
+    );
+
+    modal.classList.remove(
+    "flex"
+    );
+
+});
+
+document
+.getElementById("activateNow")
+.addEventListener(
+"click",
+() => {
+
+    alert(
+    "Activate your account with NFK Code."
+    );
+
+});
+</script>
+</body>
+
+</html>

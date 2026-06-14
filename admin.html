@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NeoPay Admin Panel</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+if(localStorage.getItem("adminLoggedIn") !== "true"){
+    window.location.href = "admin-login.html";
+}
+</script>
+
+<style>
+body{
+    background:#0a0a0a;
+    color:white;
+    font-family:Inter,sans-serif;
+}
+
+.glass{
+    background:rgba(255,255,255,.05);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.input-box{
+    width:100%;
+    padding:14px;
+    border-radius:12px;
+    background:#111;
+    border:1px solid rgba(255,255,255,.1);
+    color:white;
+    outline:none;
+}
+
+.input-box:focus{
+    border-color:#FFD700;
+}
+
+.save-btn{
+    background:linear-gradient(90deg,#ff0000,#FFD700);
+    color:white;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.save-btn:hover{
+    transform:translateY(-2px);
+}
+</style>
+
+</head>
+<body>
+
+<div class="min-h-screen flex items-center justify-center p-5">
+
+<div class="glass w-full max-w-lg rounded-3xl p-8">
+
+<h1 class="text-3xl font-black text-center mb-8">
+NeoPay Admin Panel
+</h1>
+
+<div class="space-y-4">
+
+<div>
+<label class="block mb-2">Account Name</label>
+<input id="accountName" class="input-box" placeholder="John Doe">
+</div>
+
+<div>
+<label class="block mb-2">Account Number</label>
+<input id="accountNumber" class="input-box" placeholder="1234567890">
+</div>
+
+<div>
+<label class="block mb-2">Bank Name</label>
+<input id="bankName" class="input-box" placeholder="OPay">
+</div>
+
+<div>
+<label class="block mb-2">WhatsApp Link</label>
+<input id="whatsapp" class="input-box"
+placeholder="https://wa.me/2348012345678">
+</div>
+
+<button
+onclick="saveDetails()"
+class="save-btn w-full py-4 rounded-xl mt-4">
+Save Changes
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+
+import {
+    getDatabase,
+    ref,
+    set,
+    get
+}
+from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDarylPYBXlYOPBt4JljwbEen6m22LUeSw",
+    authDomain: "neopay-finance.firebaseapp.com",
+    databaseURL: "https://neopay-finance-default-rtdb.firebaseio.com",
+    projectId: "neopay-finance",
+    storageBucket: "neopay-finance.firebasestorage.app",
+    messagingSenderId: "629901996738",
+    appId: "1:629901996738:web:29ea82edd540455541c15b"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+/* Load Existing Data */
+async function loadDetails(){
+
+    const snapshot =
+    await get(ref(db,"paymentDetails"));
+
+    if(snapshot.exists()){
+
+        const data = snapshot.val();
+
+        document.getElementById("accountName").value =
+        data.accountName || "";
+
+        document.getElementById("accountNumber").value =
+        data.accountNumber || "";
+
+        document.getElementById("bankName").value =
+        data.bankName || "";
+
+        document.getElementById("whatsapp").value =
+        data.whatsapp || "";
+    }
+}
+
+loadDetails();
+
+/* Save Data */
+window.saveDetails = async function(){
+
+    const accountName =
+    document.getElementById("accountName").value.trim();
+
+    const accountNumber =
+    document.getElementById("accountNumber").value.trim();
+
+    const bankName =
+    document.getElementById("bankName").value.trim();
+
+    const whatsapp =
+    document.getElementById("whatsapp").value.trim();
+
+    if(
+        !accountName ||
+        !accountNumber ||
+        !bankName ||
+        !whatsapp
+    ){
+        alert("Please fill all fields");
+        return;
+    }
+
+    await set(
+        ref(db,"paymentDetails"),
+        {
+            accountName,
+            accountNumber,
+            bankName,
+            whatsapp
+        }
+    );
+
+    alert("Payment details updated successfully!");
+};
+
+</script>
+
+</body>
+</html>
