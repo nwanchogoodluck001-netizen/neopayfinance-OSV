@@ -72,7 +72,8 @@
 
             <h2 class="text-xl font-bold">
                 Welcome back,
-                <span id="userName">User</span> 👋
+                <!-- <span id="userName">User</span> 👋 -->
+                <span id="welcomeName"></span>
             </h2>
 
         </div>
@@ -119,12 +120,12 @@
         <div class="grid grid-cols-3 gap-3 p-5">
 
             <a href="/payment.html">
-            <div class="action-card rounded-2xl p-4 text-center">
-                <div class="w-12 h-12 mx-auto rounded-xl bg-red-600 flex items-center justify-center">
-                    <i class='bx bx-purchase-tag text-2xl'></i>
+                <div class="action-card rounded-2xl p-4 text-center">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-red-600 flex items-center justify-center">
+                        <i class='bx bx-purchase-tag text-2xl'></i>
+                    </div>
+                    <p class="text-xs mt-3">Buy NFK Code</p>
                 </div>
-                <p class="text-xs mt-3">Buy NFK Code</p>
-            </div>
             </a>
 
             <div class="action-card rounded-2xl p-4 text-center feature-lock">
@@ -285,107 +286,109 @@
     </script>
 
 
-<!-- ACTIVATION POPUP -->
+    <!-- ACTIVATION POPUP -->
 
-<div
-id="activationModal"
-class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-5">
+    <div id="activationModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-5">
 
-    <div class="bg-white text-black rounded-3xl p-6 w-full max-w-sm text-center">
+        <div class="bg-white text-black rounded-3xl p-6 w-full max-w-sm text-center">
 
-        <div class="w-16 h-16 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-4">
+            <div class="w-16 h-16 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-4">
 
-            <i class='bx bx-lock-alt text-3xl text-red-600'></i>
+                <i class='bx bx-lock-alt text-3xl text-red-600'></i>
+
+            </div>
+
+            <h2 class="text-2xl font-bold">
+                Account Not Activated
+            </h2>
+
+            <p class="text-gray-600 mt-3">
+                Activate your account with NFK Code to access this feature.
+            </p>
+
+            <a href="/payment.html">
+                <button id="activateNow" class="w-full mt-5 bg-red-600 text-white py-3 rounded-xl font-bold">
+
+                    Activate Now
+
+                </button>
+            </a>
+
+            <button id="closeModal" class="w-full mt-3 bg-gray-200 py-3 rounded-xl font-semibold">
+
+                Close
+
+            </button>
 
         </div>
 
-        <h2 class="text-2xl font-bold">
-            Account Not Activated
-        </h2>
-
-        <p class="text-gray-600 mt-3">
-            Activate your account with NFK Code to access this feature.
-        </p>
-
-        <a href="/payment.html">
-        <button
-        id="activateNow"
-        class="w-full mt-5 bg-red-600 text-white py-3 rounded-xl font-bold">
-
-            Activate Now
-
-        </button>
-        </a>
-
-        <button
-        id="closeModal"
-        class="w-full mt-3 bg-gray-200 py-3 rounded-xl font-semibold">
-
-            Close
-
-        </button>
-
     </div>
 
-</div>
 
+    <script>
+        /* ACTIVATION POPUP */
 
-<script>
-    /* ACTIVATION POPUP */
+        const modal =
+            document.getElementById(
+                "activationModal"
+            );
 
-const modal =
-document.getElementById(
-"activationModal"
-);
+        document
+            .querySelectorAll(".feature-lock")
+            .forEach(item => {
 
-document
-.querySelectorAll(".feature-lock")
-.forEach(item => {
+                item.addEventListener(
+                    "click",
+                    () => {
 
-    item.addEventListener(
-    "click",
-    () => {
+                        modal.classList.remove(
+                            "hidden"
+                        );
 
-        modal.classList.remove(
-        "hidden"
-        );
+                        modal.classList.add(
+                            "flex"
+                        );
 
-        modal.classList.add(
-        "flex"
-        );
+                    });
 
-    });
+            });
 
-});
+        document
+            .getElementById("closeModal")
+            .addEventListener(
+                "click",
+                () => {
 
-document
-.getElementById("closeModal")
-.addEventListener(
-"click",
-() => {
+                    modal.classList.add(
+                        "hidden"
+                    );
 
-    modal.classList.add(
-    "hidden"
-    );
+                    modal.classList.remove(
+                        "flex"
+                    );
 
-    modal.classList.remove(
-    "flex"
-    );
+                });
 
-});
+        document
+            .getElementById("activateNow")
+            .addEventListener(
+                "click",
+                () => {
 
-document
-.getElementById("activateNow")
-.addEventListener(
-"click",
-() => {
+                    alert(
+                        "Activate your account with NFK Code."
+                    );
 
-    alert(
-    "Activate your account with NFK Code."
-    );
+                });
 
-});
-</script>
+        // User Name
+        const user = JSON.parse(localStorage.getItem("loggedInUser"));
+
+        if (user) {
+            document.getElementById("welcomeName").textContent =
+                user.firstName;
+        }
+    </script>
 </body>
 
 </html>
