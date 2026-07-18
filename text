@@ -31,3 +31,25 @@ https://neopay-finance-default-rtdb.firebaseio.com/
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+Header
+Dashboard cards
+Slider
+Animations
+Shortcut grid
+Bottom navigation
+Icons
+Responsive behavior
+Gradients
+Shadow

@@ -4,390 +4,854 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>NeoPay Dashboard</title>
 
+    <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 
-    <style>
-        body {
-            background: #462929;
-            color: white;
-            font-family: Inter, sans-serif;
-        }
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-        .balance-card {
-            background: linear-gradient(135deg,
-                    #c1121f,
-                    #ff0000,
-                    #ffb703);
-        }
-
-        .action-card {
-            background: #111111;
-            transition: .3s;
-        }
-
-        .action-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .bottom-nav {
-            background: #0f0f0f;
-            border-top: 1px solid rgba(255, 255, 255, .08);
-        }
-    </style>
 
 </head>
 
-<body>
 
-    <div class="max-w-md mx-auto min-h-screen pb-24">
+<style>
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(25px);
+        }
 
-        <!-- HEADER -->
-        <div class="flex justify-between items-center p-5">
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-            <div class="flex items-center gap-2">
+    @keyframes floating {
 
-                <div class="w-9 h-9 rounded-lg bg-red-600 flex items-center justify-center">
-                    <img src="/logo.jpg" alt="">
-                </div>
+        0% {
+            transform: translateY(0px);
+        }
 
-                <h1 class="font-bold text-xl">
-                    NeoPay
-                </h1>
+        50% {
+            transform: translateY(-6px);
+        }
 
-            </div>
+        100% {
+            transform: translateY(0px);
+        }
 
-            <div class="w-10 h-10 rounded-full border border-red-500 flex items-center justify-center">
-                <span id="avatarInitial">N</span>
-            </div>
+    }
 
+    .float-card {
+
+        animation: floating 5s ease-in-out infinite;
+
+    }
+
+    .fade-up {
+        animation: fadeUp .8s ease forwards;
+    }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+
+    .quick-action {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+
+        text-decoration: none;
+
+        transition: all .35s ease;
+
+    }
+
+    .quick-action span {
+
+        color: #ffffff;
+
+        font-size: 13px;
+
+        font-weight: 700;
+
+        letter-spacing: .4px;
+
+    }
+
+    .quick-icon {
+
+        width: 74px;
+        height: 74px;
+
+        border-radius: 24px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(145deg, #A61515, #730909);
+
+        border: 1px solid rgba(255, 216, 107, .18);
+
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, .08),
+            0 12px 30px rgba(0, 0, 0, .35);
+
+        transition: .35s;
+
+    }
+
+    .quick-icon i {
+
+        font-size: 36px;
+
+        color: #FFD86B;
+
+    }
+
+
+
+    /* ========================= */
+    /* Bottom Navigation */
+    /* ========================= */
+
+    .nav-item {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+
+        text-decoration: none;
+
+        transition: .35s;
+
+    }
+
+    .nav-item span {
+
+        font-size: 11px;
+        font-weight: 700;
+        color: #d9cfcf;
+
+    }
+
+    .nav-icon {
+
+        width: 46px;
+        height: 46px;
+
+        border-radius: 16px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: .35s;
+
+    }
+
+    .nav-icon i {
+
+        font-size: 25px;
+        color: #ffffff;
+
+    }
+
+    .nav-item:hover {
+
+        transform: translateY(-4px);
+
+    }
+
+    .nav-item:hover .nav-icon {
+
+        background: rgba(255, 255, 255, .08);
+
+    }
+
+    .nav-item.active .nav-icon {
+
+        background: #FFD86B;
+
+        box-shadow:
+            0 0 20px rgba(255, 216, 107, .35);
+
+    }
+
+    .nav-item.active .nav-icon i {
+
+        color: #7B0D0D;
+
+    }
+
+    .nav-item.active span {
+
+        color: #FFD86B;
+
+    }
+
+    /* Floating Center Button */
+
+    .home-button {
+
+        width: 72px;
+        height: 72px;
+
+        border-radius: 50%;
+
+        background: linear-gradient(145deg, #FFD86B, #F2B623);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border: 6px solid #6A0909;
+
+        box-shadow:
+            0 18px 40px rgba(0, 0, 0, .35);
+
+        transition: .35s;
+
+    }
+
+    .home-button i {
+
+        font-size: 40px;
+        color: #6A0909;
+
+    }
+
+    .home-button:hover {
+
+        transform: scale(1.08) rotate(8deg);
+
+    }
+</style>
+
+<body class="bg-[#f4c16d] pb-32">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-[#4b0606] shadow-lg">
+        <div class="h-20 flex items-center justify-between px-5">
+
+            <!-- Menu Button -->
+            <!-- <button
+                class="w-11 h-11 rounded-full bg-[#6b0b0b] flex items-center justify-center text-[#F7D76A] text-2xl hover:bg-[#7b0d0d] transition">
+                <i class='bx bx-menu'></i>
+            </button> -->
+
+            <!-- Title -->
+            <h1 class="text-white mx-auto text-3xl font-semibold tracking-wide">
+                Dashboard
+            </h1>
         </div>
+    </header>
 
-        <!-- WELCOME -->
-        <div class="px-5 mb-5">
 
-            <h2 class="text-xl font-bold">
-                Welcome back,
-                <!-- <span id="userName">User</span> 👋 -->
-                <span id="welcomeName"></span>
-            </h2>
 
-        </div>
 
-        <!-- BALANCE CARD -->
-        <div class="px-5">
+    <!-- Dashboard Card -->
+    <section class="px-4 mt-6">
+        <div class="bg-[#780909] rounded-[28px] p-5 shadow-2xl">
 
-            <div class="balance-card rounded-3xl p-5">
+            <!-- Top Row -->
+            <div class="flex justify-between items-start">
 
-                <p class="text-sm opacity-90">
-                    Total Balance
-                </p>
+                <!-- User -->
+                <div class="flex items-center gap-3">
 
-                <div class="flex justify-between items-center mt-2">
-                    <h1 id="balance" class="text-4xl font-black">
-                        ₦260,000
-                    </h1>
 
-                    <button id="toggleBalance">
-                        <i class='bx bx-hide text-3xl'></i>
-                    </button>
-                </div>
+                    <div>
 
-                <p id="userId" class="text-sm mt-2 opacity-90">
-                    ID: USER12345
-                </p>
+                        <p id="greeting" class="text-gray-200 text-1xl font-bold">
 
-                <div class="grid grid-cols-2 gap-3 mt-5">
+                        </p>
 
-                    <button class="feature-lock bg-white/60 py-3 rounded-xl font-semibold">
-                        Upgrade
-                    </button>
+                        <div style="display: flex; color: #ffffff; font-size: 20px;">
+                            <h3>WELCOME,</h3>
+                            <h2 id="welcomeName" class="text-white text-3xl font-bold leading-tight">
 
-                    <button class="feature-lock bg-black/20 py-3 rounded-xl font-semibold">
-                        Transfer
-                    </button>
+                            </h2>
+                        </div>
 
-                </div>
-            </div>
 
-        </div>
-
-        <!-- ACTIONS -->
-        <div class="grid grid-cols-3 gap-3 p-5">
-
-            <a href="/payment.html">
-                <div class="action-card rounded-2xl p-4 text-center">
-                    <div class="w-12 h-12 mx-auto rounded-xl bg-red-600 flex items-center justify-center">
-                        <i class='bx bx-purchase-tag text-2xl'></i>
                     </div>
-                    <p class="text-xs mt-3">Buy NFK Code</p>
-                </div>
-            </a>
 
-            <div class="action-card rounded-2xl p-4 text-center feature-lock">
-                <div class="w-12 h-12 mx-auto rounded-xl bg-purple-600 flex items-center justify-center">
-                    <i class='bx bx-task text-2xl'></i>
                 </div>
-                <p class="text-xs mt-3">Daily Tasks</p>
+
+                <!-- Right Icons -->
+                <div class="flex items-center gap-3">
+
+                    <button
+                        class="w-12 h-12 rounded-full border border-[#b88a4b] flex items-center justify-center text-yellow-300 text-xl">
+                        <i class='bx bx-envelope'></i>
+                    </button>
+
+                    <button
+                        class="relative w-12 h-12 rounded-full border border-[#b88a4b] flex items-center justify-center text-yellow-300 text-xl">
+
+                        <i class='bx bx-bell'></i>
+
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-yellow-300 rounded-full"></span>
+
+                    </button>
+
+                </div>
+
             </div>
 
-            <div class="action-card rounded-2xl p-4 text-center feature-lock">
-                <div class="w-12 h-12 mx-auto rounded-xl bg-blue-600 flex items-center justify-center">
-                    <i class='bx bx-gift text-2xl'></i>
+            <!-- ======= Dashboard Slider ======= -->
+            <div class="relative mt-6">
+
+                <!-- Slider -->
+                <div id="dashboardSlider"
+                    class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide pb-2">
+
+                    <!-- Card 1 -->
+                    <div class="snap-center shrink-0 w-[92%] rounded-3xl overflow-hidden
+            bg-gradient-to-br from-[#b81616] via-[#8b0d0d] to-[#d96d36]
+            p-6 shadow-2xl">
+
+                        <p class="text-white/80 text-lg">
+                            All-Time Earnings
+                        </p>
+
+                        <h1 id="dashboardBalance" class="text-white text-4xl font-bold mt-2">
+                            00.00
+                        </h1>
+
+                        <div class="flex gap-3 mt-8">
+
+                            <button
+                                class="flex-1 border border-yellow-300 rounded-xl py-3 text-yellow-100 font-medium hover:bg-white/10 transition protected-feature">
+                                Withdraw
+                            </button>
+
+                            <button
+                                class="flex-1 border border-yellow-300 rounded-xl py-3 text-yellow-100 font-medium hover:bg-white/10 transition protected-feature">
+                                History
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="snap-center shrink-0 w-[92%] rounded-3xl overflow-hidden
+            bg-gradient-to-br from-[#FFD36A] to-[#D18A18]
+            p-6 shadow-2xl">
+
+                        <p class="text-[#5d1b00] text-lg font-semibold">
+                            Available Balance
+                        </p>
+
+                        <h1 id="dashboardBalance1" class="text-[#3a0909] text-4xl font-bold mt-2">
+                            ₦0.00
+                        </h1>
+
+                        <p class="text-[#5d1b00] mt-2 text-sm">
+                            Withdrawable Amount
+                        </p>
+
+                        <button class="w-full mt-8 bg-[#8b0d0d] text-white rounded-xl py-3 font-semibold protected-feature">
+                            Withdraw
+                        </button>
+
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="snap-center shrink-0 w-[92%] rounded-3xl overflow-hidden
+            bg-gradient-to-br from-[#7B0D0D] via-[#590707] to-[#300303]
+            p-6 shadow-2xl">
+
+                        <p class="text-white/80 text-lg">
+                            Total Balance
+                        </p>
+
+                        <h1 id="dashboardBalance2" class="text-white text-4xl font-bold mt-2">
+                            00.00
+                        </h1>
+
+                        <p class="text-white/70 mt-2">
+                            Earn more by inviting friends.
+                        </p>
+
+                        <button class="mt-8 w-full border border-yellow-300 py-3 rounded-xl text-yellow-200 protected-feature">
+                            Invite Friends
+                        </button>
+
+                    </div>
+
                 </div>
-                <p class="text-xs mt-3">Refer & Earn</p>
+
+                <!-- Slider Dots -->
+                <div class="flex justify-center gap-2 mt-5">
+
+                    <span class="dot w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+
+                    <span class="dot w-2.5 h-2.5 rounded-full bg-white/30"></span>
+
+                    <span class="dot w-2.5 h-2.5 rounded-full bg-white/30"></span>
+
+                </div>
+
             </div>
 
-            <div class="action-card rounded-2xl p-4 text-center feature-lock">
-                <div class="w-12 h-12 mx-auto rounded-xl bg-green-600 flex items-center justify-center">
-                    <i class='bx bx-group text-2xl'></i>
-                </div>
-                <p class="text-xs mt-3">Community</p>
-            </div>
 
-            <div class="action-card rounded-2xl p-4 text-center feature-lock">
-                <div class="w-12 h-12 mx-auto rounded-xl bg-orange-500 flex items-center justify-center">
-                    <i class='bx bx-history text-2xl'></i>
-                </div>
-                <p class="text-xs mt-3">History</p>
-            </div>
 
-            <div class="action-card rounded-2xl p-4 text-center feature-lock">
-                <div class="w-12 h-12 mx-auto rounded-xl bg-cyan-500 flex items-center justify-center">
-                    <i class='bx bx-headphone text-2xl'></i>
-                </div>
-                <p class="text-xs mt-3">Support</p>
-            </div>
 
         </div>
+    </section>
 
-        <!-- PROMO CARD -->
-        <div class="px-5">
+    <!-- ========================= -->
+    <!-- Premium Quick Actions -->
+    <!-- ========================= -->
 
-            <div class="rounded-3xl p-5 bg-gradient-to-r from-red-950 to-red-900">
+    <section class="px-5 mt-8 mb-8">
 
-                <h3 class="font-bold text-xl">
-                    Start earning with
-                    <span class="text-red-400">
-                        NeoPay
-                    </span>
-                    today!
-                </h3>
+        <div class="bg-gradient-to-br from-[#7B0D0D] via-[#650909] to-[#4A0505]
+                rounded-[32px]
+                p-6
+                border border-[#A53A3A]/30
+                shadow-[0_20px_60px_rgba(0,0,0,.45)]">
 
-                <p class="text-gray-300 mt-2 text-sm">
-                    Turn your phone into your money machine.
-                </p>
+            <!-- Heading -->
+            <div class="flex items-center justify-between mb-6">
 
-            </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-white protected-feature">
+                        Quick Actions
+                    </h2>
 
-        </div>
+                    <p class="text-yellow-100 text-sm mt-1 protected-feature">
+                        Everything you need in one place
+                    </p>
+                </div>
 
-    </div>
-
-    <!-- BOTTOM NAV -->
-    <!-- 
-<div class="bottom-nav fixed bottom-0 left-0 right-0">
-
-    <div class="max-w-md mx-auto">
-
-        <div class="grid grid-cols-5 py-3">
-
-            <div class="text-center text-red-500">
-                <i class='bx bx-home text-xl'></i>
-                <p class="text-[10px]">Home</p>
-            </div>
-
-            <div class="text-center">
-                <i class='bx bx-purchase-tag text-xl'></i>
-                <p class="text-[10px]">NFK</p>
-            </div>
-
-            <div class="text-center">
-                <i class='bx bx-gift text-xl'></i>
-                <p class="text-[10px]">Refer</p>
-            </div>
-
-            <div class="text-center">
-                <i class='bx bx-group text-xl'></i>
-                <p class="text-[10px]">Community</p>
-            </div>
-
-            <div class="text-center">
-                <i class='bx bx-history text-xl'></i>
-                <p class="text-[10px]">History</p>
-            </div>
-
-        </div>
-
-    </div>
-
-</div> -->
-
-    <script>
-
-        // Load User
-
-        const userName =
-            localStorage.getItem("userName") || "User";
-
-        document.getElementById("userName")
-            .textContent = userName;
-
-        document.getElementById("avatarInitial")
-            .textContent =
-            userName.charAt(0).toUpperCase();
-
-        // Generate ID
-
-        const userId =
-            localStorage.getItem("userId") ||
-            "USER" +
-            Math.floor(100000 + Math.random() * 900000);
-
-        localStorage.setItem(
-            "userId",
-            userId
-        );
-
-        document.getElementById("userId")
-            .textContent =
-            "ID: " + userId;
-
-        // Balance
-
-        const balance =
-            localStorage.getItem("balance") ||
-            260000;
-
-        document.getElementById("balance")
-            .textContent =
-            "₦" +
-            Number(balance).toLocaleString();
-
-        let hidden = false;
-
-        document
-            .getElementById("toggleBalance")
-            .addEventListener("click", () => {
-
-                hidden = !hidden;
-
-                document.getElementById("balance")
-                    .textContent = hidden
-                        ? "₦******"
-                        : "₦" + Number(balance).toLocaleString();
-
-            });
-
-    </script>
-
-
-    <!-- ACTIVATION POPUP -->
-
-    <div id="activationModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50 p-5">
-
-        <div class="bg-white text-black rounded-3xl p-6 w-full max-w-sm text-center">
-
-            <div class="w-16 h-16 mx-auto rounded-full bg-red-100 flex items-center justify-center mb-4">
-
-                <i class='bx bx-lock-alt text-3xl text-red-600'></i>
-
-            </div>
-
-            <h2 class="text-2xl font-bold">
-                Account Not Activated
-            </h2>
-
-            <p class="text-gray-600 mt-3">
-                Activate your account with NFK Code to access this feature.
-            </p>
-
-            <a href="/payment.html">
-                <button id="activateNow" class="w-full mt-5 bg-red-600 text-white py-3 rounded-xl font-bold">
-
-                    Activate Now
-
+                <button class="text-[#FFD86B] font-semibold hover:text-white transition protected-feature">
+                    View All
                 </button>
-            </a>
 
-            <button id="closeModal" class="w-full mt-3 bg-gray-200 py-3 rounded-xl font-semibold">
+            </div>
 
-                Close
+            <!-- Grid -->
+            <div class="grid grid-cols-4 gap-y-7 gap-x-4">
 
-            </button>
+                <!-- Deposit -->
+                <a href="#" class="quick-action protected-feature">
+                    <div class="quick-icon">
+                        <i class='bx bxs-wallet-alt'></i>
+                    </div>
+                    <span>Deposit</span>
+                </a>
+
+                <!-- Withdraw -->
+                <a href="#" class="quick-action protected-feature">
+                    <div class="quick-icon">
+                        <i class='bx bxs-bank'></i>
+                    </div>
+                    <span>Withdraw</span>
+                </a>
+
+                <!-- Transfer -->
+                <a href="#" class="quick-action protected-feature">
+                    <div class="quick-icon">
+                        <i class='bx bxs-send'></i>
+                    </div>
+                    <span>Transfer</span>
+                </a>
+
+                <!-- Referral -->
+                <a href="#" class="quick-action protected-feature">
+                    <div class="quick-icon">
+                        <i class='bx bxs-user-plus'></i>
+                    </div>
+                    <span>Referral</span>
+                </a>
+
+                <!-- History -->
+                <a href="#" class="quick-action protected-feature">
+                    <div class="quick-icon">
+                        <i class='bx bxs-receipt'></i>
+                    </div>
+                    <span>History</span>
+                </a>
+
+                <!-- Rewards -->
+                <a href="#" class="quick-action protected-feature">
+                    <div class="quick-icon">
+                        <i class='bx bxs-medal'></i>
+                    </div>
+                    <span>Rewards</span>
+                </a>
+
+                <!-- Support -->
+                <a href="#" class="quick-action protected-feature">
+                    <div class="quick-icon">
+                        <i class='bx bxs-help-circle'></i>
+                    </div>
+                    <span>Support</span>
+                </a>
+
+                <!-- More -->
+                <a href="#" class="quick-action protected-feature">
+                    <div class="quick-icon">
+                        <i class='bx bxs-grid-alt'></i>
+                    </div>
+                    <span>More</span>
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
+
+
+
+    <!-- ========================= -->
+    <!-- Bottom Navigation -->
+    <!-- ========================= -->
+
+    <nav class="fixed inset-x-0 bottom-5 z-[9999] flex justify-center pointer-events-none">
+        <div class="pointer-events-auto w-[92%] max-w-md rounded-full
+bg-gradient-to-r from-[#690909] via-[#7B0D0D] to-[#690909]
+border border-yellow-400/20
+shadow-2xl
+px-6 py-4">
+
+            <div class="flex justify-between items-center">
+
+                <!-- Dashboard -->
+                <a href="#" class="nav-item active protected-feature">
+
+                    <div class="nav-icon">
+                        <i class='bx bxs-home'></i>
+                    </div>
+
+                    <span>Home</span>
+
+                </a>
+
+                <!-- Wallet -->
+                <a href="#" class="nav-item protected-feature">
+
+                    <div class="nav-icon">
+                        <i class='bx bxs-wallet'></i>
+                    </div>
+
+                    <span>Wallet</span>
+
+                </a>
+
+                <!-- Center Button -->
+                <a href="#" class="relative -mt-12 protected-feature">
+
+                    <div class="home-button">
+
+                        <i class='bx bxs-plus-circle'></i>
+
+                    </div>
+
+                </a>
+
+                <!-- Transactions -->
+                <a href="#" class="nav-item protected-feature">
+
+                    <div class="nav-icon">
+                        <i class='bx bxs-receipt'></i>
+                    </div>
+
+                    <span>History</span>
+
+                </a>
+
+                <!-- Profile -->
+                <a href="#" class="nav-item protected-feature">
+
+                    <div class="nav-icon">
+                        <i class='bx bxs-user'></i>
+                    </div>
+
+                    <span>Profile</span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
 
 
     <script>
-        /* ACTIVATION POPUP */
+        const slider = document.getElementById("dashboardSlider");
+        const dots = document.querySelectorAll(".dot");
 
-        const modal =
-            document.getElementById(
-                "activationModal"
-            );
+        const cards = slider.children;
 
-        document
-            .querySelectorAll(".feature-lock")
-            .forEach(item => {
+        let index = 0;
 
-                item.addEventListener(
-                    "click",
-                    () => {
+        function updateDots() {
 
-                        modal.classList.remove(
-                            "hidden"
-                        );
+            dots.forEach((dot, i) => {
 
-                        modal.classList.add(
-                            "flex"
-                        );
+                if (i === index) {
 
-                    });
+                    dot.classList.remove("bg-white/30");
+                    dot.classList.add("bg-yellow-400");
+
+                } else {
+
+                    dot.classList.remove("bg-yellow-400");
+                    dot.classList.add("bg-white/30");
+
+                }
 
             });
 
-        document
-            .getElementById("closeModal")
-            .addEventListener(
-                "click",
-                () => {
+        }
 
-                    modal.classList.add(
-                        "hidden"
-                    );
+        function slideToCard(i) {
 
-                    modal.classList.remove(
-                        "flex"
-                    );
+            index = i;
 
-                });
+            cards[i].scrollIntoView({
 
-        document
-            .getElementById("activateNow")
-            .addEventListener(
-                "click",
-                () => {
+                behavior: "smooth",
+                inline: "center"
 
-                    alert(
-                        "Activate your account with NFK Code."
-                    );
+            });
 
-                });
+            updateDots();
+
+        }
+
+        setInterval(() => {
+
+            index++;
+
+            if (index >= cards.length) {
+
+                index = 0;
+
+            }
+
+            slideToCard(index);
+
+        }, 5000);
+
+        slider.addEventListener("scroll", () => {
+
+            const cardWidth = cards[0].offsetWidth + 16;
+
+            const current = Math.round(slider.scrollLeft / cardWidth);
+
+            if (current !== index && current < cards.length) {
+
+                index = current;
+
+                updateDots();
+
+            }
+
+        });
+
+        updateDots();
+
+
+
+        // Dynamic Greeting
+        const greeting = document.getElementById("greeting");
+        const hour = new Date().getHours();
+
+        let message = "";
+        let emoji = "";
+
+        if (hour >= 5 && hour < 12) {
+            message = "Good Morning";
+            emoji = "☀️";
+        } else if (hour >= 12 && hour < 17) {
+            message = "Good Afternoon";
+            emoji = "🌤️";
+        } else if (hour >= 17 && hour < 20) {
+            message = "Good Evening";
+            emoji = "🌇";
+        } else {
+            message = "Good Night";
+            emoji = "🌙";
+        }
+
+        greeting.textContent = `${message} ${emoji}`;
+
+
 
         // User Name
         const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
         if (user) {
             document.getElementById("welcomeName").textContent =
-                user.firstName;
+                user.username;
         }
+
+
+        const bonus = Number(localStorage.getItem("welcomeBonus")) || 0;
+
+        document.getElementById("dashboardBalance").textContent =
+            `₦${bonus.toLocaleString('en-NG', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}`;
+
+
+        const bonus1 = Number(localStorage.getItem("welcomeBonus")) || 0;
+
+        document.getElementById("dashboardBalance1").textContent =
+            `₦${bonus.toLocaleString('en-NG', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}`;
+
+
+        const bonus2 = Number(localStorage.getItem("welcomeBonus")) || 0;
+
+        document.getElementById("dashboardBalance2").textContent =
+            `₦${bonus.toLocaleString('en-NG', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            })}`;
+    </script>
+
+
+
+
+    <!-- ========================= -->
+    <!-- Activation Modal -->
+    <!-- ========================= -->
+
+    <div id="activationModal"
+        class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[99999] hidden items-center justify-center px-5">
+
+        <div class="w-full max-w-sm bg-[#6A0909] rounded-3xl p-6 border border-yellow-400/20 shadow-2xl">
+
+            <!-- Icon -->
+            <div
+                class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-yellow-300 to-yellow-500 flex items-center justify-center shadow-lg">
+
+                <i class='bx bxs-lock-alt text-5xl text-[#6A0909]'></i>
+
+            </div>
+
+            <!-- Title -->
+            <h2 class="text-white text-2xl font-bold text-center mt-6">
+                Account Not Activated
+            </h2>
+
+            <!-- Message -->
+            <p class="text-yellow-100 text-center mt-3 leading-7">
+
+                Activate your account to make your first withdrawal and unlock all NeoPay features.
+
+            </p>
+
+            <!-- Buttons -->
+            <div class="mt-8 space-y-3">
+
+                <a href="/payment.html"
+                    class="block w-full bg-gradient-to-r from-yellow-300 to-yellow-500 text-[#6A0909] text-center font-bold py-4 rounded-xl">
+
+                    Activate Your Account
+
+                </a>
+
+                <button id="closeModal" class="w-full border border-yellow-400/30 text-white py-4 rounded-xl">
+
+                    Maybe Later
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        const modal = document.getElementById("activationModal");
+        const closeModal = document.getElementById("closeModal");
+
+        // Open Modal
+        function openActivationModal(e) {
+
+            if (e) {
+                e.preventDefault();
+            }
+
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+
+        }
+
+        // Close Modal
+        closeModal.onclick = () => {
+
+            modal.classList.remove("flex");
+            modal.classList.add("hidden");
+
+        }
+
+        // Close when clicking outside
+        modal.onclick = (e) => {
+
+            if (e.target === modal) {
+
+                modal.classList.remove("flex");
+                modal.classList.add("hidden");
+
+            }
+
+
+        }
+
+        // Check if account is activated
+const activated = localStorage.getItem("accountActivated") === "true";
+
+// Attach modal to every protected feature
+document.querySelectorAll(".protected-feature").forEach(item => {
+
+    item.addEventListener("click", function (e) {
+
+        if (!activated) {
+            e.preventDefault();
+            openActivationModal();
+        }
+
+    });
+
+});
     </script>
 </body>
 

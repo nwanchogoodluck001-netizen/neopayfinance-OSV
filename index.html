@@ -1,807 +1,1085 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeoPay Finance - Earn While You Engage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoPay Finance - Earn While You Engage</title>
 
-<!-- Tailwind CSS -->
-<script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- Boxicons -->
-<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
-<style>
-*{
-    font-family: 'Inter', sans-serif;
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-html{
-    scroll-behavior:smooth;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-body{
-    background:#553232;
-    color:white;
-    overflow-x:hidden;
-}
+        body {
+            background: #553232;
+            color: white;
+            overflow-x: hidden;
+        }
 
-.hero-bg{
-    background:
-    radial-gradient(circle at top right, rgba(255,208,0,.4), transparent 30%),
-    linear-gradient(135deg,#780000,#c1121f,#f77f00);
-}
+        .hero-bg {
+            background:
+                radial-gradient(circle at top right, rgba(255, 208, 0, .4), transparent 30%),
+                linear-gradient(135deg, #780000, #c1121f, #f77f00);
+        }
 
-.glass{
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,.12);
-}
+        .glass {
+            background: rgba(255, 255, 255, .08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, .12);
+        }
 
-.gold-text{
-    background:linear-gradient(90deg,#FFD700,#FFF3B0);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-}
+        .gold-text {
+            background: linear-gradient(90deg, #FFD700, #FFF3B0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-.nav-blur{
-    background:rgba(0,0,0,.3);
-    backdrop-filter:blur(20px);
-}
+        .nav-blur {
+            background: rgba(0, 0, 0, .3);
+            backdrop-filter: blur(20px);
+        }
 
-.card{
-    transition:.4s;
-}
+        .card {
+            transition: .4s;
+        }
 
-.card:hover{
-    transform:translateY(-10px);
-}
+        .card:hover {
+            transform: translateY(-10px);
+        }
 
-.glow{
-    box-shadow:0 0 40px rgba(255,215,0,.15);
-}
+        .glow {
+            box-shadow: 0 0 40px rgba(255, 215, 0, .15);
+        }
 
-.floating{
-    animation:float 5s ease-in-out infinite;
-}
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
 
-@keyframes float{
-    0%,100%{
-        transform:translateY(0px);
-    }
-    50%{
-        transform:translateY(-15px);
-    }
-}
+        @keyframes float {
 
-.hero-circle{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(100px);
-}
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
 
-.hero-circle-1{
-    width:350px;
-    height:350px;
-    background:#ffcc00;
-    top:-50px;
-    right:-50px;
-}
+            50% {
+                transform: translateY(-15px);
+            }
+        }
 
-.hero-circle-2{
-    width:300px;
-    height:300px;
-    background:#ff4500;
-    bottom:-50px;
-    left:-50px;
-}
+        .hero-circle {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+        }
 
-.section-title{
-    font-size:clamp(2rem,5vw,4rem);
-    font-weight:900;
-}
+        .hero-circle-1 {
+            width: 350px;
+            height: 350px;
+            background: #ffcc00;
+            top: -50px;
+            right: -50px;
+        }
 
-.feature-icon{
-    width:60px;
-    height:60px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:15px;
-    background:rgba(255,255,255,.08);
-    color:#FFD700;
-    font-size:28px;
-}
+        .hero-circle-2 {
+            width: 300px;
+            height: 300px;
+            background: #ff4500;
+            bottom: -50px;
+            left: -50px;
+        }
 
-.gradient-btn{
-    background:linear-gradient(90deg,#FFD700,#ffbf00);
-    color:black;
-    font-weight:700;
-}
+        .section-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+        }
 
-.gradient-btn:hover{
-    transform:translateY(-3px);
-}
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, .08);
+            color: #FFD700;
+            font-size: 28px;
+        }
 
-.stat-number{
-    font-size:2rem;
-    font-weight:800;
-}
+        .gradient-btn {
+            background: linear-gradient(90deg, #FFD700, #ffbf00);
+            color: black;
+            font-weight: 700;
+        }
+
+        .gradient-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+        }
 
 
-/* Notification Popup */
-.notification-container{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    z-index:9999;
-    transform:translateX(500px);
-    opacity:0;
-    transition:all .7s ease;
-}
+        /* Notification Popup */
+        .notification-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            transform: translateX(500px);
+            opacity: 0;
+            transition: all .7s ease;
+        }
 
-.notification-container.show{
-    transform:translateX(0);
-    opacity:1;
-}
+        .notification-container.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
 
-.notification-card{
-    min-width:340px;
-    max-width:400px;
-    background:rgba(0,0,0,.8);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,215,0,.2);
-    border-radius:18px;
-    padding:15px;
-    display:flex;
-    align-items:center;
-    gap:15px;
-    box-shadow:0 10px 40px rgba(255,215,0,.15);
-}
+        .notification-card {
+            min-width: 340px;
+            max-width: 400px;
+            background: rgba(0, 0, 0, .8);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, .2);
+            border-radius: 18px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, .15);
+        }
 
-.notification-avatar{
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:linear-gradient(135deg,#FFD700,#ff9f1c);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    flex-shrink:0;
-}
+        .notification-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FFD700, #ff9f1c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
 
-.notification-avatar i{
-    font-size:24px;
-    color:#000;
-}
+        .notification-avatar i {
+            font-size: 24px;
+            color: #000;
+        }
 
-.notification-name{
-    font-weight:700;
-    color:#fff;
-    font-size:15px;
-}
+        .notification-name {
+            font-weight: 700;
+            color: #fff;
+            font-size: 15px;
+        }
 
-.notification-action{
-    color:#d1d5db;
-    font-size:13px;
-    margin-top:2px;
-}
+        .notification-action {
+            color: #d1d5db;
+            font-size: 13px;
+            margin-top: 2px;
+        }
 
-.notification-time{
-    color:#9ca3af;
-    font-size:11px;
-    margin-top:4px;
-}
+        .notification-time {
+            color: #9ca3af;
+            font-size: 11px;
+            margin-top: 4px;
+        }
 
-@media(max-width:640px){
+        @media(max-width:640px) {
 
-    .notification-container{
-        right:10px;
-        left:10px;
-        bottom:10px;
-    }
+            .notification-container {
+                right: 10px;
+                left: 10px;
+                bottom: 10px;
+            }
 
-    .notification-card{
-        min-width:100%;
-    }
+            .notification-card {
+                min-width: 100%;
+            }
 
-}
-</style>
+        }
+    </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="fixed top-0 left-0 w-full z-50 nav-blur border-b border-white/10">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 w-full z-50 nav-blur border-b border-white/10">
 
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
 
-<div class="flex items-center gap-3">
+            <div class="flex items-center gap-3">
 
-<div class="w-12 h-12 rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-500 flex items-center justify-center">
-<img src="/logo.jpg" alt="">
-</div>
+                <div
+                    class="w-12 h-12 rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-500 flex items-center justify-center">
+                    <img src="/logo.jpg" alt="">
+                </div>
 
-<div>
-<h2 class="font-bold text-lg">NeoPay Finance</h2>
-<p class="text-xs text-gray-300">Where Users Earn Without Stress</p>
-</div>
+                <div>
+                    <h2 class="font-bold text-lg">NeoPay Finance</h2>
+                    <p class="text-xs text-gray-300">Where Users Earn Without Stress</p>
+                </div>
 
-</div>
+            </div>
 
-<div class="hidden md:flex items-center gap-8">
-<a href="#about" class="hover:text-yellow-400">About</a>
-<a href="#features" class="hover:text-yellow-400">Features</a>
-<a href="#how" class="hover:text-yellow-400">How It Works</a>
-<a href="#join" class="hover:text-yellow-400">Join</a>
-</div>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#about" class="hover:text-yellow-400">About</a>
+                <a href="#features" class="hover:text-yellow-400">Features</a>
+                <a href="#how" class="hover:text-yellow-400">How It Works</a>
+                <a href="#join" class="hover:text-yellow-400">Join</a>
+            </div>
 
-<a href="/reigster.html" class="hidden md:inline-block gradient-btn px-6 py-3 rounded-full transition">
-Start Now
-</a>
+            <a class='hidden md:inline-block gradient-btn px-6 py-3 rounded-full transition' href='/reigster.html'>
+                Start Now
+            </a>
 
-<button id="menuBtn" class="md:hidden text-3xl">
-<i class='bx bx-menu'></i>
-</button>
+            <button id="menuBtn" class="md:hidden text-3xl">
+                <i class='bx bx-menu'></i>
+            </button>
 
-</div>
-
-<div id="mobileMenu" class="hidden md:hidden px-6 pb-5">
-<div class="flex flex-col gap-4">
-<a href="#about">About</a>
-<a href="#features">Features</a>
-<a href="#how">How It Works</a>
-<a href="#join">Join</a>
-</div>
-</div>
-
-</nav>
-
-<!-- HERO -->
-<section class="hero-bg min-h-screen relative overflow-hidden flex items-center">
-
-<div class="hero-circle hero-circle-1"></div>
-<div class="hero-circle hero-circle-2"></div>
-
-<div class="max-w-7xl mx-auto px-6 py-32">
-
-<div class="grid lg:grid-cols-2 gap-14 items-center">
-
-<div>
-
-<span class="glass px-5 py-2 rounded-full inline-block mb-6">
-#NeoPayFinance2026
-</span>
-
-<h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
-Earn Rewards
-<span class="gold-text">Just By</span>
-Enjoying Content
-</h1>
-
-<p class="text-lg text-white/80 mb-8 max-w-xl">
-NeoPay Finance is an African fintech platform that rewards users for
-watching videos, playing games, reviewing content, streaming music,
-learning digital skills and completing simple online tasks.
-</p>
-
-<div class="flex flex-wrap gap-4">
-
-<a href="/reigster.html"
-class="gradient-btn px-8 py-4 rounded-full transition">
-Start Earning
-</a>
-
-<a href="#about"
-class="glass px-8 py-4 rounded-full">
-Learn More
-</a>
-
-</div>
-
-<div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-
-<div>
-<div class="stat-number">10K+</div>
-<p class="text-gray-300">Users</p>
-</div>
-
-<div>
-<div class="stat-number">24/7</div>
-<p class="text-gray-300">Access</p>
-</div>
-
-<div>
-<div class="stat-number">₦</div>
-<p class="text-gray-300">Rewards</p>
-</div>
-
-<div>
-<div class="stat-number">100%</div>
-<p class="text-gray-300">Digital</p>
-</div>
-
-</div>
-
-</div>
-
-<div class="floating">
-
-<div class="glass p-8 rounded-3xl glow">
-
-<h3 class="text-2xl font-bold mb-6">
-Ways To Earn
-</h3>
-
-<div class="space-y-4">
-
-<div class="glass rounded-xl p-4 flex items-center gap-3">
-<i class='bx bx-video text-2xl text-yellow-400'></i>
-<span>Watch Funny Videos</span>
-</div>
-
-<div class="glass rounded-xl p-4 flex items-center gap-3">
-<i class='bx bx-like text-2xl text-yellow-400'></i>
-<span>Like Videos</span>
-</div>
-
-<div class="glass rounded-xl p-4 flex items-center gap-3">
-<i class='bx bx-message-square-detail text-2xl text-yellow-400'></i>
-<span>Share Reviews</span>
-</div>
-
-<div class="glass rounded-xl p-4 flex items-center gap-3">
-<i class='bx bx-joystick text-2xl text-yellow-400'></i>
-<span>Play Games</span>
-</div>
-
-<div class="glass rounded-xl p-4 flex items-center gap-3">
-<i class='bx bx-music text-2xl text-yellow-400'></i>
-<span>Stream Songs & Beats</span>
-</div>
-
-<div class="glass rounded-xl p-4 flex items-center gap-3">
-<i class='bx bx-wallet text-2xl text-yellow-400'></i>
-<span>Get Paid In Naira</span>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="py-24 bg-[#0f0f0f]">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="text-center mb-16">
-<h2 class="section-title">
-What Is <span class="gold-text">NeoPay Finance?</span>
-</h2>
-</div>
-
-<div class="grid md:grid-cols-2 gap-8">
-
-<div class="glass p-8 rounded-3xl">
-<p class="text-lg text-gray-300 leading-8">
-NeoPay Finance is an African company designed to help Africans learn
-digital skills, perform simple tasks and earn rewards online.
-</p>
-</div>
-
-<div class="glass p-8 rounded-3xl">
-<p class="text-lg text-gray-300 leading-8">
-Users can post engaging content, play games, download and review files,
-watch short videos, stream songs and spend time on the platform while
-earning rewards.
-</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- FEATURES -->
-<section id="features" class="py-24">
-
-<div class="max-w-7xl mx-auto px-6">
-
-<div class="text-center mb-16">
-<h2 class="section-title">
-Platform Features
-</h2>
-</div>
-
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-<div class="glass p-8 rounded-3xl card">
-<div class="feature-icon mb-5">
-<i class='bx bx-video'></i>
-</div>
-<h3 class="font-bold text-xl mb-3">Watch & Earn</h3>
-<p class="text-gray-300">Earn rewards while enjoying videos.</p>
-</div>
-
-<div class="glass p-8 rounded-3xl card">
-<div class="feature-icon mb-5">
-<i class='bx bx-joystick'></i>
-</div>
-<h3 class="font-bold text-xl mb-3">Gaming Tasks</h3>
-<p class="text-gray-300">Turn entertainment into rewards.</p>
-</div>
-
-<div class="glass p-8 rounded-3xl card">
-<div class="feature-icon mb-5">
-<i class='bx bx-edit'></i>
-</div>
-<h3 class="font-bold text-xl mb-3">Reviews</h3>
-<p class="text-gray-300">Share reviews and earn.</p>
-</div>
-
-<div class="glass p-8 rounded-3xl card">
-<div class="feature-icon mb-5">
-<i class='bx bx-music'></i>
-</div>
-<h3 class="font-bold text-xl mb-3">Streaming</h3>
-<p class="text-gray-300">Listen to songs and beats.</p>
-</div>
-
-<div class="glass p-8 rounded-3xl card">
-<div class="feature-icon mb-5">
-<i class='bx bx-book-open'></i>
-</div>
-<h3 class="font-bold text-xl mb-3">Digital Skills</h3>
-<p class="text-gray-300">Learn useful digital skills.</p>
-</div>
-
-<div class="glass p-8 rounded-3xl card">
-<div class="feature-icon mb-5">
-<i class='bx bx-credit-card'></i>
-</div>
-<h3 class="font-bold text-xl mb-3">Fintech Rewards</h3>
-<p class="text-gray-300">Modern reward ecosystem.</p>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how" class="py-24 bg-[#0f0f0f]">
-
-<div class="max-w-6xl mx-auto px-6">
-
-<div class="text-center mb-16">
-<h2 class="section-title">
-How It Works
-</h2>
-</div>
-
-<div class="grid md:grid-cols-4 gap-8">
-
-<div class="text-center">
-<div class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
-1
-</div>
-<h3 class="font-bold">Create Account</h3>
-</div>
-
-<div class="text-center">
-<div class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
-2
-</div>
-<h3 class="font-bold">Engage Content</h3>
-</div>
-
-<div class="text-center">
-<div class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
-3
-</div>
-<h3 class="font-bold">Complete Tasks</h3>
-</div>
-
-<div class="text-center">
-<div class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
-4
-</div>
-<h3 class="font-bold">Earn Rewards</h3>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- CTA -->
-<section id="join" class="hero-bg py-28">
-
-<div class="max-w-4xl mx-auto px-6 text-center">
-
-<h2 class="text-5xl md:text-6xl font-black mb-6">
-Join The NeoPay Movement
-</h2>
-
-<p class="text-xl text-white/80 mb-10">
-Start earning rewards while enjoying content and building your digital future.
-</p>
-
-<a href="/reigster.html"
-class="inline-flex items-center gap-3 gradient-btn px-10 py-5 rounded-full text-lg transition">
-
-Start Now
-
-<i class='bx bx-right-arrow-alt text-2xl'></i>
-
-</a>
-
-</div>
-
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-black border-t border-white/10 py-10">
-
-<div class="max-w-7xl mx-auto px-6 text-center">
-
-<h2 class="gold-text text-3xl font-black mb-3">
-NeoPay Finance
-</h2>
-
-<p class="text-gray-500">
-© 2026 NeoPay Finance. All Rights Reserved.
-</p>
-
-</div>
-
-</footer>
-
-<script>
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-
-menuBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-});
-</script>
-
-
-<!-- LIVE NOTIFICATION -->
-
-<div id="notification" class="notification-container">
-
-    <div class="notification-card">
-
-        <div class="notification-avatar">
-            <i class='bx bxs-check-shield'></i>
         </div>
 
-        <div>
-            <div id="notifyName" class="notification-name"></div>
-
-            <div id="notifyAction" class="notification-action"></div>
-
-            <div class="notification-time">
-                Few seconds ago
+        <div id="mobileMenu" class="hidden md:hidden px-6 pb-5">
+            <div class="flex flex-col gap-4">
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#how">How It Works</a>
+                <a href="#join">Join</a>
             </div>
+        </div>
+
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero-bg min-h-screen relative overflow-hidden flex items-center">
+
+        <div class="hero-circle hero-circle-1"></div>
+        <div class="hero-circle hero-circle-2"></div>
+
+        <div class="max-w-7xl mx-auto px-6 py-32">
+
+            <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+                <div>
+
+                    <span class="glass px-5 py-2 rounded-full inline-block mb-6">
+                        #NeoPayFinance2026
+                    </span>
+
+                    <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
+                        Earn Rewards
+                        <span class="gold-text">Just By</span>
+                        Enjoying Content
+                    </h1>
+
+                    <p class="text-lg text-white/80 mb-8 max-w-xl">
+                        NeoPay Finance is an African fintech platform that rewards users for
+                        watching videos, playing games, reviewing content, streaming music,
+                        learning digital skills and completing simple online tasks.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4">
+
+                        <a class='gradient-btn px-8 py-4 rounded-full transition' href='/reigster.html'>
+                            Start Earning
+                        </a>
+
+                        <a href="#about" class="glass px-8 py-4 rounded-full">
+                            Learn More
+                        </a>
+
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
+
+                        <div>
+                            <div class="stat-number">10K+</div>
+                            <p class="text-gray-300">Users</p>
+                        </div>
+
+                        <div>
+                            <div class="stat-number">24/7</div>
+                            <p class="text-gray-300">Access</p>
+                        </div>
+
+                        <div>
+                            <div class="stat-number">₦</div>
+                            <p class="text-gray-300">Rewards</p>
+                        </div>
+
+                        <div>
+                            <div class="stat-number">100%</div>
+                            <p class="text-gray-300">Digital</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="floating">
+
+                    <div class="glass p-8 rounded-3xl glow">
+
+                        <h3 class="text-2xl font-bold mb-6">
+                            Ways To Earn
+                        </h3>
+
+                        <div class="space-y-4">
+
+                            <div class="glass rounded-xl p-4 flex items-center gap-3">
+                                <i class='bx bx-video text-2xl text-yellow-400'></i>
+                                <span>Watch Funny Videos</span>
+                            </div>
+
+                            <div class="glass rounded-xl p-4 flex items-center gap-3">
+                                <i class='bx bx-like text-2xl text-yellow-400'></i>
+                                <span>Like Videos</span>
+                            </div>
+
+                            <div class="glass rounded-xl p-4 flex items-center gap-3">
+                                <i class='bx bx-message-square-detail text-2xl text-yellow-400'></i>
+                                <span>Share Reviews</span>
+                            </div>
+
+                            <div class="glass rounded-xl p-4 flex items-center gap-3">
+                                <i class='bx bx-joystick text-2xl text-yellow-400'></i>
+                                <span>Play Games</span>
+                            </div>
+
+                            <div class="glass rounded-xl p-4 flex items-center gap-3">
+                                <i class='bx bx-music text-2xl text-yellow-400'></i>
+                                <span>Stream Songs & Beats</span>
+                            </div>
+
+                            <div class="glass rounded-xl p-4 flex items-center gap-3">
+                                <i class='bx bx-wallet text-2xl text-yellow-400'></i>
+                                <span>Get Paid In Naira</span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-24 bg-[#0f0f0f]">
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="text-center mb-16">
+                <h2 class="section-title">
+                    What Is <span class="gold-text">NeoPay Finance?</span>
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <div class="glass p-8 rounded-3xl">
+                    <p class="text-lg text-gray-300 leading-8">
+                        NeoPay Finance is an African company designed to help Africans learn
+                        digital skills, perform simple tasks and earn rewards online.
+                    </p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl">
+                    <p class="text-lg text-gray-300 leading-8">
+                        Users can post engaging content, play games, download and review files,
+                        watch short videos, stream songs and spend time on the platform while
+                        earning rewards.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features" class="py-24">
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="text-center mb-16">
+                <h2 class="section-title">
+                    Platform Features
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div class="glass p-8 rounded-3xl card">
+                    <div class="feature-icon mb-5">
+                        <i class='bx bx-video'></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Watch & Earn</h3>
+                    <p class="text-gray-300">Earn rewards while enjoying videos.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl card">
+                    <div class="feature-icon mb-5">
+                        <i class='bx bx-joystick'></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Gaming Tasks</h3>
+                    <p class="text-gray-300">Turn entertainment into rewards.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl card">
+                    <div class="feature-icon mb-5">
+                        <i class='bx bx-edit'></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Reviews</h3>
+                    <p class="text-gray-300">Share reviews and earn.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl card">
+                    <div class="feature-icon mb-5">
+                        <i class='bx bx-music'></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Streaming</h3>
+                    <p class="text-gray-300">Listen to songs and beats.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl card">
+                    <div class="feature-icon mb-5">
+                        <i class='bx bx-book-open'></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Digital Skills</h3>
+                    <p class="text-gray-300">Learn useful digital skills.</p>
+                </div>
+
+                <div class="glass p-8 rounded-3xl card">
+                    <div class="feature-icon mb-5">
+                        <i class='bx bx-credit-card'></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-3">Fintech Rewards</h3>
+                    <p class="text-gray-300">Modern reward ecosystem.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="py-24 bg-[#0f0f0f]">
+
+        <div class="max-w-6xl mx-auto px-6">
+
+            <div class="text-center mb-16">
+                <h2 class="section-title">
+                    How It Works
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+
+                <div class="text-center">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
+                        1
+                    </div>
+                    <h3 class="font-bold">Create Account</h3>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
+                        2
+                    </div>
+                    <h3 class="font-bold">Engage Content</h3>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
+                        3
+                    </div>
+                    <h3 class="font-bold">Complete Tasks</h3>
+                </div>
+
+                <div class="text-center">
+                    <div
+                        class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
+                        4
+                    </div>
+                    <h3 class="font-bold">Earn Rewards</h3>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- CTA -->
+    <section id="join" class="hero-bg py-28">
+
+        <div class="max-w-4xl mx-auto px-6 text-center">
+
+            <h2 class="text-5xl md:text-6xl font-black mb-6">
+                Join The NeoPay Movement
+            </h2>
+
+            <p class="text-xl text-white/80 mb-10">
+                Start earning rewards while enjoying content and building your digital future.
+            </p>
+
+            <a class='inline-flex items-center gap-3 gradient-btn px-10 py-5 rounded-full text-lg transition'
+                href='/reigster.html'>
+
+                Start Now
+
+                <i class='bx bx-right-arrow-alt text-2xl'></i>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+        <!-- ===================================
+        FAQ SECTION
+==================================== -->
+
+    <section id="faq" class="py-24 bg-white">
+
+        <div class="max-w-5xl mx-auto px-6">
+
+            <!-- Heading -->
+
+            <div class="text-center mb-16">
+
+                <span class="inline-block px-5 py-2 rounded-full bg-red-100 text-red-700 font-semibold">
+
+                    FREQUENTLY ASKED QUESTIONS
+
+                </span>
+
+                <h2 class="text-5xl font-bold text-[#3B0A0A] mt-6">
+
+                    Got Questions?
+
+                    <span class="text-[#D4AF37]">
+
+                        We've Got Answers
+
+                    </span>
+
+                </h2>
+
+                <p class="text-gray-600 text-lg mt-6">
+
+                    Everything you need to know about NeoPay.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- Accordion -->
+
+            <div class="space-y-5">
+
+                <!-- Item -->
+
+                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
+
+                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
+
+                        <span class="text-xl font-semibold text-[#3B0A0A]">
+
+                            How do I create a NeoPay account?
+
+                        </span>
+
+                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
+
+                    </button>
+
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+
+                        <p class="px-7 pb-7 text-gray-600 leading-8">
+
+                            Click the "Get Started" button, complete the registration
+                            form, verify your details and activate your account to
+                            begin enjoying NeoPay services.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Item -->
+
+                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
+
+                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
+
+                        <span class="text-xl font-semibold text-[#3B0A0A]">
+
+                            How do referrals work?
+
+                        </span>
+
+                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
+
+                    </button>
+
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+
+                        <p class="px-7 pb-7 text-gray-600 leading-8">
+
+                            Every member receives a unique referral link.
+                            Share it with friends and earn rewards whenever
+                            someone joins through your link.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Item -->
+
+                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
+
+                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
+
+                        <span class="text-xl font-semibold text-[#3B0A0A]">
+
+                            How long do withdrawals take?
+
+                        </span>
+
+                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
+
+                    </button>
+
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+
+                        <p class="px-7 pb-7 text-gray-600 leading-8">
+
+                            Withdrawal times depend on your payment method.
+                            Most approved withdrawals are processed quickly
+                            after verification.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Item -->
+
+                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
+
+                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
+
+                        <span class="text-xl font-semibold text-[#3B0A0A]">
+
+                            Is NeoPay secure?
+
+                        </span>
+
+                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
+
+                    </button>
+
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+
+                        <p class="px-7 pb-7 text-gray-600 leading-8">
+
+                            Yes. NeoPay uses modern security practices to help
+                            protect user information and transactions while
+                            providing a reliable digital finance experience.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Item -->
+
+                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
+
+                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
+
+                        <span class="text-xl font-semibold text-[#3B0A0A]">
+
+                            How can I contact customer support?
+
+                        </span>
+
+                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
+
+                    </button>
+
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+
+                        <p class="px-7 pb-7 text-gray-600 leading-8">
+
+                            You can reach our support team through the Contact
+                            page or the official support channels available
+                            inside your NeoPay dashboard.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ===================================
+        FAQ SCRIPT
+==================================== -->
+
+    <script>
+
+        const faqButtons = document.querySelectorAll(".faq-btn");
+
+        faqButtons.forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const item = button.parentElement;
+                const content = item.querySelector(".faq-content");
+                const icon = button.querySelector("i");
+
+                // Close other FAQs
+
+                document.querySelectorAll(".faq-item").forEach(faq => {
+
+                    if (faq !== item) {
+
+                        faq.querySelector(".faq-content").style.maxHeight = null;
+
+                        faq.querySelector("i").classList.remove("bx-minus");
+
+                        faq.querySelector("i").classList.add("bx-plus");
+
+                    }
+
+                });
+
+                // Toggle current FAQ
+
+                if (content.style.maxHeight) {
+
+                    content.style.maxHeight = null;
+
+                    icon.classList.remove("bx-minus");
+                    icon.classList.add("bx-plus");
+
+                } else {
+
+                    content.style.maxHeight = content.scrollHeight + "px";
+
+                    icon.classList.remove("bx-plus");
+                    icon.classList.add("bx-minus");
+
+                }
+
+            });
+
+        });
+
+    </script>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-white/10 py-10">
+
+        <div class="max-w-7xl mx-auto px-6 text-center">
+
+            <h2 class="gold-text text-3xl font-black mb-3">
+                NeoPay Finance
+            </h2>
+
+            <p class="text-gray-500">
+                © 2026 NeoPay Finance. All Rights Reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+
+        menuBtn.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+
+    <!-- LIVE NOTIFICATION -->
+
+    <div id="notification" class="notification-container">
+
+        <div class="notification-card">
+
+            <div class="notification-avatar">
+                <i class='bx bxs-check-shield'></i>
+            </div>
+
+            <div>
+                <div id="notifyName" class="notification-name"></div>
+
+                <div id="notifyAction" class="notification-action"></div>
+
+                <div class="notification-time">
+                    Few seconds ago
+                </div>
+            </div>
+
         </div>
 
     </div>
 
-</div>
 
+    <script>
 
-<script>
+        const activities = [
 
-const activities = [
+            {
+                name: "Goodluck • Aba",
+                action: "just activated his account"
+            },
 
-{
-name:"Goodluck • Aba",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Chiamaka • Lagos",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Chiamaka • Lagos",
-action:"just activated her account with an NFK Code"
-},
+            {
+                name: "Favour • Abuja",
+                action: "just access full features"
+            },
 
-{
-name:"Favour • Abuja",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Emmanuel • Port Harcourt",
+                action: "just activated his account"
+            },
 
-{
-name:"Emmanuel • Port Harcourt",
-action:"just activated his account"
-},
+            {
+                name: "Blessing • Enugu",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Blessing • Enugu",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Ifeanyi • Owerri",
+                action: "just access full features"
+            },
 
-{
-name:"Ifeanyi • Owerri",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Samuel • Kano",
+                action: "just activated his account"
+            },
 
-{
-name:"Samuel • Kano",
-action:"just activated his account"
-},
+            {
+                name: "Amaka • Awka",
+                action: "just access full features"
+            },
 
-{
-name:"Amaka • Awka",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "John • Uyo",
+                action: "just activated his account"
+            },
 
-{
-name:"John • Uyo",
-action:"just activated his account"
-},
+            {
+                name: "Peace • Benin",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Peace • Benin",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Kelvin • Aba",
+                action: "just activated his account"
+            },
 
-{
-name:"Kelvin • Aba",
-action:"just activated his account"
-},
+            {
+                name: "Cynthia • Lagos",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Cynthia • Lagos",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Esther • Calabar",
+                action: "just activated her account"
+            },
 
-{
-name:"Esther • Calabar",
-action:"just activated her account"
-},
+            {
+                name: "Daniel • Abuja",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Daniel • Abuja",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Miracle • Asaba",
+                action: "just access full features"
+            },
 
-{
-name:"Miracle • Asaba",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Kingsley • Aba",
+                action: "just activated his account"
+            },
 
-{
-name:"Kingsley • Aba",
-action:"just activated his account"
-},
+            {
+                name: "Jennifer • Lagos",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Jennifer • Lagos",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "David • Enugu",
+                action: "just activated his account"
+            },
 
-{
-name:"David • Enugu",
-action:"just activated his account"
-},
+            {
+                name: "Patience • Owerri",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Patience • Owerri",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Victor • Kaduna",
+                action: "just activated his account"
+            },
 
-{
-name:"Victor • Kaduna",
-action:"just activated his account"
-},
+            {
+                name: "Grace • Port Harcourt",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Grace • Port Harcourt",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Michael • Lagos",
+                action: "just activated his account"
+            },
 
-{
-name:"Michael • Lagos",
-action:"just activated his account"
-},
+            {
+                name: "Sophia • Benin",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Sophia • Benin",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Moses • Abuja",
+                action: "just activated his account"
+            },
 
-{
-name:"Moses • Abuja",
-action:"just activated his account"
-},
+            {
+                name: "Loveth • Aba",
+                action: "just access full features"
+            },
 
-{
-name:"Loveth • Aba",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Philip • Uyo",
+                action: "just activated his account"
+            },
 
-{
-name:"Philip • Uyo",
-action:"just activated his account"
-},
+            {
+                name: "Chioma • Enugu",
+                action: "just withdrawal her Welcome bonus"
+            },
 
-{
-name:"Chioma • Enugu",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Ebere • Aba",
+                action: "just activated her account"
+            },
 
-{
-name:"Ebere • Aba",
-action:"just activated her account"
-},
+            {
+                name: "Promise • Lagos",
+                action: "just withdrawal his Welcome bonus"
+            },
 
-{
-name:"Promise • Lagos",
-action:"just purchased an NFK Code"
-},
+            {
+                name: "Bright • Port Harcourt",
+                action: "just activated his account"
+            }
 
-{
-name:"Bright • Port Harcourt",
-action:"just activated his account"
-}
+        ];
 
-];
+        const popup = document.getElementById("notification");
+        const notifyName = document.getElementById("notifyName");
+        const notifyAction = document.getElementById("notifyAction");
 
-const popup = document.getElementById("notification");
-const notifyName = document.getElementById("notifyName");
-const notifyAction = document.getElementById("notifyAction");
+        function showNotification() {
 
-function showNotification(){
+            const random =
+                activities[Math.floor(Math.random() * activities.length)];
 
-    const random =
-    activities[Math.floor(Math.random() * activities.length)];
+            notifyName.textContent = random.name;
+            notifyAction.textContent = random.action;
 
-    notifyName.textContent = random.name;
-    notifyAction.textContent = random.action;
+            popup.classList.add("show");
 
-    popup.classList.add("show");
+            setTimeout(() => {
 
-    setTimeout(() => {
+                popup.classList.remove("show");
 
-        popup.classList.remove("show");
+            }, 5000);
 
-    }, 5000);
+        }
 
-}
+        /* First Popup */
+        setTimeout(() => {
 
-/* First Popup */
-setTimeout(() => {
+            showNotification();
 
-    showNotification();
+        }, 2000);
 
-}, 2000);
+        /* Continuous Popups */
+        setInterval(() => {
 
-/* Continuous Popups */
-setInterval(() => {
+            showNotification();
 
-    showNotification();
+        }, 8000);
 
-}, 8000);
-
-</script>
+    </script>
 
 </body>
+
 </html>

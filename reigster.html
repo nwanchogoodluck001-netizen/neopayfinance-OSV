@@ -4,350 +4,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoPay Registration</title>
 
-    <title>NeoPay Finance - Create Account</title>
-
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <style>
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            font-family: 'Sora', sans-serif;
         }
 
         body {
-            background: #050505;
+
+            background-image:
+                linear-gradient(rgba(60, 0, 0, .72), rgba(60, 0, 0, .72)),
+                url("images/bg.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+            background-attachment: fixed;
+
             overflow-x: hidden;
+
+            overflow-y: auto;
+
             min-height: 100vh;
-            color: white;
+
         }
 
-        /* Background Glow */
-        .bg-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
+        /* Floating Bubbles */
+
+        .bubble {
+
+            position: absolute;
             border-radius: 50%;
-            filter: blur(150px);
-            z-index: 0;
+            background: rgba(255, 255, 255, .08);
+            backdrop-filter: blur(10px);
+            animation: float 12s linear infinite;
+
         }
 
-        .glow-1 {
-            background: #ff0000;
-            top: -150px;
-            right: -150px;
+        .bubble:nth-child(1) {
+
+            width: 260px;
+            height: 260px;
+            left: -80px;
+            top: -80px;
+
         }
 
-        .glow-2 {
-            background: #FFD700;
-            bottom: -150px;
-            left: -150px;
+        .bubble:nth-child(2) {
+
+            width: 170px;
+            height: 170px;
+            right: 8%;
+            top: 10%;
+
+            animation-duration: 18s;
+
         }
 
-        /* Glass Card */
+        .bubble:nth-child(3) {
+
+            width: 320px;
+            height: 320px;
+            bottom: -130px;
+            right: -120px;
+
+            animation-duration: 20s;
+
+        }
+
+        .bubble:nth-child(4) {
+
+            width: 120px;
+            height: 120px;
+            bottom: 18%;
+            left: 8%;
+
+            animation-duration: 15s;
+
+        }
+
+        .bubble:nth-child(5) {
+
+            width: 70px;
+            height: 70px;
+            left: 50%;
+            top: 12%;
+
+            animation-duration: 10s;
+
+        }
+
+        @keyframes float {
+
+            0% {
+
+                transform: translateY(0px);
+
+            }
+
+            50% {
+
+                transform: translateY(-25px);
+
+            }
+
+            100% {
+
+                transform: translateY(0px);
+
+            }
+
+        }
+
         .glass {
-            background: rgba(255, 255, 255, .05);
+
+            background: rgba(255, 255, 255, .12);
+
             backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, .08);
-            box-shadow: 0 0 50px rgba(255, 215, 0, .08);
+
+            border: 1px solid rgba(255, 255, 255, .15);
+
+            box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
+
         }
 
-        /* Inputs */
-        .input-box {
-            width: 100%;
-            background: rgba(255, 255, 255, .06);
-            border: 1px solid rgba(255, 255, 255, .08);
-            color: white;
-            border-radius: 14px;
-            padding: 15px;
-            outline: none;
-            transition: .3s;
+        input::placeholder {
+
+            color: #d9d9d9;
+
         }
 
-        .input-box:focus {
-            border-color: #FFD700;
-            box-shadow: 0 0 20px rgba(255, 215, 0, .25);
+
+        #bubbles {
+
+            position: fixed;
+
+            inset: 0;
+
+            overflow: hidden;
+
+            z-index: 0;
+
+            pointer-events: none;
+
         }
 
-        /* Gold Text */
-        .gold-text {
-            background: linear-gradient(90deg, #FFD700, #FFF6A0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .bubble {
+
+            position: absolute;
+
+            bottom: -150px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 255, 255, .08);
+
+            backdrop-filter: blur(8px);
+
+            animation: rise linear infinite;
+
         }
 
-        /* Button */
-        .register-btn {
-            background: linear-gradient(90deg, #c1121f, #ff0000, #FFD700);
-            background-size: 300%;
-            animation: gradientMove 5s linear infinite;
-            transition: .3s;
-        }
+        @keyframes rise {
 
-        .register-btn:hover {
-            transform: translateY(-2px);
-        }
+            0% {
 
-        @keyframes gradientMove {
-            from {
-                background-position: 0%;
+                transform: translateY(0) scale(.3);
+
+                opacity: 0;
+
             }
 
-            to {
-                background-position: 300%;
+            20% {
+
+                opacity: 1;
+
             }
-        }
 
-        .label {
-            display: block;
-            margin-bottom: 8px;
-            color: #d1d5db;
-            font-size: 14px;
-        }
+            100% {
 
-        .logo-box {
-            width: 85px;
-            height: 85px;
-            border-radius: 22px;
-            background: linear-gradient(135deg, #c1121f, #FFD700);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: auto;
-        }
+                transform: translateY(-120vh) scale(1.4);
 
-        .radio-card {
-            border: 1px solid rgba(255, 255, 255, .1);
-            transition: .3s;
-        }
+                opacity: 0;
 
-        input[type="radio"]:checked+.radio-card {
-            background: #c1121f;
-            border-color: #c1121f;
-        }
-
-        .checkbox {
-            accent-color: #FFD700;
-        }
-
-        @media(max-width:640px) {
-
-            .glass {
-                padding: 25px;
             }
 
         }
     </style>
+
 </head>
 
 <body>
 
-    <!-- BACKGROUND GLOW -->
-    <div class="bg-glow glow-1"></div>
-    <div class="bg-glow glow-2"></div>
+    <div id="bubbles"></div>
 
-    <!-- CENTER CONTAINER -->
-    <div class="min-h-screen flex items-center justify-center px-4 py-10 relative z-10">
+    <div class="min-h-screen flex items-center justify-center px-6 py-20">
 
-        <div class="glass w-full max-w-xl rounded-[30px] p-8">
+        <div class="glass rounded-[35px] w-full max-w-lg p-10 relative z-10">
 
-            <!-- LOGO -->
-            <div class="text-center mb-8">
+            <div class="text-center">
 
-                <div class="logo-box mb-5">
+                <div
+                    class="w-20 h-20 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto flex items-center justify-center shadow-xl">
+
                     <img src="/logo.jpg" alt="">
+
                 </div>
 
-                <h1 class="text-4xl font-black">
-                    NeoPay <span class="gold-text">Finance</span>
+                <h1 class="text-4xl font-bold text-white mt-6">
+
+                    Create Account
+
                 </h1>
 
-                <p class="text-gray-400 mt-2">
-                    Create your account and start earning online
+                <p class="text-white/70 mt-3">
+
+                    Join NeoPay and start earning today.
+
                 </p>
 
             </div>
 
-            <!-- FORM -->
-            <form id="registerForm" class="space-y-5">
+            <form id="registerForm" class="mt-10 space-y-6">
 
-                <!-- Names -->
-                <div class="grid md:grid-cols-2 gap-4">
+                <!-- Full Name -->
 
-                    <div>
-                        <label class="label">
-                            First Name *
-                        </label>
+                <div>
 
-                        <input id="firstName" type="text" placeholder="John" class="input-box">
+                    <label class="text-white font-medium block mb-2">
+
+                        Full Name
+
+                    </label>
+
+                    <div class="relative">
+
+                        <i class='bx bx-user absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+
+                        <input id="fullname" type="text" required placeholder="Enter your full name"
+                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-5 py-4 text-white outline-none focus:border-yellow-400 transition">
+
                     </div>
 
-                    <div>
-                        <label class="label">
-                            Last Name *
-                        </label>
+                </div>
 
-                        <input id="lastName" type="text" placeholder="Doe" class="input-box">
+                <!-- Username -->
+
+                <div>
+
+                    <label class="text-white font-medium block mb-2">
+
+                        Username
+
+                    </label>
+
+                    <div class="relative">
+
+                        <i class='bx bx-id-card absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+
+                        <input id="username" type="text" required placeholder="Choose a username"
+                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-5 py-4 text-white outline-none focus:border-yellow-400 transition">
+
+                    </div>
+
+                </div>
+
+                <!-- Email -->
+
+                <div>
+
+                    <label class="text-white font-medium block mb-2">
+
+                        Email Address
+
+                    </label>
+
+                    <div class="relative">
+
+                        <i class='bx bx-envelope absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+
+                        <input id="email" type="email" required placeholder="Enter your email"
+                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-5 py-4 text-white outline-none focus:border-yellow-400 transition">
+
                     </div>
 
                 </div>
 
                 <!-- Phone -->
-                <div>
-                    <label class="label">
-                        Phone Number *
-                    </label>
 
-                    <input id="phone" type="tel" placeholder="08012345678" class="input-box">
-                </div>
-
-                <!-- Email -->
-                <div>
-                    <label class="label">
-                        Email Address *
-                    </label>
-
-                    <input id="email" type="email" placeholder="example@gmail.com" class="input-box">
-                </div>
-
-                <!-- Password -->
-                <div class="relative">
-
-                    <label class="label">
-                        Password *
-                    </label>
-
-                    <input id="password" type="password" placeholder="Enter password" class="input-box">
-
-                    <i onclick="togglePassword('password',this)"
-                        class='bx bx-show absolute right-4 top-[52px] cursor-pointer text-gray-400 text-xl'>
-                    </i>
-
-                </div>
-
-                <!-- Confirm Password -->
-                <div class="relative">
-
-                    <label class="label">
-                        Confirm Password *
-                    </label>
-
-                    <input id="confirmPassword" type="password" placeholder="Confirm password" class="input-box">
-
-                    <i onclick="togglePassword('confirmPassword',this)"
-                        class='bx bx-show absolute right-4 top-[52px] cursor-pointer text-gray-400 text-xl'>
-                    </i>
-
-                </div>
-
-                <!-- Country -->
                 <div>
 
-                    <label class="label">
-                        Country *
+                    <label class="text-white font-medium block mb-2">
+
+                        Phone Number
+
                     </label>
 
-                    <select class="input-box bg-[#111]">
+                    <div class="relative">
 
-                        <option value="">
-                            Select Country
-                        </option>
+                        <i class='bx bx-phone absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
 
-                        <option>Nigeria</option>
-                        <option>Ghana</option>
-                        <option>Kenya</option>
-                        <option>South Africa</option>
-                        <option>Cameroon</option>
-                        <option>Uganda</option>
-
-                    </select>
-
-                </div>
-
-                <!-- Account Type -->
-                <div>
-
-                    <label class="label">
-                        Account Type *
-                    </label>
-
-                    <div class="grid grid-cols-2 gap-4">
-
-                        <label class="cursor-pointer">
-
-                            <input type="radio" name="accountType" class="hidden">
-
-                            <div class="radio-card text-center py-4 rounded-xl">
-                                Individual
-                            </div>
-
-                        </label>
-
-                        <label class="cursor-pointer">
-
-                            <input type="radio" name="accountType" class="hidden">
-
-                            <div class="radio-card text-center py-4 rounded-xl">
-                                Business
-                            </div>
-
-                        </label>
+                        <input id="phone" type="tel" required placeholder="Enter your phone number"
+                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-5 py-4 text-white outline-none focus:border-yellow-400 transition">
 
                     </div>
 
                 </div>
 
-                <!-- Referral -->
+
+                <!-- Password -->
+                <label class="text-white font-medium block mb-2">
+
+                    Password
+
+                </label>
+
+                <div class="relative">
+
+                    <i class='bx bx-lock-alt absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+
+                    <input id="password" type="password" required
+                        class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-14 py-4 text-white outline-none"
+                        placeholder="Your password">
+
+                    <button type="button" class="absolute right-5 top-1/2 -translate-y-1/2 text-yellow-400">
+
+                        <i class='bx bx-hide text-2xl toggle-password'></i>
+
+                    </button>
+
+                </div>
+
+
+                <!-- Confirm Password -->
+
                 <div>
 
-                    <label class="label">
-                        Referral Code (Optional)
+                    <label class="text-white font-medium block mb-2">
+
+                        Confirm Password
+
                     </label>
 
-                    <input type="text" placeholder="Enter referral code" class="input-box">
+                    <div class="relative">
+
+                        <i class='bx bx-lock-alt absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+
+                        <input type="password" name="confirmPassword" required placeholder="Confirm your password"
+                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-14 py-4 text-white outline-none focus:border-yellow-400 transition">
+
+                        <button type="button" class="absolute right-5 top-1/2 -translate-y-1/2 text-yellow-400">
+
+                            <i class='bx bx-hide text-2xl toggle-password'></i>
+
+                        </button>
+
+                    </div>
 
                 </div>
 
-                <!-- Terms -->
-                <div class="flex items-start gap-3">
 
-                    <input type="checkbox" class="checkbox mt-1">
+                <button type="submit"
+                    class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 font-bold py-4 rounded-2xl text-lg hover:scale-[1.02] transition shadow-2xl mt-5">
 
-                    <p class="text-gray-400 text-sm">
-                        I agree to the Terms & Conditions and Privacy Policy.
-                    </p>
+                    Create Account
 
-                </div>
-
-                <!-- Button -->
-
-                <button type="button" onclick="registerUser()"
-                    class="register-btn w-full py-4 rounded-xl font-bold text-white">
-                    Create NeoPay Account
                 </button>
-                <!-- Login -->
-                <div class="text-center text-gray-400">
 
-                    Already have an account?
-
-                    <a href="login.html" class="text-yellow-400 font-semibold hover:text-yellow-300">
-
-                        Sign In
-
-                    </a>
-
-                </div>
 
             </form>
 
@@ -356,75 +393,107 @@
     </div>
 
 
+
+
+
+
     <script>
-function registerUser() {
+        const container = document.getElementById("bubbles");
 
-    const firstName =
-        document.getElementById("firstName").value;
+        function createBubble() {
 
-    const lastName =
-        document.getElementById("lastName").value;
+            const bubble = document.createElement("span");
 
-    const phone =
-        document.getElementById("phone").value;
+            bubble.classList.add("bubble");
 
-    const email =
-        document.getElementById("email").value;
+            const size = Math.random() * 90 + 20;
 
-    const password =
-        document.getElementById("password").value;
+            bubble.style.width = size + "px";
 
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
+            bubble.style.height = size + "px";
 
-    if (!firstName || !lastName || !phone || !email) {
-        alert("Please fill all required fields");
-        return;
-    }
+            bubble.style.left = Math.random() * 100 + "%";
 
-    if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return;
-    }
+            bubble.style.animationDuration =
+                Math.random() * 8 + 10 + "s";
 
-    const user = {
-        firstName,
-        lastName,
-        phone,
-        email
-    };
+            bubble.style.opacity =
+                Math.random() * .5 + .2;
 
-    localStorage.setItem(
-        "loggedInUser",
-        JSON.stringify(user)
-    );
+            container.appendChild(bubble);
 
-    window.location.href = "welcome.html";
-}
-</script>
+            setTimeout(() => {
+
+                bubble.remove();
+
+            }, 18000);
+
+        }
+
+        setInterval(createBubble, 350);
 
 
-<script>
-function togglePassword(inputId, icon) {
 
-    const input = document.getElementById(inputId);
+        // Show / Hide Password
 
-    if (input.type === "password") {
+        document.querySelectorAll(".toggle-password").forEach(function (icon) {
 
-        input.type = "text";
+            icon.addEventListener("click", function () {
 
-        icon.classList.remove("bx-show");
-        icon.classList.add("bx-hide");
+                // Find the input inside the same parent div
+                const input = this.closest(".relative").querySelector("input");
 
-    } else {
+                if (input.type === "password") {
 
-        input.type = "password";
+                    input.type = "text";
 
-        icon.classList.remove("bx-hide");
-        icon.classList.add("bx-show");
-    }
-}
-</script>
+                    this.classList.remove("bx-hide");
+                    this.classList.add("bx-show");
+
+                } else {
+
+                    input.type = "password";
+
+                    this.classList.remove("bx-show");
+                    this.classList.add("bx-hide");
+
+                }
+
+            });
+
+        });
+
+
+        const form = document.getElementById("registerForm");
+
+        form.addEventListener("submit", function (e) {
+
+            e.preventDefault();
+
+            const user = {
+
+                fullname: document.getElementById("fullname").value,
+
+                username: document.getElementById("username").value,
+
+                email: document.getElementById("email").value,
+
+                phone: document.getElementById("phone").value,
+
+                password: document.getElementById("password").value
+
+            };
+
+            localStorage.setItem("loggedInUser", JSON.stringify(user));
+
+            window.location.href = "package.html";
+
+        });
+    </script>
+
+
+
+
 </body>
 
 </html>
