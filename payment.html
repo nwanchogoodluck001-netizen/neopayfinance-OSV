@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title> buy NFK code</title>
+    <title> activate account</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -58,11 +58,8 @@
             <p class="text-gray-400">
                 Amount To Pay
             </p>
-
-            <h1 class="text-5xl font-black mt-2 text-red-500">
-
-                ₦15,000
-
+            <h1 id="registrationFee" class="text-5xl font-black mt-2 text-red-500">
+                ₦0
             </h1>
 
         </div>
@@ -178,7 +175,7 @@
                 "click",
                 () => {
 
-                  
+
 
                     if (!proof) {
 
@@ -273,6 +270,13 @@
 
         });
 
+    </script>
+
+    <script>
+        const fee = localStorage.getItem("registrationFee") || 15000;
+
+        document.getElementById("registrationFee").textContent =
+            "₦" + Number(fee).toLocaleString();
     </script>
 
 </body>
