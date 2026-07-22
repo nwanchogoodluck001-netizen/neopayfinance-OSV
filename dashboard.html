@@ -244,25 +244,235 @@
         transform: scale(1.08) rotate(8deg);
 
     }
+
+
+    /* ============================= */
+    /* Mobile Optimization */
+    /* ============================= */
+
+    @media (max-width:640px) {
+
+        /* Header */
+        header h1 {
+            font-size: 1.2rem !important;
+        }
+
+        /* Greeting */
+        #greeting {
+            font-size: 10px !important;
+        }
+
+        #welcomeName {
+            font-size: 15px !important;
+        }
+
+        h3 {
+            font-size: 15px !important;
+        }
+
+        /* Dashboard Cards */
+        #dashboardSlider h1 {
+            font-size: 20px !important;
+        }
+
+        #dashboardSlider p {
+            font-size: 13px !important;
+        }
+
+        #dashboardSlider button {
+            font-size: 10px !important;
+            padding: 8px 12px !important;
+        }
+
+        /* Notification Buttons */
+        .w-12.h-12 {
+            width: 20px !important;
+            height: 20px !important;
+        }
+
+        .w-12.h-12 i {
+            font-size: 10px !important;
+        }
+
+        /* Quick Action Title */
+        section h2 {
+            font-size: 15px !important;
+        }
+
+        /* Quick Action Icons */
+        .quick-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 18px;
+        }
+
+        .quick-icon i {
+            font-size: 18px;
+        }
+
+        .quick-action span {
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        /* Bottom Navigation */
+        .nav-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-icon i {
+            font-size: 15px;
+        }
+
+        .nav-item span {
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        /* Center Button */
+        .home-button {
+            width: 48px;
+            height: 48px;
+            border-width: 4px;
+        }
+
+        .home-button i {
+            font-size: 30px;
+        }
+
+        /* General Buttons */
+        button {
+            font-size: 14px;
+        }
+
+    }
 </style>
 
 <body class="bg-[#f4c16d] pb-32">
 
+    <!-- Overlay -->
+    <div id="overlay" class="fixed inset-0 bg-black/60 z-[9998] hidden"></div>
+
+    <!-- Side Navigation -->
+    <aside id="sidebar"
+        class="fixed top-0 left-0 h-full w-72 bg-[#5d0707] shadow-2xl transform -translate-x-full transition-transform duration-300 z-[9999]">
+
+        <!-- Header -->
+        <div class="flex items-center justify-between p-6 border-b border-yellow-400/20">
+
+            <div>
+
+                <h2 class="text-2xl font-bold text-yellow-300">
+                    NeoPay
+                </h2>
+
+                <p class="text-white/60 text-sm">
+                    Finance
+                </p>
+
+            </div>
+
+            <button id="closeMenu" class="text-3xl text-white hover:text-yellow-300">
+
+                <i class='bx bx-x'></i>
+
+            </button>
+
+        </div>
+
+        <!-- Menu -->
+        <div class="py-6 space-y-2">
+
+            <a href="" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
+
+                <i class='bx bxs-home text-2xl text-yellow-300'></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+            <a href="" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
+
+                <i class='bx bxs-wallet text-2xl text-yellow-300'></i>
+
+                <span>Activate Account</span>
+
+            </a>
+
+            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
+
+                <i class='bx bx-money text-2xl text-yellow-300'></i>
+
+                <span>Withdraw</span>
+
+            </a>
+
+            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
+
+                <i class='bx bx-history text-2xl text-yellow-300'></i>
+
+                <span>Transaction History</span>
+
+            </a>
+
+            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
+
+                <i class='bx bx-group text-2xl text-yellow-300'></i>
+
+                <span>Referral</span>
+
+            </a>
+
+            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
+
+                <i class='bx bx-support text-2xl text-yellow-300'></i>
+
+                <span>Support</span>
+
+            </a>
+
+            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
+
+                <i class='bx bx-cog text-2xl text-yellow-300'></i>
+
+                <span>Settings</span>
+
+            </a>
+
+            <a href="/index.html" class="flex items-center gap-4 px-6 py-4 hover:bg-red-700 text-red-300">
+
+                <i class='bx bx-log-out text-2xl'></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!-- Header -->
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-[#4b0606] shadow-lg">
+
         <div class="h-20 flex items-center justify-between px-5">
 
             <!-- Menu Button -->
-            <!-- <button
+            <button id="menuBtn"
                 class="w-11 h-11 rounded-full bg-[#6b0b0b] flex items-center justify-center text-[#F7D76A] text-2xl hover:bg-[#7b0d0d] transition">
+
                 <i class='bx bx-menu'></i>
-            </button> -->
+
+            </button>
 
             <!-- Title -->
             <h1 class="text-white mx-auto text-3xl font-semibold tracking-wide">
                 Dashboard
             </h1>
+
         </div>
+
     </header>
 
 
@@ -371,7 +581,8 @@
                             Withdrawable Amount
                         </p>
 
-                        <button class="w-full mt-8 bg-[#8b0d0d] text-white rounded-xl py-3 font-semibold protected-feature">
+                        <button
+                            class="w-full mt-8 bg-[#8b0d0d] text-white rounded-xl py-3 font-semibold protected-feature">
                             Withdraw
                         </button>
 
@@ -394,7 +605,8 @@
                             Earn more by inviting friends.
                         </p>
 
-                        <button class="mt-8 w-full border border-yellow-300 py-3 rounded-xl text-yellow-200 protected-feature">
+                        <button
+                            class="mt-8 w-full border border-yellow-300 py-3 rounded-xl text-yellow-200 protected-feature">
                             Invite Friends
                         </button>
 
@@ -837,21 +1049,46 @@ px-6 py-4">
         }
 
         // Check if account is activated
-const activated = localStorage.getItem("accountActivated") === "true";
+        const activated = localStorage.getItem("accountActivated") === "true";
 
-// Attach modal to every protected feature
-document.querySelectorAll(".protected-feature").forEach(item => {
+        // Attach modal to every protected feature
+        document.querySelectorAll(".protected-feature").forEach(item => {
 
-    item.addEventListener("click", function (e) {
+            item.addEventListener("click", function (e) {
 
-        if (!activated) {
-            e.preventDefault();
-            openActivationModal();
+                if (!activated) {
+                    e.preventDefault();
+                    openActivationModal();
+                }
+
+            });
+
+        });
+    </script>
+
+
+
+    <script>
+        const menuBtn = document.getElementById("menuBtn");
+        const closeMenu = document.getElementById("closeMenu");
+        const sidebar = document.getElementById("sidebar");
+        const overlay = document.getElementById("overlay");
+
+        function openMenu() {
+            sidebar.classList.remove("-translate-x-full");
+            overlay.classList.remove("hidden");
         }
 
-    });
+        function closeSideMenu() {
+            sidebar.classList.add("-translate-x-full");
+            overlay.classList.add("hidden");
+        }
 
-});
+        menuBtn.addEventListener("click", openMenu);
+
+        closeMenu.addEventListener("click", closeSideMenu);
+
+        overlay.addEventListener("click", closeSideMenu);
     </script>
 </body>
 
