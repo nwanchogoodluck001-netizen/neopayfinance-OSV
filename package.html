@@ -1,667 +1,2006 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>NeoPay Packages</title>
+    <title>NeoPay | Membership Packages</title>
 
     <!-- Tailwind -->
-
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Font -->
-
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Boxicons -->
+    <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet">
 
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Sora", sans-serif;
+
+        :root {
+
+            --red: #7a0c0c;
+            --red-dark: #560606;
+            --red-deep: #300303;
+            --red-light: #a71919;
+
+            --gold: #d8ad3d;
+            --gold-light: #f5d979;
+            --gold-soft: #fff8e6;
+
+            --bg: #f6f7f9;
+
+            --text: #171a20;
+            --muted: #7b828d;
+
+            --border: rgba(255,255,255,.10);
+
         }
 
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
         body {
+
+            margin: 0;
 
             min-height: 100vh;
 
             overflow-x: hidden;
 
+            color: white;
+
+            font-family: "Inter", sans-serif;
+
             background:
-                radial-gradient(circle at top left, rgba(255, 215, 0, .12), transparent 35%),
-                radial-gradient(circle at bottom right, rgba(255, 0, 0, .15), transparent 40%),
-                linear-gradient(135deg,
-                    #220101 0%,
-                    #460404 35%,
-                    #720707 70%,
-                    #2d0101 100%);
 
-            background-size: 300% 300%;
+                radial-gradient(
+                    circle at 10% 0%,
+                    rgba(216,173,61,.12),
+                    transparent 28%
+                ),
 
-            animation: gradientMove 12s ease infinite;
+                radial-gradient(
+                    circle at 95% 90%,
+                    rgba(122,12,12,.22),
+                    transparent 30%
+                ),
 
-            position: relative;
+                #250202;
 
-        }
-
-        @keyframes gradientMove {
-
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+            -webkit-font-smoothing: antialiased;
 
         }
 
-        /* GOLD GLOW */
 
-        body::before {
+        h1,
+        h2,
+        h3,
+        h4 {
 
-            content: "";
-
-            position: fixed;
-
-            width: 550px;
-
-            height: 550px;
-
-            border-radius: 50%;
-
-            background: rgba(212, 175, 55, .08);
-
-            filter: blur(120px);
-
-            top: -180px;
-
-            left: -180px;
-
-            animation: glowMove 10s ease-in-out infinite alternate;
-
-            z-index: -2;
+            font-family: "Sora", sans-serif;
 
         }
 
-        body::after {
 
-            content: "";
+        /* =========================================
+           BACKGROUND DECORATION
+        ========================================= */
 
-            position: fixed;
-
-            width: 600px;
-
-            height: 600px;
-
-            border-radius: 50%;
-
-            background: rgba(255, 0, 0, .08);
-
-            filter: blur(150px);
-
-            bottom: -220px;
-
-            right: -220px;
-
-            animation: glowMove2 12s ease-in-out infinite alternate;
-
-            z-index: -2;
-
-        }
-
-        @keyframes glowMove {
-
-            from {
-                transform: translate(0, 0);
-            }
-
-            to {
-                transform: translate(80px, 40px);
-            }
-
-        }
-
-        @keyframes glowMove2 {
-
-            from {
-                transform: translate(0, 0);
-            }
-
-            to {
-                transform: translate(-80px, -60px);
-            }
-
-        }
-
-        /* FLOATING BUBBLES */
-
-        .bubbles {
+        .background-grid {
 
             position: fixed;
 
             inset: 0;
 
-            overflow: hidden;
+            pointer-events: none;
+
+            opacity: .035;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,.5) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,.5) 1px,
+                    transparent 1px
+                );
+
+            background-size: 50px 50px;
+
+            z-index: -2;
+
+        }
+
+
+        .ambient-glow {
+
+            position: fixed;
+
+            width: 450px;
+            height: 450px;
+
+            border-radius: 50%;
+
+            filter: blur(120px);
+
+            pointer-events: none;
 
             z-index: -1;
 
         }
 
-        .bubble {
 
-            position: absolute;
+        .glow-one {
 
-            bottom: -180px;
+            top: -220px;
+            left: -180px;
+
+            background:
+                rgba(216,173,61,.10);
+
+        }
+
+
+        .glow-two {
+
+            right: -230px;
+            bottom: -230px;
+
+            background:
+                rgba(122,12,12,.20);
+
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .page-header {
+
+            width: 100%;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.07);
+
+            background:
+                rgba(35,2,2,.72);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+        }
+
+
+        .logo-box {
+
+            width: 43px;
+            height: 43px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f6dc86,
+                    #d6aa37
+                );
+
+            color:
+                #620707;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.16);
+
+        }
+
+
+        .security-pill {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding:
+                8px 12px;
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(255,255,255,.055);
+
+            border:
+                1px solid rgba(255,255,255,.09);
+
+            color:
+                rgba(255,255,255,.60);
+
+            font-size:
+                9px;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .security-dot {
+
+            width: 6px;
+            height: 6px;
 
             border-radius: 50%;
 
-            backdrop-filter: blur(10px);
-
-            background: rgba(255, 255, 255, .08);
-
-            border: 1px solid rgba(255, 255, 255, .12);
-
-            animation: rise linear infinite;
-
-        }
-
-        .bubble:nth-child(1) {
-
-            width: 70px;
-            height: 70px;
-            left: 5%;
-            animation-duration: 18s;
-            animation-delay: 0s;
-
-        }
-
-        .bubble:nth-child(2) {
-
-            width: 120px;
-            height: 120px;
-            left: 15%;
-            animation-duration: 24s;
-            animation-delay: 4s;
-
-        }
-
-        .bubble:nth-child(3) {
-
-            width: 90px;
-            height: 90px;
-            left: 28%;
-            animation-duration: 16s;
-            animation-delay: 1s;
-
-        }
-
-        .bubble:nth-child(4) {
-
-            width: 180px;
-            height: 180px;
-            left: 45%;
-            animation-duration: 30s;
-            animation-delay: 6s;
-
-        }
-
-        .bubble:nth-child(5) {
-
-            width: 60px;
-            height: 60px;
-            left: 60%;
-            animation-duration: 15s;
-
-        }
-
-        .bubble:nth-child(6) {
-
-            width: 110px;
-            height: 110px;
-            left: 72%;
-            animation-duration: 21s;
-
-        }
-
-        .bubble:nth-child(7) {
-
-            width: 150px;
-            height: 150px;
-            left: 84%;
-            animation-duration: 27s;
-
-        }
-
-        .bubble:nth-child(8) {
-
-            width: 90px;
-            height: 90px;
-            left: 95%;
-            animation-duration: 19s;
-
-        }
-
-        @keyframes rise {
-
-            0% {
-
-                transform: translateY(0) scale(.5);
-
-                opacity: 0;
-
-            }
-
-            20% {
-
-                opacity: .8;
-
-            }
-
-            100% {
-
-                transform: translateY(-130vh) scale(1.4);
-
-                opacity: 0;
-
-            }
-
-        }
-
-        /* GLASS */
-
-        .glass {
-
-            background: rgba(255, 255, 255, .08);
-
-            border: 1px solid rgba(255, 255, 255, .12);
-
-            backdrop-filter: blur(25px);
+            background:
+                #54d58a;
 
             box-shadow:
-
-                0 20px 60px rgba(0, 0, 0, .35),
-
-                inset 0 1px rgba(255, 255, 255, .12);
+                0 0 10px rgba(84,213,138,.7);
 
         }
+
+
+        /* =========================================
+           HERO
+        ========================================= */
+
+        .hero {
+
+            max-width:
+                900px;
+
+            margin:
+                auto;
+
+            text-align:
+                center;
+
+            padding:
+                70px 20px 55px;
+
+        }
+
+
+        .hero-badge {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            padding:
+                9px 15px;
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(216,173,61,.09);
+
+            border:
+                1px solid rgba(216,173,61,.20);
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                10px;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .4px;
+
+        }
+
+
+        .hero h1 {
+
+            margin-top:
+                24px;
+
+            font-size:
+                clamp(2.2rem, 5vw, 4.2rem);
+
+            line-height:
+                1.08;
+
+            letter-spacing:
+                -2px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .hero h1 span {
+
+            color:
+                var(--gold-light);
+
+        }
+
+
+        .hero p {
+
+            max-width:
+                650px;
+
+            margin:
+                20px auto 0;
+
+            color:
+                rgba(255,255,255,.58);
+
+            font-size:
+                14px;
+
+            line-height:
+                1.9;
+
+        }
+
+
+        /* =========================================
+           PACKAGE AREA
+        ========================================= */
+
+        .packages-wrapper {
+
+            max-width:
+                1180px;
+
+            margin:
+                auto;
+
+            padding:
+                0 20px 90px;
+
+        }
+
+
+        .package-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap:
+                20px;
+
+            align-items:
+                stretch;
+
+        }
+
+
+        /* =========================================
+           PACKAGE CARD
+        ========================================= */
+
+        .package-card {
+
+            position:
+                relative;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            padding:
+                30px;
+
+            border-radius:
+                27px;
+
+            background:
+                rgba(255,255,255,.055);
+
+            border:
+                1px solid rgba(255,255,255,.09);
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,.20);
+
+            backdrop-filter:
+                blur(18px);
+
+            -webkit-backdrop-filter:
+                blur(18px);
+
+            transition:
+                transform .3s ease,
+                border-color .3s ease,
+                box-shadow .3s ease;
+
+        }
+
+
+        .package-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            border-color:
+                rgba(216,173,61,.35);
+
+            box-shadow:
+                0 30px 80px rgba(0,0,0,.27);
+
+        }
+
+
+        /* =========================================
+           POPULAR CARD
+        ========================================= */
+
+        .package-card.popular {
+
+            background:
+
+                linear-gradient(
+                    160deg,
+                    rgba(216,173,61,.12),
+                    rgba(255,255,255,.055)
+                );
+
+            border:
+                1px solid rgba(216,173,61,.55);
+
+            box-shadow:
+                0 30px 85px rgba(0,0,0,.27);
+
+        }
+
+
+        .popular-badge {
+
+            position:
+                absolute;
+
+            top:
+                -13px;
+
+            left:
+                50%;
+
+            transform:
+                translateX(-50%);
+
+            white-space:
+                nowrap;
+
+            padding:
+                7px 14px;
+
+            border-radius:
+                999px;
+
+            background:
+                var(--gold-light);
+
+            color:
+                #5b0707;
+
+            font-size:
+                8px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                .7px;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.20);
+
+        }
+
+
+        /* =========================================
+           PACKAGE ICON
+        ========================================= */
+
+        .package-icon {
+
+            width:
+                51px;
+
+            height:
+                51px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                15px;
+
+            background:
+                rgba(122,12,12,.30);
+
+            border:
+                1px solid rgba(216,173,61,.13);
+
+            color:
+                var(--gold-light);
+
+        }
+
+
+        .popular .package-icon {
+
+            background:
+                var(--gold-light);
+
+            color:
+                var(--red);
+
+            border-color:
+                transparent;
+
+        }
+
+
+        .package-icon i {
+
+            font-size:
+                24px;
+
+        }
+
+
+        /* =========================================
+           PACKAGE TITLE
+        ========================================= */
+
+        .package-title {
+
+            margin-top:
+                23px;
+
+            font-size:
+                23px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .package-subtitle {
+
+            margin-top:
+                5px;
+
+            font-size:
+                10px;
+
+            color:
+                rgba(255,255,255,.48);
+
+        }
+
+
+        .popular .package-subtitle {
+
+            color:
+                rgba(245,217,121,.75);
+
+        }
+
+
+        /* =========================================
+           PRICE
+        ========================================= */
+
+        .price-area {
+
+            margin:
+                28px 0;
+
+        }
+
+
+        .price {
+
+            display:
+                flex;
+
+            align-items:
+                baseline;
+
+            gap:
+                3px;
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                39px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                -1.5px;
+
+        }
+
+
+        .currency {
+
+            font-size:
+                19px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .price-label {
+
+            margin-top:
+                6px;
+
+            color:
+                rgba(255,255,255,.40);
+
+            font-size:
+                9px;
+
+        }
+
+
+        /* =========================================
+           BONUS
+        ========================================= */
+
+        .bonus-box {
+
+            padding:
+                17px;
+
+            border-radius:
+                17px;
+
+            background:
+                rgba(122,12,12,.20);
+
+            border:
+                1px solid rgba(216,173,61,.12);
+
+        }
+
+
+        .popular .bonus-box {
+
+            background:
+                rgba(216,173,61,.08);
+
+            border-color:
+                rgba(216,173,61,.25);
+
+        }
+
+
+        .bonus-label {
+
+            color:
+                rgba(255,255,255,.48);
+
+            font-size:
+                9px;
+
+        }
+
+
+        .bonus-value {
+
+            margin-top:
+                6px;
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                26px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                -.7px;
+
+        }
+
+
+        /* =========================================
+           FEATURES
+        ========================================= */
+
+        .features {
+
+            margin-top:
+                27px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                14px;
+
+            flex: 1;
+
+        }
+
+
+        .feature {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            color:
+                rgba(255,255,255,.78);
+
+            font-size:
+                11px;
+
+        }
+
+
+        .feature i {
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                17px;
+
+        }
+
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .choose-button {
+
+            width:
+                100%;
+
+            margin-top:
+                28px;
+
+            padding:
+                13px;
+
+            border:
+                none;
+
+            border-radius:
+                13px;
+
+            background:
+                var(--gold-light);
+
+            color:
+                #5c0707;
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            cursor:
+                pointer;
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+
+        }
+
+
+        .choose-button:hover {
+
+            background:
+                #ffe697;
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 12px 25px rgba(0,0,0,.18);
+
+        }
+
+
+        .choose-button:active {
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        /* =========================================
+           TRUST STRIP
+        ========================================= */
+
+        .trust-section {
+
+            max-width:
+                1180px;
+
+            margin:
+                0 auto;
+
+            padding:
+                0 20px 70px;
+
+        }
+
+
+        .trust-card {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            border:
+                1px solid rgba(255,255,255,.08);
+
+            background:
+                rgba(255,255,255,.035);
+
+            border-radius:
+                20px;
+
+            overflow:
+                hidden;
+
+        }
+
+
+        .trust-item {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap:
+                9px;
+
+            padding:
+                17px;
+
+            color:
+                rgba(255,255,255,.48);
+
+            font-size:
+                9px;
+
+            font-weight:
+                600;
+
+        }
+
+
+        .trust-item + .trust-item {
+
+            border-left:
+                1px solid rgba(255,255,255,.07);
+
+        }
+
+
+        .trust-item i {
+
+            color:
+                var(--gold-light);
+
+            font-size:
+                17px;
+
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .footer {
+
+            text-align:
+                center;
+
+            padding:
+                0 20px 35px;
+
+            color:
+                rgba(255,255,255,.30);
+
+            font-size:
+                9px;
+
+        }
+
+
+        .footer strong {
+
+            color:
+                rgba(255,255,255,.55);
+
+        }
+
+
+        /* =========================================
+           SELECTION MODAL
+        ========================================= */
+
+        .modal {
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                20px;
+
+            background:
+                rgba(0,0,0,.72);
+
+            backdrop-filter:
+                blur(10px);
+
+            z-index:
+                999;
+
+        }
+
+
+        .modal.show {
+
+            display:
+                flex;
+
+        }
+
+
+        .modal-box {
+
+            width:
+                100%;
+
+            max-width:
+                400px;
+
+            padding:
+                28px;
+
+            border-radius:
+                25px;
+
+            background:
+                #ffffff;
+
+            color:
+                #171a20;
+
+            box-shadow:
+                0 30px 90px rgba(0,0,0,.35);
+
+            animation:
+                modalUp .25s ease;
+
+        }
+
+
+        @keyframes modalUp {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(20px)
+                    scale(.97);
+
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+            }
+
+        }
+
+
+        .modal-icon {
+
+            width:
+                55px;
+
+            height:
+                55px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            border-radius:
+                16px;
+
+            background:
+                var(--gold-soft);
+
+            color:
+                var(--red);
+
+            margin-bottom:
+                18px;
+
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (max-width: 950px) {
+
+            .package-grid {
+
+                grid-template-columns:
+                    1fr;
+
+                max-width:
+                    500px;
+
+                margin:
+                    auto;
+
+            }
+
+
+            .package-card.popular {
+
+                order:
+                    -1;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .hero {
+
+                padding:
+                    48px 18px 40px;
+
+            }
+
+
+            .hero h1 {
+
+                letter-spacing:
+                    -1px;
+
+            }
+
+
+            .hero p {
+
+                font-size:
+                    12px;
+
+                line-height:
+                    1.8;
+
+            }
+
+
+            .packages-wrapper {
+
+                padding:
+                    0 14px 55px;
+
+            }
+
+
+            .package-card {
+
+                padding:
+                    25px;
+
+                border-radius:
+                    23px;
+
+            }
+
+
+            .price {
+
+                font-size:
+                    35px;
+
+            }
+
+
+            .bonus-value {
+
+                font-size:
+                    24px;
+
+            }
+
+
+            .trust-section {
+
+                padding:
+                    0 14px 50px;
+
+            }
+
+
+            .trust-card {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .trust-item + .trust-item {
+
+                border-left:
+                    none;
+
+                border-top:
+                    1px solid rgba(255,255,255,.07);
+
+            }
+
+        }
+
+
     </style>
 
 </head>
 
+
+
 <body>
 
-    <!-- Floating Bubbles -->
 
-    <div class="bubbles">
+<!-- Background -->
 
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
-        <span class="bubble"></span>
+<div class="background-grid"></div>
 
-    </div>
+<div class="ambient-glow glow-one"></div>
 
-    <!-- Hero -->
-
-    <section class="min-h-screen flex items-center justify-center px-5 py-20">
-
-        <div class="glass rounded-[35px] p-8 md:p-12 lg:p-16 text-center max-w-5xl w-full">
-
-            <span
-                class="inline-flex items-center gap-2 px-4 py-2 md:px-6 rounded-full bg-red-700/30 border border-red-500/40 text-yellow-400 text-sm md:text-base font-semibold">
-
-                <i class='bx bxs-crown'></i>
-
-                NeoPay Premium Membership
-
-            </span>
-
-            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mt-8 leading-tight">
-
-                Choose Your
-
-                <span class="text-yellow-400">
-
-                    Membership Package
-
-                </span>
-
-            </h1>
-
-            <p class="text-white/70 mt-6 text-base md:text-lg leading-8 max-w-2xl mx-auto">
-
-                Select a package that matches your financial goals and unlock
-                exclusive NeoPay rewards, bonuses and earning opportunities.
-
-            </p>
-
-        </div>
-
-    </section>
+<div class="ambient-glow glow-two"></div>
 
 
-    <!-- ===========================
-        PRICING PLANS
-=========================== -->
 
-    <section class="pb-24 px-6">
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
-        <div class="max-w-7xl mx-auto">
+<header class="page-header">
 
-            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+    <div class="max-w-7xl mx-auto px-5 py-4">
 
-                <!-- Starter -->
+        <div class="flex items-center justify-between">
 
-                <div
-                    class="glass rounded-[35px] p-10 hover:scale-105 hover:border-yellow-400 transition-all duration-500 border border-white/10">
 
-                    <div class="w-16 h-16 rounded-2xl bg-red-700/40 flex items-center justify-center">
+            <!-- Brand -->
 
-                        <i class='bx bx-rocket text-3xl text-yellow-400'></i>
+            <div class="flex items-center gap-3">
 
-                    </div>
+                <div class="logo-box">
 
-                    <h2 class="text-3xl font-bold text-white mt-8">
-
-                        Starter
-
-                    </h2>
-
-                    <p class="text-white/60 mt-2">
-
-                        Perfect for Beginners
-
-                    </p>
-
-                    <div class="my-10">
-
-                        <h1 class="text-6xl font-extrabold text-yellow-400">
-                            ₦17,500
-                        </h1>
-
-                        <p class="text-white/60 mt-2">
-
-                            Registration Fee
-
-                        </p>
-
-                    </div>
-
-                    <div class="bg-red-900/30 rounded-2xl border border-red-500/20 p-5">
-
-                        <p class="text-white/60">
-
-                            Welcome Bonus
-
-                        </p>
-
-                        <h3 class="text-4xl font-bold text-yellow-400 mt-2">
-
-                            ₦200,000
-
-                        </h3>
-
-                    </div>
-
-                    <ul class="space-y-5 mt-10">
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Referral Earnings
-                        </li>
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Cashback Rewards
-                        </li>
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Daily Earnings
-                        </li>
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Basic Support
-                        </li>
-
-                    </ul>
-
-                    <button onclick="selectPackage('Starter',15000,200000)"
-                        class="mt-12 w-full py-4 rounded-2xl bg-yellow-400 text-red-900 font-bold hover:bg-yellow-300 duration-300">
-
-                        Choose Package
-
-                    </button>
+                    <i class='bx bxs-wallet text-xl'></i>
 
                 </div>
 
-                <!-- GOLD -->
 
-                <div
-                    class="glass relative rounded-[35px] p-8 md:p-10 border-2 border-yellow-400 lg:scale-105 hover:lg:scale-110 transition-all duration-500">
+                <div>
 
-                    <!-- Badge -->
+                    <h1 class="text-white font-bold text-lg">
+                        NeoPay
+                    </h1>
 
-                    <div
-                        class="absolute -top-5 left-1/2 -translate-x-1/2 bg-yellow-400 text-red-900 font-bold px-6 py-2 rounded-full shadow-lg">
-
-                        ⭐ MOST POPULAR
-
-                    </div>
-
-                    <div class="w-16 h-16 rounded-2xl bg-yellow-400 flex items-center justify-center">
-
-                        <i class='bx bxs-crown text-3xl text-red-900'></i>
-
-                    </div>
-
-                    <h2 class="text-3xl font-bold text-white mt-8">
-
-                        Gold
-
-                    </h2>
-
-                    <p class="text-yellow-300 mt-2">
-
-                        Best Value Package
-
+                    <p class="text-white/35 text-[8px] mt-0.5">
+                        Finance Platform
                     </p>
 
-                    <div class="my-10">
-
-                        <h1 class="text-6xl font-extrabold text-yellow-400">
-
- ₦25,500
-                        </h1>
-
-                        <p class="text-white/60 mt-2">
-
-                            Registration Fee
-
-                        </p>
-
-                    </div>
-
-                    <div class="bg-yellow-400/10 rounded-2xl border border-yellow-400/30 p-5">
-
-                        <p class="text-white/60">
-
-                            Welcome Bonus
-
-                        </p>
-
-                        <h3 class="text-4xl font-bold text-yellow-400 mt-2">
-
-                            ₦250,000
-
-                        </h3>
-
-                    </div>
-
-                    <ul class="space-y-5 mt-10">
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Premium Referral Rewards
-                        </li>
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Highest Cashback
-                        </li>
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Instant Withdrawals
-                        </li>
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Priority Support
-                        </li>
-
-                    </ul>
-
-                    <button onclick="selectPackage('Gold',20000,250000)"
-                        class="mt-12 w-full py-4 rounded-2xl bg-yellow-400 text-red-900 font-bold hover:bg-yellow-300 duration-300">
-
-                        Choose Package
-
-                    </button>
                 </div>
 
-                <!-- PLATINUM -->
+            </div>
 
-                <div
-                    class="glass rounded-[35px] p-10 hover:scale-105 hover:border-yellow-400 transition-all duration-500 border border-white/10">
 
-                    <div class="w-16 h-16 rounded-2xl bg-red-700/40 flex items-center justify-center">
+            <!-- Status -->
 
-                        <i class='bx bx-diamond text-3xl text-yellow-400'></i>
+            <div class="security-pill">
 
-                    </div>
+                <span class="security-dot"></span>
 
-                    <h2 class="text-3xl font-bold text-white mt-8">
-
-                        Platinum
-
-                    </h2>
-
-                    <p class="text-white/60 mt-2">
-
-                        VIP Membership
-
-                    </p>
-
-                    <div class="my-10">
-
-                        <h1 class="text-6xl font-extrabold text-yellow-400">
-
-                            ₦30,500
-
-                        </h1>
-
-                        <p class="text-white/60 mt-2">
-
-                            Registration Fee
-
-                        </p>
-
-                    </div>
-
-                    <div class="bg-red-900/30 rounded-2xl border border-red-500/20 p-5">
-
-                        <p class="text-white/60">
-
-                            Welcome Bonus
-
-                        </p>
-
-                        <h3 class="text-4xl font-bold text-yellow-400 mt-2">
-
-                            ₦300,000
-
-                        </h3>
-
-                    </div>
-
-                    <ul class="space-y-5 mt-10">
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            VIP Referral Rewards
-                        </li>
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Unlimited Cashback
-                        </li>
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Exclusive Bonuses
-                        </li>
-
-                        <li class="flex items-center gap-3 text-white">
-                            <i class='bx bxs-check-circle text-yellow-400 text-xl'></i>
-                            Dedicated VIP Support
-                        </li>
-
-                    </ul>
-
-                    <button onclick="selectPackage('Platinum',30000,300000)"
-                        class="mt-12 w-full py-4 rounded-2xl bg-yellow-400 text-red-900 font-bold hover:bg-yellow-300 duration-300">
-
-                        Choose Package
-
-                    </button>
-                </div>
+                Secure Membership
 
             </div>
 
         </div>
 
-    </section>
+    </div>
+
+</header>
 
 
-    <script>
-        function selectPackage(bonus) {
 
-            localStorage.setItem("welcomeBonus", bonus);
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-            window.location.href = "welcome.html";
+<section class="hero">
+
+
+    <div class="hero-badge">
+
+        <i class='bx bxs-crown'></i>
+
+        NEO PAY MEMBERSHIP
+
+    </div>
+
+
+    <h1>
+
+        Choose the right
+        <span>package for you.</span>
+
+    </h1>
+
+
+    <p>
+
+        Select a NeoPay membership package that fits your
+        goals. Review the benefits and choose the option
+        you would like to continue with.
+
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     PACKAGES
+===================================================== -->
+
+<section class="packages-wrapper">
+
+    <div class="package-grid">
+
+
+        <!-- =================================================
+             STARTER
+        ================================================== -->
+
+        <article class="package-card">
+
+
+            <div class="package-icon">
+
+                <i class='bx bx-rocket'></i>
+
+            </div>
+
+
+            <h2 class="package-title">
+                Starter
+            </h2>
+
+
+            <p class="package-subtitle">
+                Perfect for beginners
+            </p>
+
+
+            <div class="price-area">
+
+                <div class="price">
+
+                    <span class="currency">
+                        ₦
+                    </span>
+
+                    17,500
+
+                </div>
+
+
+                <p class="price-label">
+                    Registration fee
+                </p>
+
+            </div>
+
+
+            <div class="bonus-box">
+
+                <p class="bonus-label">
+                    Welcome Bonus
+                </p>
+
+                <p class="bonus-value">
+                    ₦200,000
+                </p>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Referral earnings
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Cashback rewards
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Daily earning opportunities
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Standard support
+
+                </div>
+
+            </div>
+
+
+            <button
+                onclick="selectPackage('Starter', 17500, 200000)"
+                class="choose-button">
+
+                Choose Starter
+
+            </button>
+
+        </article>
+
+
+
+        <!-- =================================================
+             GOLD
+        ================================================== -->
+
+        <article class="package-card popular">
+
+
+            <div class="popular-badge">
+
+                ★ MOST POPULAR
+
+            </div>
+
+
+            <div class="package-icon">
+
+                <i class='bx bxs-crown'></i>
+
+            </div>
+
+
+            <h2 class="package-title">
+                Gold
+            </h2>
+
+
+            <p class="package-subtitle">
+                Best value package
+            </p>
+
+
+            <div class="price-area">
+
+                <div class="price">
+
+                    <span class="currency">
+                        ₦
+                    </span>
+
+                    25,500
+
+                </div>
+
+
+                <p class="price-label">
+                    Registration fee
+                </p>
+
+            </div>
+
+
+            <div class="bonus-box">
+
+                <p class="bonus-label">
+                    Welcome Bonus
+                </p>
+
+                <p class="bonus-value">
+                    ₦250,000
+                </p>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Premium referral rewards
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Enhanced cashback rewards
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Withdrawal access
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Priority support
+
+                </div>
+
+            </div>
+
+
+            <button
+                onclick="selectPackage('Gold', 25500, 250000)"
+                class="choose-button">
+
+                Choose Gold
+
+            </button>
+
+        </article>
+
+
+
+        <!-- =================================================
+             PLATINUM
+        ================================================== -->
+
+        <article class="package-card">
+
+
+            <div class="package-icon">
+
+                <i class='bx bx-diamond'></i>
+
+            </div>
+
+
+            <h2 class="package-title">
+                Platinum
+            </h2>
+
+
+            <p class="package-subtitle">
+                Premium membership
+            </p>
+
+
+            <div class="price-area">
+
+                <div class="price">
+
+                    <span class="currency">
+                        ₦
+                    </span>
+
+                    30,500
+
+                </div>
+
+
+                <p class="price-label">
+                    Registration fee
+                </p>
+
+            </div>
+
+
+            <div class="bonus-box">
+
+                <p class="bonus-label">
+                    Welcome Bonus
+                </p>
+
+                <p class="bonus-value">
+                    ₦300,000
+                </p>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    VIP referral rewards
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Enhanced cashback opportunities
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Exclusive bonuses
+
+                </div>
+
+
+                <div class="feature">
+
+                    <i class='bx bxs-check-circle'></i>
+
+                    Dedicated support
+
+                </div>
+
+            </div>
+
+
+            <button
+                onclick="selectPackage('Platinum', 30500, 300000)"
+                class="choose-button">
+
+                Choose Platinum
+
+            </button>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TRUST STRIP
+===================================================== -->
+
+<section class="trust-section">
+
+    <div class="trust-card">
+
+
+        <div class="trust-item">
+
+            <i class='bx bx-lock-alt'></i>
+
+            Secure selection
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <i class='bx bx-check-shield'></i>
+
+            Clear package details
+
+        </div>
+
+
+        <div class="trust-item">
+
+            <i class='bx bx-support'></i>
+
+            NeoPay support
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <p>
+
+        <strong>NeoPay Finance</strong>
+
+        · Membership Packages
+
+    </p>
+
+    <p class="mt-2">
+
+        Please review package details carefully before continuing.
+
+    </p>
+
+</footer>
+
+
+
+<!-- =====================================================
+     CONFIRMATION MODAL
+===================================================== -->
+
+<div id="packageModal" class="modal">
+
+    <div class="modal-box">
+
+
+        <div class="modal-icon">
+
+            <i class='bx bxs-check-shield text-2xl'></i>
+
+        </div>
+
+
+        <h2 class="text-xl font-bold">
+            Package Selected
+        </h2>
+
+
+        <p
+            id="modalText"
+            class="text-sm text-gray-500 leading-6 mt-2">
+
+            You selected a NeoPay package.
+
+        </p>
+
+
+        <div class="grid grid-cols-2 gap-3 mt-6">
+
+
+            <button
+                onclick="continueToWelcome()"
+                class="py-3 rounded-xl bg-[#730909] text-[#f4d878] text-xs font-bold">
+
+                Continue
+
+            </button>
+
+
+            <button
+                onclick="closePackageModal()"
+                class="py-3 rounded-xl bg-gray-100 text-gray-600 text-xs font-semibold">
+
+                Cancel
+
+            </button>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   PACKAGE SELECTION
+===================================================== */
+
+let selectedPackage =
+    null;
+
+
+function selectPackage(
+    plan,
+    fee,
+    bonus
+) {
+
+    selectedPackage = {
+
+        plan: plan,
+
+        fee: fee,
+
+        bonus: bonus
+
+    };
+
+
+    const modal =
+        document.getElementById(
+            "packageModal"
+        );
+
+
+    const modalText =
+        document.getElementById(
+            "modalText"
+        );
+
+
+    modalText.textContent =
+        `${plan} package selected. activation fee is ₦${fee.toLocaleString("en-NG")}. Welcome bonus: ₦${bonus.toLocaleString("en-NG")}.`;
+
+
+    modal.classList.add(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+
+/* =====================================================
+   CONTINUE
+===================================================== */
+
+function continueToWelcome() {
+
+    if (!selectedPackage)
+        return;
+
+
+    localStorage.setItem(
+        "selectedPlan",
+        selectedPackage.plan
+    );
+
+
+    localStorage.setItem(
+        "registrationFee",
+        selectedPackage.fee
+    );
+
+
+    localStorage.setItem(
+        "welcomeBonus",
+        selectedPackage.bonus
+    );
+
+
+    window.location.href =
+        "welcome.html";
+
+}
+
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closePackageModal() {
+
+    const modal =
+        document.getElementById(
+            "packageModal"
+        );
+
+
+    modal.classList.remove(
+        "show"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+
+/* =====================================================
+   CLICK OUTSIDE MODAL
+===================================================== */
+
+document
+    .getElementById("packageModal")
+    .addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closePackageModal();
+
+            }
 
         }
-    </script>
+    );
 
 
-    <script>
-        function selectPackage(plan, fee, bonus) {
 
-            localStorage.setItem("selectedPlan", plan);
-            localStorage.setItem("registrationFee", fee);
-            localStorage.setItem("welcomeBonus", bonus);
+/* =====================================================
+   ESC KEY
+===================================================== */
 
-            window.location.href = "welcome.html";
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closePackageModal();
+
         }
-    </script>
+
+    }
+);
+
+
+</script>
+
+
 </body>
 
 </html>
+
