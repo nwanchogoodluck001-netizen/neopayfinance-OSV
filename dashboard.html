@@ -1183,41 +1183,84 @@
      MOBILE HEADER
 ========================================================= -->
 
-<header class="mobile-header top-header sticky top-0 z-40 px-5 py-4">
+<header class="mobile-header top-header sticky top-0 z-40 px-4 py-3">
 
-    <div class="flex items-center justify-between">
+    <div class="flex items-center justify-between gap-3">
 
+        <!-- MENU -->
         <button
             id="menuBtn"
-            class="icon-button !bg-[#fff8e6] !border-[#f0dfad] !text-[#720909]">
+            class="icon-button !bg-[#fff8e6] !border-[#f0dfad] !text-[#720909] flex-shrink-0">
 
             <i class='bx bx-menu text-xl'></i>
 
         </button>
 
 
-        <div class="text-center">
+        <!-- MOBILE GREETING -->
+        <div class="flex-1 min-w-0">
 
-            <p class="text-[8px] uppercase tracking-[2px] text-gray-400">
-                NeoPay
+            <p
+                id="mobileGreeting"
+                class="text-[9px] text-gray-400 font-medium">
+
+                Good evening
             </p>
 
-            <h1 class="font-bold text-sm mt-0.5">
-                Dashboard
-            </h1>
+            <div class="flex items-center gap-2 mt-0.5">
+
+                <h1
+                    class="font-bold text-sm text-gray-900 truncate">
+
+                    Welcome back,
+
+                    <span
+                        id="mobileName"
+                        class="text-[#7b0d0d]">
+
+                        User
+
+                    </span>
+
+                </h1>
+
+            </div>
 
         </div>
 
 
-        <button class="icon-button">
+        <!-- RIGHT SIDE -->
+        <div class="flex items-center gap-2 flex-shrink-0">
 
-            <i class='bx bx-bell text-lg'></i>
+            <!-- NOTIFICATION -->
+            <button
+                class="icon-button relative">
 
-        </button>
+                <i class='bx bx-bell text-lg'></i>
+
+                <span
+                    class="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#8b0d0d]">
+                </span>
+
+            </button>
+
+
+            <!-- USER AVATAR -->
+            <div
+                class="profile-avatar !w-[40px] !h-[40px] !rounded-xl text-sm">
+
+                <span id="mobileUserInitial">
+                    U
+                </span>
+
+            </div>
+
+        </div>
 
     </div>
 
 </header>
+
 
 
 
@@ -2155,7 +2198,7 @@
 
 
                 <a
-                    href="https://paystack.shop/pay/my6ypcp1-x"
+                    href="/payment.html"
                     class="block py-3.5 rounded-xl bg-[#730909] text-[#f4d878] font-bold text-sm shadow-lg">
 
                     Activate Account
@@ -2201,27 +2244,48 @@ const welcomeBonus =
 
 
 
+
+
 /* =========================================================
-   USERNAME
+   USERNAME + USER INITIAL
 ========================================================= */
 
 if (user && user.username) {
 
-    const username =
-        user.username;
+    const username = user.username;
 
-    const welcomeName =
-        document.getElementById(
-            "desktopName"
-        );
 
-    if (welcomeName) {
+    /* ================================
+       DESKTOP USERNAME
+    ================================= */
 
-        welcomeName.textContent =
-            username;
+    const desktopName =
+        document.getElementById("desktopName");
+
+    if (desktopName) {
+
+        desktopName.textContent = username;
 
     }
 
+
+    /* ================================
+       MOBILE USERNAME
+    ================================= */
+
+    const mobileName =
+        document.getElementById("mobileName");
+
+    if (mobileName) {
+
+        mobileName.textContent = username;
+
+    }
+
+
+    /* ================================
+       CREATE USER INITIAL
+    ================================= */
 
     const initial =
         username
@@ -2229,20 +2293,32 @@ if (user && user.username) {
             .toUpperCase();
 
 
+    /* Desktop Avatar */
+
     const userInitial =
-        document.getElementById(
-            "userInitial"
-        );
+        document.getElementById("userInitial");
 
     if (userInitial) {
 
-        userInitial.textContent =
-            initial;
+        userInitial.textContent = initial;
+
+    }
+
+
+    /* Mobile Avatar */
+
+    const mobileUserInitial =
+        document.getElementById("mobileUserInitial");
+
+    if (mobileUserInitial) {
+
+        mobileUserInitial.textContent = initial;
 
     }
 
 }
 
+   
 
 
 /* =========================================================

@@ -1,236 +1,757 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title> activate account</title>
+    <title>Activate Account | NeoPay</title>
 
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <style>
-        body {
-            background: #8a0101;
-            color: white;
-            font-family: Inter, sans-serif;
+        :root {
+            --red: #8a0101;
+            --red-dark: #620000;
+            --red-bright: #b50909;
+            --red-soft: #fff3f3;
+            --gold: #c9a227;
+            --gold-soft: #f8edc8;
+            --dark: #111111;
+            --dark-soft: #171717;
+            --text: #171717;
+            --muted: #777777;
+            --border: #eeeeee;
         }
 
-        .card {
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background:
+                radial-gradient(circle at top right, rgba(201, 162, 39, 0.10), transparent 28%),
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), transparent 25%),
+                var(--red);
+            color: white;
+            font-family: "Inter", sans-serif;
+            min-height: 100vh;
+        }
+
+        h1,
+        h2,
+        h3,
+        button {
+            font-family: "Sora", sans-serif;
+        }
+
+        .page-container {
+            width: 100%;
+            max-width: 520px;
+            margin: auto;
+            min-height: 100vh;
+            padding: 22px 18px 35px;
+        }
+
+        /* HEADER */
+
+        .top-header {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            margin-bottom: 24px;
+        }
+
+        .back-button {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            color: white;
+            text-decoration: none;
+            transition: 0.2s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 0, 0, 0.45);
+            transform: translateX(-2px);
+        }
+
+        .header-title {
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .header-subtitle {
+            color: rgba(255, 255, 255, 0.62);
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        /* HERO */
+
+        .activation-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 25px 22px;
+            border-radius: 25px;
+            background:
+                linear-gradient(145deg, #191919, #101010);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.20);
+            margin-bottom: 16px;
+        }
+
+        .activation-hero::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            right: -65px;
+            top: -70px;
+            border: 25px solid rgba(138, 1, 1, 0.22);
+        }
+
+        .hero-label {
+            position: relative;
+            z-index: 2;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 11px;
+            border-radius: 999px;
+            background: rgba(201, 162, 39, 0.10);
+            color: #e4c967;
+            border: 1px solid rgba(201, 162, 39, 0.18);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .hero-label i {
+            font-size: 14px;
+        }
+
+        .hero-title {
+            position: relative;
+            z-index: 2;
+            font-size: 24px;
+            line-height: 1.25;
+            font-weight: 800;
+            margin-top: 15px;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 2;
+            color: #929292;
+            font-size: 13px;
+            line-height: 1.7;
+            margin-top: 8px;
+            max-width: 400px;
+        }
+
+        /* PAYMENT AMOUNT */
+
+        .amount-card {
+            position: relative;
+            overflow: hidden;
+            background: white;
+            color: var(--text);
+            border-radius: 25px;
+            padding: 25px 22px;
+            margin-bottom: 16px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.16);
+        }
+
+        .amount-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .amount-label {
+            color: #858585;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .secure-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #198754;
+            font-size: 10px;
+            font-weight: 700;
+            background: #effaf3;
+            padding: 6px 9px;
+            border-radius: 999px;
+        }
+
+        .secure-badge i {
+            font-size: 13px;
+        }
+
+        .amount-value {
+            font-family: "Sora", sans-serif;
+            font-size: 42px;
+            line-height: 1;
+            font-weight: 800;
+            color: var(--red);
+            letter-spacing: -2px;
+            margin-top: 17px;
+        }
+
+        .amount-note {
+            color: #999;
+            font-size: 11px;
+            margin-top: 9px;
+        }
+
+        /* CARD */
+
+        .dark-card {
             background: #121212;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 24px;
+            padding: 21px;
+            margin-top: 16px;
+            box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-heading {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(138, 1, 1, 0.20);
+            color: #ff6262;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .card-title {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .card-subtitle {
+            color: #707070;
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        /* BANK DETAILS */
+
+        .detail-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+            padding-bottom: 2px;
+        }
+
+        .detail-label {
+            color: #777;
+            font-size: 11px;
+            flex-shrink: 0;
+        }
+
+        .detail-value {
+            color: #f4f4f4;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .account-number-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-button {
+            width: 31px;
+            height: 31px;
+            border-radius: 9px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: #1d1d1d;
+            color: #aaa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .copy-button:hover {
+            color: white;
+            background: #242424;
+        }
+
+        .reference {
+            color: #e1b936 !important;
+            font-family: monospace;
+            letter-spacing: 0.5px;
+        }
+
+        /* NOTICE */
+
+        .notice-card {
+            margin-top: 16px;
+            padding: 19px;
+            border-radius: 21px;
+            background: #fff8e6;
+            color: #492f00;
+            border: 1px solid rgba(201, 162, 39, 0.22);
+        }
+
+        .notice-heading {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: #765500;
+            font-size: 13px;
+            font-weight: 800;
+        }
+
+        .notice-heading i {
+            font-size: 19px;
+        }
+
+        .notice-text {
+            font-size: 11px;
+            line-height: 1.7;
+            color: #6d5a32;
+            margin-top: 9px;
+        }
+
+        .notice-divider {
+            border: 0;
+            border-top: 1px solid rgba(118, 85, 0, 0.12);
+            margin: 13px 0;
+        }
+
+        /* PAYMENT BUTTON */
+
+        .payment-button {
+            width: 100%;
+            min-height: 55px;
+            margin-top: 17px;
+            border: none;
+            border-radius: 17px;
+            background: white;
+            color: var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            font-size: 13px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+            transition: 0.2s ease;
+        }
+
+        .payment-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.22);
+        }
+
+        .payment-button:active {
+            transform: translateY(0);
+        }
+
+        .payment-button i {
+            font-size: 20px;
+        }
+
+        .button-arrow {
+            margin-left: 3px;
+        }
+
+        /* FOOTER */
+
+        .secure-footer {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 10px;
+            margin-top: 20px;
+        }
+
+        .secure-footer i {
+            color: #e0c25b;
+            font-size: 14px;
+        }
+
+        /* TOAST */
+
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 24px;
+            transform: translate(-50%, 120px);
+            width: calc(100% - 35px);
+            max-width: 400px;
+            padding: 14px 16px;
+            border-radius: 15px;
+            background: #181818;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            opacity: 0;
+            transition: 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+
+        .toast-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            background: rgba(25, 135, 84, 0.15);
+            color: #37c77b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .toast-title {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .toast-message {
+            color: #777;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 380px) {
+            .page-container {
+                padding-left: 13px;
+                padding-right: 13px;
+            }
+
+            .amount-value {
+                font-size: 36px;
+            }
+
+            .hero-title {
+                font-size: 21px;
+            }
+
+            .dark-card {
+                padding: 18px;
+            }
         }
     </style>
-
 </head>
 
 <body>
 
-    <div class="max-w-md mx-auto min-h-screen p-5">
+    <main class="page-container">
 
-        <div class="flex items-center gap-3 mb-6">
+        <!-- HEADER -->
+        <header class="top-header">
 
-            <a href="dashboard.html" class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center">
-
-                <i class='bx bx-arrow-back'></i>
-
+            <a href="dashboard.html" class="back-button" aria-label="Back to dashboard">
+                <i class='bx bx-arrow-back text-xl'></i>
             </a>
 
             <div>
-
-                <h1 class="font-bold text-xl">
+                <h1 class="header-title">
                     Activate Account
                 </h1>
 
-                <p class="text-sm text-gray-400">
-                  
+                <p class="header-subtitle">
+                    Complete your account activation securely
                 </p>
+            </div>
+
+        </header>
+
+
+        <!-- HERO -->
+        <section class="activation-hero">
+
+            <div class="hero-label">
+                <i class='bx bx-shield-quarter'></i>
+                Secure Activation
+            </div>
+
+            <h2 class="hero-title">
+                You're one step away from activating your account.
+            </h2>
+
+            <p class="hero-text">
+                Make the required payment using the account details below,
+                then contact NeoPay support with your payment proof.
+            </p>
+
+        </section>
+
+
+        <!-- AMOUNT -->
+        <section class="amount-card">
+
+            <div class="amount-top">
+
+                <span class="amount-label">
+                    Activation Amount
+                </span>
+
+                <span class="secure-badge">
+                    <i class='bx bx-check-circle'></i>
+                    Secure
+                </span>
 
             </div>
 
-        </div>
-
-        <!-- AMOUNT -->
-
-        <div class="card rounded-2xl p-6 text-center">
-
-            <p class="text-gray-400">
-                Amount To Pay
-            </p>
-            <h1 id="registrationFee" class="text-5xl font-black mt-2 text-red-500">
+            <div id="registrationFee" class="amount-value">
                 ₦0
-            </h1>
+            </div>
 
-        </div>
+            <p class="amount-note">
+                Please transfer the exact amount displayed above.
+            </p>
+
+        </section>
+
 
         <!-- PAYMENT DETAILS -->
+        <section class="dark-card">
 
-        <div class="card rounded-2xl p-5 mt-5">
+            <div class="card-heading">
 
-            <h2 class="font-bold mb-4">
-                Bank Transfer Details
-            </h2>
-
-            <div class="space-y-4">
-
-                <div class="flex justify-between">
-                    <span class="text-gray-400">
-                        Bank Name
-                    </span>
-                    <span id="bankName">
-                        Loading...
-                    </span>
+                <div class="card-icon">
+                    <i class='bx bx-building-house'></i>
                 </div>
 
-                <div class="flex justify-between items-center">
+                <div>
+                    <h2 class="card-title">
+                        Bank Transfer Details
+                    </h2>
 
-                    <span class="text-gray-400">
+                    <p class="card-subtitle">
+                        Use these details to complete your payment
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="detail-list">
+
+                <!-- BANK -->
+                <div class="detail-row">
+
+                    <span class="detail-label">
+                        Bank Name
+                    </span>
+
+                    <span id="bankName" class="detail-value">
+                        Loading...
+                    </span>
+
+                </div>
+
+
+                <!-- ACCOUNT NUMBER -->
+                <div class="detail-row">
+
+                    <span class="detail-label">
                         Account Number
                     </span>
 
-                    <div class="flex items-center gap-2">
+                    <div class="account-number-wrap">
 
-                        <span id="accountNumber">
+                        <span id="accountNumber" class="detail-value">
                             Loading...
                         </span>
 
-                        <button id="copyAcct" class="text-gray-400 hover:text-white">
+                        <button
+                            id="copyAcct"
+                            class="copy-button"
+                            type="button"
+                            aria-label="Copy account number">
+
                             <i class='bx bx-copy'></i>
+
                         </button>
 
                     </div>
 
                 </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-400">
+
+
+                <!-- ACCOUNT NAME -->
+                <div class="detail-row">
+
+                    <span class="detail-label">
                         Account Name
                     </span>
-                    <span id="accountName">
+
+                    <span id="accountName" class="detail-value">
                         Loading...
                     </span>
+
                 </div>
 
-                <div class="flex justify-between">
-                    <span class="text-gray-400">
+
+                <!-- REFERENCE -->
+                <div class="detail-row">
+
+                    <span class="detail-label">
                         Reference ID
                     </span>
-                    <span id="refId" class="text-red-500">
+
+                    <span id="refId" class="detail-value reference">
                         REF000000
                     </span>
+
                 </div>
 
             </div>
 
-        </div>
+        </section>
 
-        <div class="card rounded-2xl p-6 text-center mt-3">
-            <h1 class="text-2xl text-red-400 font-bold">Important Payment Notice</h1>
-            <hr>
-            <p class="tex">Avoid using Opay bank. Due to temporary network issues from Opay servers, payments made with
-                Opay may not be confirmed. Please use any other Nigerian bank for instant confirmation.</p>
-            <hr>
-            <p class="text-">After making payment click "I Have Made Payment" to submit proof</p>
-            <hr>
-        </div>
 
-        <!-- BUTTON -->
-        <button id="submitBtn" onclick="openWhatsApp()"
-            class="w-full mt-5 bg-red-600 hover:bg-red-700 py-4 rounded-xl font-bold">
-            I Have Made Payment
+        <!-- IMPORTANT NOTICE -->
+        <section class="notice-card">
+
+            <div class="notice-heading">
+
+                <i class='bx bx-error-circle'></i>
+
+                Important Payment Notice
+
+            </div>
+
+            <p class="notice-text">
+                Avoid using Opay bank for this transaction due to temporary
+                network issues that may delay payment confirmation.
+                Please use another Nigerian bank where possible.
+            </p>
+
+            <hr class="notice-divider">
+
+            <p class="notice-text">
+                After completing the transfer, click
+                <strong>"I Have Made Payment"</strong>
+                below to contact support and submit your payment proof.
+            </p>
+
+        </section>
+
+
+        <!-- PAYMENT BUTTON -->
+        <button
+            id="submitBtn"
+            type="button"
+            class="payment-button">
+
+            <i class='bx bxl-whatsapp'></i>
+
+            <span>I Have Made Payment</span>
+
+            <i class='bx bx-right-arrow-alt button-arrow'></i>
+
         </button>
 
-        <script>
-            let whatsappLink = "";
 
-            function openWhatsApp() {
+        <!-- FOOTER -->
+        <div class="secure-footer">
 
-                if (!whatsappLink) {
-                    alert("WhatsApp link not available");
-                    return;
-                }
+            <i class='bx bx-lock-alt'></i>
 
-                window.open(whatsappLink, "_blank");
-            }
-        </script>
+            <span>
+                Your payment information is handled securely
+            </span>
+
+        </div>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div id="toast" class="toast">
+
+        <div class="toast-icon">
+            <i class='bx bx-check'></i>
+        </div>
+
+        <div>
+            <div id="toastTitle" class="toast-title">
+                Copied
+            </div>
+
+            <div id="toastMessage" class="toast-message">
+                Account number copied successfully.
+            </div>
+        </div>
 
     </div>
 
-    <script>
 
-        const ref =
-            "REF" +
-            Math.floor(
-                100000 +
-                Math.random() * 900000
-            );
-
-        document
-            .getElementById("refId")
-            .textContent = ref;
-
-        document
-            .getElementById("submitBtn")
-            .addEventListener(
-                "click",
-                () => {
-
-
-
-                    if (!proof) {
-
-                        alert(
-                            "Please upload payment screenshot."
-                        );
-
-                        return;
-
-                    }
-
-                    alert(
-                        "Payment submitted successfully. Awaiting confirmation."
-                    );
-
-                }
-            );
-
-        document
-            .getElementById("copyAcct")
-            .addEventListener("click", () => {
-
-                const accountNumber =
-                    document.getElementById("accountNumber").textContent;
-
-                navigator.clipboard
-                    .writeText(accountNumber)
-                    .then(() => {
-
-                        const btn =
-                            document
-                                .getElementById("copyAcct");
-
-                        btn.innerHTML =
-                            "<i class='bx bx-check text-green-500'></i>";
-
-                        setTimeout(() => {
-
-                            btn.innerHTML =
-                                "<i class='bx bx-copy'></i>";
-
-                        }, 2000);
-
-                    });
-
-            });
-
-    </script>
-
-
-
-
+    <!-- FIREBASE -->
     <script type="module">
 
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+        import {
+            initializeApp
+        } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
 
         import {
             getDatabase,
@@ -238,45 +759,300 @@
             onValue
         } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
 
+
         const firebaseConfig = {
+
             apiKey: "AIzaSyDarylPYBXlYOPBt4JljwbEen6m22LUeSw",
+
             authDomain: "neopay-finance.firebaseapp.com",
-            databaseURL: "https://neopay-finance-default-rtdb.firebaseio.com",
+
+            databaseURL:
+                "https://neopay-finance-default-rtdb.firebaseio.com",
+
             projectId: "neopay-finance",
-            storageBucket: "neopay-finance.firebasestorage.app",
+
+            storageBucket:
+                "neopay-finance.firebasestorage.app",
+
             messagingSenderId: "629901996738",
-            appId: "1:629901996738:web:29ea82edd540455541c15b"
+
+            appId:
+                "1:629901996738:web:29ea82edd540455541c15b"
+
         };
 
+
         const app = initializeApp(firebaseConfig);
+
         const db = getDatabase(app);
 
-        onValue(ref(db, "paymentDetails"), (snapshot) => {
 
-            const data = snapshot.val();
+        /*
+        ========================================================
+        PAYMENT DETAILS FROM FIREBASE
+        ========================================================
+        */
 
-            if (!data) return;
+        let whatsappLink = "";
 
-            document.getElementById("bankName").textContent =
-                data.bankName;
 
-            document.getElementById("accountNumber").textContent =
-                data.accountNumber;
+        onValue(
+            ref(db, "paymentDetails"),
+            (snapshot) => {
 
-            document.getElementById("accountName").textContent =
-                data.accountName;
+                const data = snapshot.val();
 
-            whatsappLink = data.whatsapp;
+                if (!data) {
 
-        });
+                    showToast(
+                        "Payment Details",
+                        "Payment details are currently unavailable.",
+                        false
+                    );
+
+                    return;
+
+                }
+
+
+                document
+                    .getElementById("bankName")
+                    .textContent =
+                    data.bankName || "Not available";
+
+
+                document
+                    .getElementById("accountNumber")
+                    .textContent =
+                    data.accountNumber || "Not available";
+
+
+                document
+                    .getElementById("accountName")
+                    .textContent =
+                    data.accountName || "Not available";
+
+
+                whatsappLink =
+                    data.whatsapp || "";
+
+            },
+
+            (error) => {
+
+                console.error(
+                    "Firebase error:",
+                    error
+                );
+
+                showToast(
+                    "Connection Error",
+                    "Unable to load payment details.",
+                    false
+                );
+
+            }
+        );
+
+
+        /*
+        ========================================================
+        WHATSAPP
+        ========================================================
+        */
+
+        function openWhatsApp() {
+
+            if (!whatsappLink) {
+
+                showToast(
+                    "Unavailable",
+                    "WhatsApp support link is not available yet.",
+                    false
+                );
+
+                return;
+
+            }
+
+            window.open(
+                whatsappLink,
+                "_blank",
+                "noopener,noreferrer"
+            );
+
+        }
+
+
+        document
+            .getElementById("submitBtn")
+            .addEventListener(
+                "click",
+                openWhatsApp
+            );
+
+
+        /*
+        ========================================================
+        COPY ACCOUNT NUMBER
+        ========================================================
+        */
+
+        document
+            .getElementById("copyAcct")
+            .addEventListener(
+                "click",
+                async () => {
+
+                    const accountNumber =
+                        document
+                            .getElementById("accountNumber")
+                            .textContent
+                            .trim();
+
+
+                    if (
+                        !accountNumber ||
+                        accountNumber === "Loading..." ||
+                        accountNumber === "Not available"
+                    ) {
+
+                        showToast(
+                            "Unavailable",
+                            "Account number is not available.",
+                            false
+                        );
+
+                        return;
+
+                    }
+
+
+                    try {
+
+                        await navigator.clipboard.writeText(
+                            accountNumber
+                        );
+
+
+                        const button =
+                            document.getElementById(
+                                "copyAcct"
+                            );
+
+
+                        button.innerHTML =
+                            "<i class='bx bx-check text-green-400'></i>";
+
+
+                        showToast(
+                            "Copied",
+                            "Account number copied successfully.",
+                            true
+                        );
+
+
+                        setTimeout(() => {
+
+                            button.innerHTML =
+                                "<i class='bx bx-copy'></i>";
+
+                        }, 2000);
+
+
+                    } catch (error) {
+
+                        showToast(
+                            "Copy Failed",
+                            "Please copy the account number manually.",
+                            false
+                        );
+
+                    }
+
+                }
+            );
+
+
+        /*
+        ========================================================
+        TOAST
+        ========================================================
+        */
+
+        window.showToast = function (
+            title,
+            message,
+            success = true
+        ) {
+
+            const toast =
+                document.getElementById("toast");
+
+            const toastTitle =
+                document.getElementById("toastTitle");
+
+            const toastMessage =
+                document.getElementById("toastMessage");
+
+            const icon =
+                toast.querySelector(".toast-icon i");
+
+
+            toastTitle.textContent = title;
+
+            toastMessage.textContent = message;
+
+
+            if (success) {
+
+                icon.className = "bx bx-check";
+
+            } else {
+
+                icon.className = "bx bx-error";
+
+            }
+
+
+            toast.classList.add("show");
+
+
+            clearTimeout(
+                window.toastTimer
+            );
+
+
+            window.toastTimer =
+                setTimeout(() => {
+
+                    toast.classList.remove("show");
+
+                }, 3000);
+
+        };
 
     </script>
 
-    <script>
-        const fee = localStorage.getItem("registrationFee") || 15000;
 
-        document.getElementById("registrationFee").textContent =
-            "₦" + Number(fee).toLocaleString();
+    <!-- REGISTRATION FEE -->
+    <script>
+
+        const fee =
+            localStorage.getItem("registrationFee") || 15000;
+
+
+        const formattedFee =
+            Number(fee).toLocaleString(
+                "en-NG"
+            );
+
+
+        document
+            .getElementById("registrationFee")
+            .textContent =
+            "₦" + formattedFee;
+
     </script>
 
 </body>
