@@ -1,1006 +1,1053 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoPay Dashboard</title>
+
+    <title>NeoPay | Dashboard</title>
 
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Boxicons -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet">
 
+    <style>
+
+        :root {
+            --red: #7b0d0d;
+            --red-dark: #570606;
+            --red-deep: #320303;
+            --red-light: #a71919;
+
+            --gold: #d8ad3d;
+            --gold-light: #f4d878;
+            --gold-soft: #fff8e6;
+
+            --bg: #f5f6f8;
+            --white: #ffffff;
+
+            --text: #181b21;
+            --muted: #7c8490;
+
+            --border: #e8eaee;
+
+            --shadow:
+                0 12px 35px rgba(20, 24, 32, .055);
+
+            --shadow-lg:
+                0 25px 70px rgba(35, 10, 10, .14);
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+
+            font-family: "Inter", sans-serif;
+
+            -webkit-font-smoothing: antialiased;
+        }
+
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Sora", sans-serif;
+        }
+
+
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        /* =========================================
+           SCROLLBAR
+        ========================================= */
+
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #d5d7dc;
+            border-radius: 20px;
+        }
+
+
+        /* =========================================
+           SIDEBAR
+        ========================================= */
+
+        .sidebar {
+            background:
+                linear-gradient(
+                    180deg,
+                    #720909 0%,
+                    #590606 48%,
+                    #350303 100%
+                );
+
+            box-shadow:
+                12px 0 40px rgba(30, 4, 4, .08);
+        }
+
+
+        .sidebar-brand {
+            border-bottom:
+                1px solid rgba(255,255,255,.08);
+        }
+
+
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f7df8c,
+                    #d7ad3d
+                );
+
+            color: #620707;
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,.12);
+        }
+
+
+        .sidebar-link {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            margin: 5px 12px;
+
+            padding: 13px 15px;
+
+            color: rgba(255,255,255,.62);
+
+            border-radius: 13px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            text-decoration: none;
+
+            transition:
+                background .25s ease,
+                color .25s ease,
+                transform .25s ease;
+        }
+
+
+        .sidebar-link i {
+            width: 22px;
+
+            font-size: 20px;
+
+            color:
+                rgba(244,216,120,.75);
+
+            transition: .25s ease;
+        }
+
+
+        .sidebar-link:hover {
+            color: white;
+
+            background:
+                rgba(255,255,255,.07);
+
+            transform:
+                translateX(2px);
+        }
+
+
+        .sidebar-link:hover i {
+            color: var(--gold-light);
+        }
+
+
+        .sidebar-link.active {
+            color: white;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(244,216,120,.15),
+                    rgba(244,216,120,.05)
+                );
+
+            border:
+                1px solid rgba(244,216,120,.13);
+
+            box-shadow:
+                inset 3px 0 0 var(--gold-light);
+        }
+
+
+        .sidebar-link.active i {
+            color: var(--gold-light);
+        }
+
+
+        /* =========================================
+           TOP HEADER
+        ========================================= */
+
+        .top-header {
+            background:
+                rgba(255,255,255,.88);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+            border-bottom:
+                1px solid rgba(0,0,0,.055);
+        }
+
+
+        .profile-avatar {
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #861010,
+                    #570606
+                );
+
+            color: var(--gold-light);
+
+            font-weight: 800;
+
+            box-shadow:
+                0 8px 20px rgba(91,7,7,.18);
+        }
+
+
+        .icon-button {
+            width: 43px;
+            height: 43px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background: white;
+
+            border:
+                1px solid var(--border);
+
+            color: #5e6570;
+
+            transition: .25s ease;
+        }
+
+
+        .icon-button:hover {
+            border-color: #dddfe4;
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,.06);
+        }
+
+
+        /* =========================================
+           BALANCE CARD
+        ========================================= */
+
+        .balance-card {
+            position: relative;
+
+            overflow: hidden;
+
+            min-height: 270px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #861010 0%,
+                    #6b0808 45%,
+                    #430404 100%
+                );
+
+            box-shadow:
+                0 25px 55px rgba(82, 6, 6, .20);
+        }
+
+
+        .balance-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 330px;
+            height: 330px;
+
+            right: -150px;
+            top: -180px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(244,216,120,.12);
+
+            box-shadow:
+                0 0 0 45px rgba(244,216,120,.025),
+                0 0 0 90px rgba(244,216,120,.018);
+        }
+
+
+        .balance-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 190px;
+            height: 190px;
+
+            right: -80px;
+            bottom: -110px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(244,216,120,.055);
+        }
+
+
+        .balance-content {
+            position: relative;
+            z-index: 3;
+        }
+
+
+        .balance-label {
+            color:
+                rgba(255,255,255,.52);
+
+            font-size: 10px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1.8px;
+        }
+
+
+        .balance-amount {
+            letter-spacing: -1.5px;
+        }
+
+
+        .balance-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 6px 10px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,.08);
+
+            border:
+                1px solid rgba(255,255,255,.09);
+
+            color:
+                rgba(255,255,255,.65);
+
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+
+        .balance-wallet {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 15px;
+
+            background:
+                rgba(255,255,255,.09);
+
+            border:
+                1px solid rgba(255,255,255,.10);
+        }
+
+
+        .balance-action {
+            border-radius: 13px;
+
+            padding: 13px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            transition: .25s ease;
+        }
+
+
+        .balance-action:hover {
+            transform:
+                translateY(-2px);
+        }
+
+
+        .balance-primary {
+            background:
+                var(--gold-light);
+
+            color:
+                #5d0707;
+
+            box-shadow:
+                0 8px 20px rgba(0,0,0,.08);
+        }
+
+
+        .balance-secondary {
+            background:
+                rgba(255,255,255,.08);
+
+            color: white;
+
+            border:
+                1px solid rgba(255,255,255,.12);
+        }
+
+
+        /* =========================================
+           SECTION CARDS
+        ========================================= */
+
+        .premium-card {
+            background: white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 25px;
+
+            box-shadow:
+                var(--shadow);
+        }
+
+
+        /* =========================================
+           QUICK ACTIONS
+        ========================================= */
+
+        .quick-action {
+            position: relative;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            min-height: 100px;
+
+            border-radius: 18px;
+
+            text-decoration: none;
+
+            color: var(--text);
+
+            transition:
+                transform .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+        }
+
+
+        .quick-action:hover {
+            transform:
+                translateY(-4px);
+
+            background:
+                #fffdf8;
+
+            box-shadow:
+                0 12px 28px rgba(30,25,15,.06);
+        }
+
+
+        .quick-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background:
+                var(--gold-soft);
+
+            border:
+                1px solid #f0dfad;
+
+            color:
+                var(--red);
+
+            transition: .25s ease;
+        }
+
+
+        .quick-action:hover .quick-icon {
+            background:
+                var(--red);
+
+            color:
+                var(--gold-light);
+
+            border-color:
+                var(--red);
+        }
+
+
+        .quick-icon i {
+            font-size: 23px;
+        }
+
+
+        .quick-action span {
+            font-size: 10px;
+
+            font-weight: 700;
+
+            color: #626872;
+
+            text-transform: capitalize;
+        }
+
+
+        /* =========================================
+           STAT CARDS
+        ========================================= */
+
+        .stat-card {
+            background: white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 21px;
+
+            padding: 18px;
+
+            box-shadow:
+                var(--shadow);
+
+            transition: .25s ease;
+        }
+
+
+        .stat-card:hover {
+            transform:
+                translateY(-3px);
+
+            box-shadow:
+                0 16px 35px rgba(20,25,35,.07);
+        }
+
+
+        .stat-icon {
+            width: 41px;
+            height: 41px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background:
+                var(--gold-soft);
+
+            border:
+                1px solid #f0dfad;
+
+            color:
+                var(--red);
+        }
+
+
+        .stat-icon i {
+            font-size: 20px;
+        }
+
+
+        /* =========================================
+           ACTIVITY
+        ========================================= */
+
+        .transaction {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 15px 0;
+
+            border-bottom:
+                1px solid #f0f1f3;
+        }
+
+
+        .transaction:last-child {
+            border-bottom: none;
+        }
+
+
+        .transaction-icon {
+            width: 43px;
+            height: 43px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                #f8f9fa;
+
+            border:
+                1px solid #eef0f2;
+        }
+
+
+        /* =========================================
+           ACCOUNT ACTIVATION CARD
+        ========================================= */
+
+        .activation-card {
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fffaf0,
+                    #fffdf8
+                );
+
+            border:
+                1px solid #f0e3bd;
+
+            box-shadow:
+                0 12px 35px rgba(90,65,15,.05);
+        }
+
+
+        .activation-card::after {
+            content: "";
+
+            position: absolute;
+
+            width: 170px;
+            height: 170px;
+
+            right: -80px;
+            bottom: -100px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(216,173,61,.08);
+        }
+
+
+        .activation-content {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        .activation-button {
+            display: block;
+
+            text-align: center;
+
+            padding: 13px;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7d0c0c,
+                    #5d0606
+                );
+
+            color:
+                var(--gold-light);
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            box-shadow:
+                0 10px 22px rgba(91,7,7,.15);
+
+            transition: .25s ease;
+        }
+
+
+        .activation-button:hover {
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 14px 28px rgba(91,7,7,.20);
+        }
+
+
+        /* =========================================
+           BOTTOM NAV
+        ========================================= */
+
+        .bottom-nav {
+            background:
+                rgba(255,255,255,.95);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+            border:
+                1px solid rgba(0,0,0,.07);
+
+            box-shadow:
+                0 18px 50px rgba(0,0,0,.13);
+        }
+
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 4px;
+
+            color: #8b9098;
+
+            text-decoration: none;
+
+            transition: .25s ease;
+        }
+
+
+        .nav-item i {
+            font-size: 21px;
+        }
+
+
+        .nav-item span {
+            font-size: 8px;
+
+            font-weight: 700;
+        }
+
+
+        .nav-item.active {
+            color:
+                var(--red);
+        }
+
+
+        .center-button {
+            width: 58px;
+            height: 58px;
+
+            margin-top: -31px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 19px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #8a1111,
+                    #5e0606
+                );
+
+            color:
+                var(--gold-light);
+
+            border:
+                5px solid var(--bg);
+
+            box-shadow:
+                0 12px 28px rgba(91,7,7,.24);
+
+            transition: .25s ease;
+        }
+
+
+        .center-button:hover {
+            transform:
+                translateY(-3px);
+        }
+
+
+        .center-button i {
+            font-size: 26px;
+        }
+
+
+        /* =========================================
+           MODAL
+        ========================================= */
+
+        .modal {
+            transition:
+                opacity .25s ease;
+        }
+
+
+        .modal-box {
+            animation:
+                modalUp .28s ease;
+        }
+
+
+        @keyframes modalUp {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(25px)
+                    scale(.97);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+
+        .modal-icon {
+            width: 66px;
+            height: 66px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: auto;
+
+            border-radius: 20px;
+
+            background:
+                var(--gold-soft);
+
+            border:
+                1px solid #f0dfad;
+
+            color:
+                var(--red);
+        }
+
+
+        /* =========================================
+           MOBILE SIDEBAR
+        ========================================= */
+
+        #mobileSidebar {
+            box-shadow:
+                20px 0 60px rgba(0,0,0,.18);
+        }
+
+
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+
+        @media (min-width: 1024px) {
+
+            .desktop-sidebar {
+                display: block;
+            }
+
+            .mobile-header {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 260px;
+            }
+
+            .bottom-navigation {
+                display: none;
+            }
+
+        }
+
+
+        @media (max-width: 1023px) {
+
+            .desktop-sidebar {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+        }
+
+
+        @media (max-width: 640px) {
+
+            body {
+                padding-bottom: 85px;
+            }
+
+            .balance-card {
+                min-height: 255px;
+                border-radius: 23px;
+            }
+
+            .balance-amount {
+                font-size: 31px;
+            }
+
+            .premium-card {
+                border-radius: 21px;
+            }
+
+            .quick-action {
+                min-height: 90px;
+            }
+
+            .quick-icon {
+                width: 46px;
+                height: 46px;
+            }
+
+            .stat-card {
+                padding: 15px;
+                border-radius: 18px;
+            }
+
+            .activation-card {
+                border-radius: 21px;
+            }
+
+        }
+
+    </style>
 
 </head>
 
 
-<style>
-    @keyframes fadeUp {
-        from {
-            opacity: 0;
-            transform: translateY(25px);
-        }
+<body class="pb-24">
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
 
-    @keyframes floating {
+<!-- =========================================================
+     DESKTOP SIDEBAR
+========================================================= -->
 
-        0% {
-            transform: translateY(0px);
-        }
+<aside
+    class="desktop-sidebar sidebar fixed left-0 top-0 h-screen w-[260px] z-50 text-white">
 
-        50% {
-            transform: translateY(-6px);
-        }
+    <div class="sidebar-brand px-6 py-7">
 
-        100% {
-            transform: translateY(0px);
-        }
+        <div class="flex items-center gap-3">
 
-    }
+            <div class="brand-logo">
 
-    .float-card {
+                <i class='bx bxs-wallet text-2xl'></i>
 
-        animation: floating 5s ease-in-out infinite;
-
-    }
-
-    .fade-up {
-        animation: fadeUp .8s ease forwards;
-    }
-
-    .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-    }
-
-    .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-
-
-    .quick-action {
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-
-        text-decoration: none;
-
-        transition: all .35s ease;
-
-    }
-
-    .quick-action span {
-
-        color: #ffffff;
-
-        font-size: 13px;
-
-        font-weight: 700;
-
-        letter-spacing: .4px;
-
-    }
-
-    .quick-icon {
-
-        width: 74px;
-        height: 74px;
-
-        border-radius: 24px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        background: linear-gradient(145deg, #A61515, #730909);
-
-        border: 1px solid rgba(255, 216, 107, .18);
-
-        box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, .08),
-            0 12px 30px rgba(0, 0, 0, .35);
-
-        transition: .35s;
-
-    }
-
-    .quick-icon i {
-
-        font-size: 36px;
-
-        color: #FFD86B;
-
-    }
-
-
-
-    /* ========================= */
-    /* Bottom Navigation */
-    /* ========================= */
-
-    .nav-item {
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-
-        text-decoration: none;
-
-        transition: .35s;
-
-    }
-
-    .nav-item span {
-
-        font-size: 11px;
-        font-weight: 700;
-        color: #d9cfcf;
-
-    }
-
-    .nav-icon {
-
-        width: 46px;
-        height: 46px;
-
-        border-radius: 16px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        transition: .35s;
-
-    }
-
-    .nav-icon i {
-
-        font-size: 25px;
-        color: #ffffff;
-
-    }
-
-    .nav-item:hover {
-
-        transform: translateY(-4px);
-
-    }
-
-    .nav-item:hover .nav-icon {
-
-        background: rgba(255, 255, 255, .08);
-
-    }
-
-    .nav-item.active .nav-icon {
-
-        background: #FFD86B;
-
-        box-shadow:
-            0 0 20px rgba(255, 216, 107, .35);
-
-    }
-
-    .nav-item.active .nav-icon i {
-
-        color: #7B0D0D;
-
-    }
-
-    .nav-item.active span {
-
-        color: #FFD86B;
-
-    }
-
-    /* Floating Center Button */
-
-    .home-button {
-
-        width: 72px;
-        height: 72px;
-
-        border-radius: 50%;
-
-        background: linear-gradient(145deg, #FFD86B, #F2B623);
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        border: 6px solid #6A0909;
-
-        box-shadow:
-            0 18px 40px rgba(0, 0, 0, .35);
-
-        transition: .35s;
-
-    }
-
-    .home-button i {
-
-        font-size: 40px;
-        color: #6A0909;
-
-    }
-
-    .home-button:hover {
-
-        transform: scale(1.08) rotate(8deg);
-
-    }
-
-
-    /* ============================= */
-    /* Mobile Optimization */
-    /* ============================= */
-
-    @media (max-width:640px) {
-
-        /* Header */
-        header h1 {
-            font-size: 1.2rem !important;
-        }
-
-        /* Greeting */
-        #greeting {
-            font-size: 10px !important;
-        }
-
-        #welcomeName {
-            font-size: 15px !important;
-        }
-
-        h3 {
-            font-size: 15px !important;
-        }
-
-        /* Dashboard Cards */
-        #dashboardSlider h1 {
-            font-size: 20px !important;
-        }
-
-        #dashboardSlider p {
-            font-size: 13px !important;
-        }
-
-        #dashboardSlider button {
-            font-size: 10px !important;
-            padding: 8px 12px !important;
-        }
-
-        /* Notification Buttons */
-        .w-12.h-12 {
-            width: 20px !important;
-            height: 20px !important;
-        }
-
-        .w-12.h-12 i {
-            font-size: 10px !important;
-        }
-
-        /* Quick Action Title */
-        section h2 {
-            font-size: 15px !important;
-        }
-
-        /* Quick Action Icons */
-        .quick-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 18px;
-        }
-
-        .quick-icon i {
-            font-size: 18px;
-        }
-
-        .quick-action span {
-            font-size: 11px;
-            font-weight: 600;
-        }
-
-        /* Bottom Navigation */
-        .nav-icon {
-            width: 28px;
-            height: 28px;
-        }
-
-        .nav-icon i {
-            font-size: 15px;
-        }
-
-        .nav-item span {
-            font-size: 10px;
-            font-weight: 400;
-        }
-
-        /* Center Button */
-        .home-button {
-            width: 48px;
-            height: 48px;
-            border-width: 4px;
-        }
-
-        .home-button i {
-            font-size: 30px;
-        }
-
-        /* General Buttons */
-        button {
-            font-size: 14px;
-        }
-
-    }
-</style>
-
-<body class="bg-[#f4c16d] pb-32">
-
-    <!-- Overlay -->
-    <div id="overlay" class="fixed inset-0 bg-black/60 z-[9998] hidden"></div>
-
-    <!-- Side Navigation -->
-    <aside id="sidebar"
-        class="fixed top-0 left-0 h-full w-72 bg-[#5d0707] shadow-2xl transform -translate-x-full transition-transform duration-300 z-[9999]">
-
-        <!-- Header -->
-        <div class="flex items-center justify-between p-6 border-b border-yellow-400/20">
+            </div>
 
             <div>
 
-                <h2 class="text-2xl font-bold text-yellow-300">
+                <h1 class="font-bold text-xl tracking-tight">
                     NeoPay
-                </h2>
+                </h1>
 
-                <p class="text-white/60 text-sm">
-                    Finance
+                <p class="text-[10px] text-white/40 mt-0.5">
+                    Finance Platform
                 </p>
-
-            </div>
-
-            <button id="closeMenu" class="text-3xl text-white hover:text-yellow-300">
-
-                <i class='bx bx-x'></i>
-
-            </button>
-
-        </div>
-
-        <!-- Menu -->
-        <div class="py-6 space-y-2">
-
-            <a href="" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
-
-                <i class='bx bxs-home text-2xl text-yellow-300'></i>
-
-                <span>Dashboard</span>
-
-            </a>
-
-            <a href="" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
-
-                <i class='bx bxs-wallet text-2xl text-yellow-300'></i>
-
-                <span>Activate Account</span>
-
-            </a>
-
-            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
-
-                <i class='bx bx-money text-2xl text-yellow-300'></i>
-
-                <span>Withdraw</span>
-
-            </a>
-
-            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
-
-                <i class='bx bx-history text-2xl text-yellow-300'></i>
-
-                <span>Transaction History</span>
-
-            </a>
-
-            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
-
-                <i class='bx bx-group text-2xl text-yellow-300'></i>
-
-                <span>Referral</span>
-
-            </a>
-
-            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
-
-                <i class='bx bx-support text-2xl text-yellow-300'></i>
-
-                <span>Support</span>
-
-            </a>
-
-            <a href="#" class="flex items-center gap-4 px-6 py-4 hover:bg-white/10 text-white protected-feature">
-
-                <i class='bx bx-cog text-2xl text-yellow-300'></i>
-
-                <span>Settings</span>
-
-            </a>
-
-            <a href="/index.html" class="flex items-center gap-4 px-6 py-4 hover:bg-red-700 text-red-300">
-
-                <i class='bx bx-log-out text-2xl'></i>
-
-                <span>Logout</span>
-
-            </a>
-
-        </div>
-
-    </aside>
-
-    <!-- Header -->
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-[#4b0606] shadow-lg">
-
-        <div class="h-20 flex items-center justify-between px-5">
-
-            <!-- Menu Button -->
-            <button id="menuBtn"
-                class="w-11 h-11 rounded-full bg-[#6b0b0b] flex items-center justify-center text-[#F7D76A] text-2xl hover:bg-[#7b0d0d] transition">
-
-                <i class='bx bx-menu'></i>
-
-            </button>
-
-            <!-- Title -->
-            <h1 class="text-white mx-auto text-3xl font-semibold tracking-wide">
-                Dashboard
-            </h1>
-
-        </div>
-
-    </header>
-
-
-
-
-    <!-- Dashboard Card -->
-    <section class="px-4 mt-6">
-        <div class="bg-[#780909] rounded-[28px] p-5 shadow-2xl">
-
-            <!-- Top Row -->
-            <div class="flex justify-between items-start">
-
-                <!-- User -->
-                <div class="flex items-center gap-3">
-
-
-                    <div>
-
-                        <p id="greeting" class="text-gray-200 text-1xl font-bold">
-
-                        </p>
-
-                        <div style="display: flex; color: #ffffff; font-size: 20px;">
-                            <h3>WELCOME,</h3>
-                            <h2 id="welcomeName" class="text-white text-3xl font-bold leading-tight">
-
-                            </h2>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
-                <!-- Right Icons -->
-                <div class="flex items-center gap-3">
-
-                    <button
-                        class="w-12 h-12 rounded-full border border-[#b88a4b] flex items-center justify-center text-yellow-300 text-xl">
-                        <i class='bx bx-envelope'></i>
-                    </button>
-
-                    <button
-                        class="relative w-12 h-12 rounded-full border border-[#b88a4b] flex items-center justify-center text-yellow-300 text-xl">
-
-                        <i class='bx bx-bell'></i>
-
-                        <span class="absolute top-2 right-2 w-2 h-2 bg-yellow-300 rounded-full"></span>
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <!-- ======= Dashboard Slider ======= -->
-            <div class="relative mt-6">
-
-                <!-- Slider -->
-                <div id="dashboardSlider"
-                    class="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide pb-2">
-
-                    <!-- Card 1 -->
-                    <div class="snap-center shrink-0 w-[92%] rounded-3xl overflow-hidden
-            bg-gradient-to-br from-[#b81616] via-[#8b0d0d] to-[#d96d36]
-            p-6 shadow-2xl">
-
-                        <p class="text-white/80 text-lg">
-                            All-Time Earnings
-                        </p>
-
-                        <h1 id="dashboardBalance" class="text-white text-4xl font-bold mt-2">
-                            00.00
-                        </h1>
-
-                        <div class="flex gap-3 mt-8">
-
-                            <button
-                                class="flex-1 border border-yellow-300 rounded-xl py-3 text-yellow-100 font-medium hover:bg-white/10 transition protected-feature">
-                                Withdraw
-                            </button>
-
-                            <button
-                                class="flex-1 border border-yellow-300 rounded-xl py-3 text-yellow-100 font-medium hover:bg-white/10 transition protected-feature">
-                                History
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="snap-center shrink-0 w-[92%] rounded-3xl overflow-hidden
-            bg-gradient-to-br from-[#FFD36A] to-[#D18A18]
-            p-6 shadow-2xl">
-
-                        <p class="text-[#5d1b00] text-lg font-semibold">
-                            Available Balance
-                        </p>
-
-                        <h1 id="dashboardBalance1" class="text-[#3a0909] text-4xl font-bold mt-2">
-                            ₦0.00
-                        </h1>
-
-                        <p class="text-[#5d1b00] mt-2 text-sm">
-                            Withdrawable Amount
-                        </p>
-
-                        <button
-                            class="w-full mt-8 bg-[#8b0d0d] text-white rounded-xl py-3 font-semibold protected-feature">
-                            Withdraw
-                        </button>
-
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="snap-center shrink-0 w-[92%] rounded-3xl overflow-hidden
-            bg-gradient-to-br from-[#7B0D0D] via-[#590707] to-[#300303]
-            p-6 shadow-2xl">
-
-                        <p class="text-white/80 text-lg">
-                            Total Balance
-                        </p>
-
-                        <h1 id="dashboardBalance2" class="text-white text-4xl font-bold mt-2">
-                            00.00
-                        </h1>
-
-                        <p class="text-white/70 mt-2">
-                            Earn more by inviting friends.
-                        </p>
-
-                        <button
-                            class="mt-8 w-full border border-yellow-300 py-3 rounded-xl text-yellow-200 protected-feature">
-                            Invite Friends
-                        </button>
-
-                    </div>
-
-                </div>
-
-                <!-- Slider Dots -->
-                <div class="flex justify-center gap-2 mt-5">
-
-                    <span class="dot w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
-
-                    <span class="dot w-2.5 h-2.5 rounded-full bg-white/30"></span>
-
-                    <span class="dot w-2.5 h-2.5 rounded-full bg-white/30"></span>
-
-                </div>
-
-            </div>
-
-
-
-
-        </div>
-    </section>
-
-    <!-- ========================= -->
-    <!-- Premium Quick Actions -->
-    <!-- ========================= -->
-
-    <section class="px-5 mt-8 mb-8">
-
-        <div class="bg-gradient-to-br from-[#7B0D0D] via-[#650909] to-[#4A0505]
-                rounded-[32px]
-                p-6
-                border border-[#A53A3A]/30
-                shadow-[0_20px_60px_rgba(0,0,0,.45)]">
-
-            <!-- Heading -->
-            <div class="flex items-center justify-between mb-6">
-
-                <div>
-                    <h2 class="text-2xl font-bold text-white protected-feature">
-                        Quick Actions
-                    </h2>
-
-                    <p class="text-yellow-100 text-sm mt-1 protected-feature">
-                        Everything you need in one place
-                    </p>
-                </div>
-
-                <button class="text-[#FFD86B] font-semibold hover:text-white transition protected-feature">
-                    View All
-                </button>
-
-            </div>
-
-            <!-- Grid -->
-            <div class="grid grid-cols-4 gap-y-7 gap-x-4">
-
-                <!-- Deposit -->
-                <a href="#" class="quick-action protected-feature">
-                    <div class="quick-icon">
-                        <i class='bx bxs-wallet-alt'></i>
-                    </div>
-                    <span>Deposit</span>
-                </a>
-
-                <!-- Withdraw -->
-                <a href="#" class="quick-action protected-feature">
-                    <div class="quick-icon">
-                        <i class='bx bxs-bank'></i>
-                    </div>
-                    <span>Withdraw</span>
-                </a>
-
-                <!-- Transfer -->
-                <a href="#" class="quick-action protected-feature">
-                    <div class="quick-icon">
-                        <i class='bx bxs-send'></i>
-                    </div>
-                    <span>Transfer</span>
-                </a>
-
-                <!-- Referral -->
-                <a href="#" class="quick-action protected-feature">
-                    <div class="quick-icon">
-                        <i class='bx bxs-user-plus'></i>
-                    </div>
-                    <span>Referral</span>
-                </a>
-
-                <!-- History -->
-                <a href="#" class="quick-action protected-feature">
-                    <div class="quick-icon">
-                        <i class='bx bxs-receipt'></i>
-                    </div>
-                    <span>History</span>
-                </a>
-
-                <!-- Rewards -->
-                <a href="#" class="quick-action protected-feature">
-                    <div class="quick-icon">
-                        <i class='bx bxs-medal'></i>
-                    </div>
-                    <span>Rewards</span>
-                </a>
-
-                <!-- Support -->
-                <a href="#" class="quick-action protected-feature">
-                    <div class="quick-icon">
-                        <i class='bx bxs-help-circle'></i>
-                    </div>
-                    <span>Support</span>
-                </a>
-
-                <!-- More -->
-                <a href="#" class="quick-action protected-feature">
-                    <div class="quick-icon">
-                        <i class='bx bxs-grid-alt'></i>
-                    </div>
-                    <span>More</span>
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ========================= -->
-    <!-- Bottom Navigation -->
-    <!-- ========================= -->
-
-    <nav class="fixed inset-x-0 bottom-5 z-[9999] flex justify-center pointer-events-none">
-        <div class="pointer-events-auto w-[92%] max-w-md rounded-full
-bg-gradient-to-r from-[#690909] via-[#7B0D0D] to-[#690909]
-border border-yellow-400/20
-shadow-2xl
-px-6 py-4">
-
-            <div class="flex justify-between items-center">
-
-                <!-- Dashboard -->
-                <a href="#" class="nav-item active protected-feature">
-
-                    <div class="nav-icon">
-                        <i class='bx bxs-home'></i>
-                    </div>
-
-                    <span>Home</span>
-
-                </a>
-
-                <!-- Wallet -->
-                <a href="#" class="nav-item protected-feature">
-
-                    <div class="nav-icon">
-                        <i class='bx bxs-wallet'></i>
-                    </div>
-
-                    <span>Wallet</span>
-
-                </a>
-
-                <!-- Center Button -->
-                <a href="#" class="relative -mt-12 protected-feature">
-
-                    <div class="home-button">
-
-                        <i class='bx bxs-plus-circle'></i>
-
-                    </div>
-
-                </a>
-
-                <!-- Transactions -->
-                <a href="#" class="nav-item protected-feature">
-
-                    <div class="nav-icon">
-                        <i class='bx bxs-receipt'></i>
-                    </div>
-
-                    <span>History</span>
-
-                </a>
-
-                <!-- Profile -->
-                <a href="#" class="nav-item protected-feature">
-
-                    <div class="nav-icon">
-                        <i class='bx bxs-user'></i>
-                    </div>
-
-                    <span>Profile</span>
-
-                </a>
-
-            </div>
-
-        </div>
-
-    </nav>
-
-
-
-
-    <script>
-        const slider = document.getElementById("dashboardSlider");
-        const dots = document.querySelectorAll(".dot");
-
-        const cards = slider.children;
-
-        let index = 0;
-
-        function updateDots() {
-
-            dots.forEach((dot, i) => {
-
-                if (i === index) {
-
-                    dot.classList.remove("bg-white/30");
-                    dot.classList.add("bg-yellow-400");
-
-                } else {
-
-                    dot.classList.remove("bg-yellow-400");
-                    dot.classList.add("bg-white/30");
-
-                }
-
-            });
-
-        }
-
-        function slideToCard(i) {
-
-            index = i;
-
-            cards[i].scrollIntoView({
-
-                behavior: "smooth",
-                inline: "center"
-
-            });
-
-            updateDots();
-
-        }
-
-        setInterval(() => {
-
-            index++;
-
-            if (index >= cards.length) {
-
-                index = 0;
-
-            }
-
-            slideToCard(index);
-
-        }, 5000);
-
-        slider.addEventListener("scroll", () => {
-
-            const cardWidth = cards[0].offsetWidth + 16;
-
-            const current = Math.round(slider.scrollLeft / cardWidth);
-
-            if (current !== index && current < cards.length) {
-
-                index = current;
-
-                updateDots();
-
-            }
-
-        });
-
-        updateDots();
-
-
-
-        // Dynamic Greeting
-        const greeting = document.getElementById("greeting");
-        const hour = new Date().getHours();
-
-        let message = "";
-        let emoji = "";
-
-        if (hour >= 5 && hour < 12) {
-            message = "Good Morning";
-            emoji = "☀️";
-        } else if (hour >= 12 && hour < 17) {
-            message = "Good Afternoon";
-            emoji = "🌤️";
-        } else if (hour >= 17 && hour < 20) {
-            message = "Good Evening";
-            emoji = "🌇";
-        } else {
-            message = "Good Night";
-            emoji = "🌙";
-        }
-
-        greeting.textContent = `${message} ${emoji}`;
-
-
-
-        // User Name
-        const user = JSON.parse(localStorage.getItem("loggedInUser"));
-
-        if (user) {
-            document.getElementById("welcomeName").textContent =
-                user.username;
-        }
-
-
-        const bonus = Number(localStorage.getItem("welcomeBonus")) || 0;
-
-        document.getElementById("dashboardBalance").textContent =
-            `₦${bonus.toLocaleString('en-NG', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })}`;
-
-
-        const bonus1 = Number(localStorage.getItem("welcomeBonus")) || 0;
-
-        document.getElementById("dashboardBalance1").textContent =
-            `₦${bonus.toLocaleString('en-NG', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })}`;
-
-
-        const bonus2 = Number(localStorage.getItem("welcomeBonus")) || 0;
-
-        document.getElementById("dashboardBalance2").textContent =
-            `₦${bonus.toLocaleString('en-NG', {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })}`;
-    </script>
-
-
-
-
-    <!-- ========================= -->
-    <!-- Activation Modal -->
-    <!-- ========================= -->
-
-    <div id="activationModal"
-        class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[99999] hidden items-center justify-center px-5">
-
-        <div class="w-full max-w-sm bg-[#6A0909] rounded-3xl p-6 border border-yellow-400/20 shadow-2xl">
-
-            <!-- Icon -->
-            <div
-                class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-yellow-300 to-yellow-500 flex items-center justify-center shadow-lg">
-
-                <i class='bx bxs-lock-alt text-5xl text-[#6A0909]'></i>
-
-            </div>
-
-            <!-- Title -->
-            <h2 class="text-white text-2xl font-bold text-center mt-6">
-                Account Not Activated
-            </h2>
-
-            <!-- Message -->
-            <p class="text-yellow-100 text-center mt-3 leading-7">
-
-                Activate your account to make your first withdrawal and unlock all NeoPay features.
-
-            </p>
-
-            <!-- Buttons -->
-            <div class="mt-8 space-y-3">
-
-                <a href="/payment.html"
-                    class="block w-full bg-gradient-to-r from-yellow-300 to-yellow-500 text-[#6A0909] text-center font-bold py-4 rounded-xl">
-
-                    Activate Your Account
-
-                </a>
-
-                <button id="closeModal" class="w-full border border-yellow-400/30 text-white py-4 rounded-xl">
-
-                    Maybe Later
-
-                </button>
 
             </div>
 
@@ -1009,87 +1056,1558 @@ px-6 py-4">
     </div>
 
 
+    <div class="py-6">
+
+        <p class="px-7 mb-3 text-[9px] uppercase tracking-[2px] text-white/30">
+            Main Menu
+        </p>
 
 
-    <script>
-        const modal = document.getElementById("activationModal");
-        const closeModal = document.getElementById("closeModal");
+        <a href="#" class="sidebar-link active protected-feature">
 
-        // Open Modal
-        function openActivationModal(e) {
+            <i class='bx bxs-dashboard'></i>
 
-            if (e) {
-                e.preventDefault();
+            <span>Dashboard</span>
+
+        </a>
+
+
+        <a href="/payment.html"
+           class="sidebar-link protected-feature">
+
+            <i class='bx bxs-wallet'></i>
+
+            <span>Activate Account</span>
+
+        </a>
+
+
+        <a href="#"
+           class="sidebar-link protected-feature">
+
+            <i class='bx bx-money-withdraw'></i>
+
+            <span>Withdraw</span>
+
+        </a>
+
+
+        <a href="#"
+           class="sidebar-link protected-feature">
+
+            <i class='bx bx-transfer'></i>
+
+            <span>Transactions</span>
+
+        </a>
+
+
+        <a href="#"
+           class="sidebar-link protected-feature">
+
+            <i class='bx bx-group'></i>
+
+            <span>Referral</span>
+
+        </a>
+
+
+        <p class="px-7 mt-8 mb-3 text-[9px] uppercase tracking-[2px] text-white/30">
+            Account
+        </p>
+
+
+        <a href="#"
+           class="sidebar-link protected-feature">
+
+            <i class='bx bx-support'></i>
+
+            <span>Support</span>
+
+        </a>
+
+
+        <a href="#"
+           class="sidebar-link protected-feature">
+
+            <i class='bx bx-cog'></i>
+
+            <span>Settings</span>
+
+        </a>
+
+
+        <a href="/index.html"
+           class="sidebar-link !text-red-300 hover:!bg-red-900/30">
+
+            <i class='bx bx-log-out !text-red-300'></i>
+
+            <span>Logout</span>
+
+        </a>
+
+    </div>
+
+
+    <div class="absolute bottom-5 left-5 right-5">
+
+        <div class="rounded-2xl p-4 bg-white/[.045] border border-white/[.08]">
+
+            <div class="flex items-center justify-between">
+
+                <p class="text-[10px] text-white/40 uppercase tracking-wider">
+                    Account
+                </p>
+
+                <span class="w-2 h-2 rounded-full bg-green-400"></span>
+
+            </div>
+
+            <p class="text-xs text-white/80 font-semibold mt-2">
+                Active Session
+            </p>
+
+            <p class="text-[9px] text-white/30 mt-1">
+                NeoPay secure environment
+            </p>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =========================================================
+     MOBILE HEADER
+========================================================= -->
+
+<header class="mobile-header top-header sticky top-0 z-40 px-5 py-4">
+
+    <div class="flex items-center justify-between">
+
+        <button
+            id="menuBtn"
+            class="icon-button !bg-[#fff8e6] !border-[#f0dfad] !text-[#720909]">
+
+            <i class='bx bx-menu text-xl'></i>
+
+        </button>
+
+
+        <div class="text-center">
+
+            <p class="text-[8px] uppercase tracking-[2px] text-gray-400">
+                NeoPay
+            </p>
+
+            <h1 class="font-bold text-sm mt-0.5">
+                Dashboard
+            </h1>
+
+        </div>
+
+
+        <button class="icon-button">
+
+            <i class='bx bx-bell text-lg'></i>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     OVERLAY
+========================================================= -->
+
+<div
+    id="overlay"
+    class="fixed inset-0 bg-black/50 backdrop-blur-[2px] z-[60] hidden">
+</div>
+
+
+
+<!-- =========================================================
+     MOBILE SIDEBAR
+========================================================= -->
+
+<div
+    id="mobileSidebar"
+    class="fixed left-0 top-0 bottom-0 w-[285px] sidebar z-[70] -translate-x-full transition-transform duration-300">
+
+    <div class="p-6">
+
+        <div class="flex items-center justify-between">
+
+            <div>
+
+                <h2 class="text-white text-xl font-bold">
+                    NeoPay
+                </h2>
+
+                <p class="text-white/40 text-xs mt-1">
+                    Finance Platform
+                </p>
+
+            </div>
+
+
+            <button
+                id="closeMenu"
+                class="w-10 h-10 rounded-xl bg-white/10 text-white flex items-center justify-center">
+
+                <i class='bx bx-x text-xl'></i>
+
+            </button>
+
+        </div>
+
+
+        <div class="mt-8">
+
+            <a href="#"
+               class="sidebar-link active protected-feature">
+
+                <i class='bx bxs-dashboard'></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="/payment.html"
+               class="sidebar-link protected-feature">
+
+                <i class='bx bxs-wallet'></i>
+
+                <span>Activate Account</span>
+
+            </a>
+
+
+            <a href="#"
+               class="sidebar-link protected-feature">
+
+                <i class='bx bx-money-withdraw'></i>
+
+                <span>Withdraw</span>
+
+            </a>
+
+
+            <a href="#"
+               class="sidebar-link protected-feature">
+
+                <i class='bx bx-transfer'></i>
+
+                <span>Transactions</span>
+
+            </a>
+
+
+            <a href="#"
+               class="sidebar-link protected-feature">
+
+                <i class='bx bx-group'></i>
+
+                <span>Referral</span>
+
+            </a>
+
+
+            <a href="#"
+               class="sidebar-link protected-feature">
+
+                <i class='bx bx-support'></i>
+
+                <span>Support</span>
+
+            </a>
+
+
+            <a href="#"
+               class="sidebar-link protected-feature">
+
+                <i class='bx bx-cog'></i>
+
+                <span>Settings</span>
+
+            </a>
+
+
+            <a href="/index.html"
+               class="sidebar-link !text-red-300">
+
+                <i class='bx bx-log-out !text-red-300'></i>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<main class="main-content">
+
+    <div class="max-w-[1250px] mx-auto px-4 sm:px-6 lg:px-8">
+
+
+        <!-- =================================================
+             DESKTOP HEADER
+        ================================================= -->
+
+        <div class="hidden lg:flex items-center justify-between py-7">
+
+            <div>
+
+                <div class="flex items-center gap-2">
+
+                    <span class="w-2 h-2 rounded-full bg-green-500"></span>
+
+                    <p class="text-[10px] text-green-600 font-semibold">
+                        Account Online
+                    </p>
+
+                </div>
+
+                <p id="greeting"
+                   class="text-sm text-gray-500 mt-3">
+                    Good morning
+                </p>
+
+                <h1 class="text-[25px] font-bold mt-1 tracking-tight">
+
+                    Welcome back,
+                    <span id="desktopName">
+                        User
+                    </span>
+
+                </h1>
+
+            </div>
+
+
+            <div class="flex items-center gap-3">
+
+                <button class="icon-button">
+
+                    <i class='bx bx-envelope text-xl'></i>
+
+                </button>
+
+
+                <button class="icon-button relative">
+
+                    <i class='bx bx-bell text-xl'></i>
+
+                    <span
+                        class="absolute top-2 right-2 w-2 h-2 rounded-full bg-[#8b0d0d]">
+                    </span>
+
+                </button>
+
+
+                <div class="ml-2 profile-avatar">
+
+                    <span id="userInitial">
+                        U
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BALANCE
+        ================================================= -->
+
+        <section class="mt-5 lg:mt-0">
+
+            <div class="balance-card p-6 sm:p-8">
+
+                <div class="balance-content">
+
+                    <div class="flex items-start justify-between">
+
+                        <div>
+
+                            <div class="flex items-center gap-3">
+
+                                <p class="balance-label">
+                                    Total Balance
+                                </p>
+
+                                <span class="balance-chip">
+
+                                    <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+
+                                    Available
+
+                                </span>
+
+                            </div>
+
+
+                            <h2
+                                id="dashboardBalance"
+                                class="balance-amount text-white text-4xl sm:text-5xl font-bold mt-3">
+
+                                ₦0.00
+
+                            </h2>
+
+                            <p class="text-[10px] text-white/40 mt-2">
+                                Current NeoPay wallet balance
+                            </p>
+
+                        </div>
+
+
+                        <div class="balance-wallet">
+
+                            <i class='bx bx-wallet text-xl text-[#f4d878]'></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-9 grid grid-cols-2 gap-3">
+
+                        <button
+                            class="protected-feature balance-action balance-primary">
+
+                            Withdraw
+
+                        </button>
+
+
+                        <button
+                            class="protected-feature balance-action balance-secondary">
+
+                            View History
+
+                        </button>
+
+                    </div>
+
+
+                    <div
+                        class="flex items-center justify-between mt-5 pt-4 border-t border-white/10">
+
+                        <div>
+
+                            <p class="text-white/35 text-[9px] uppercase tracking-wider">
+                                Wallet
+                            </p>
+
+                            <p class="text-white text-xs font-semibold mt-1">
+                                NeoPay Main Wallet
+                            </p>
+
+                        </div>
+
+
+                        <div class="flex items-center gap-2">
+
+                            <span class="w-2 h-2 rounded-full bg-green-400"></span>
+
+                            <span class="text-white/60 text-[10px]">
+                                Active
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             QUICK ACTIONS
+        ================================================= -->
+
+        <section class="mt-6">
+
+            <div class="premium-card p-5 sm:p-6">
+
+                <div class="flex items-center justify-between mb-4">
+
+                    <div>
+
+                        <h2 class="font-bold text-lg">
+                            Quick Actions
+                        </h2>
+
+                        <p class="text-[11px] text-gray-400 mt-1">
+                            Access your most-used features
+                        </p>
+
+                    </div>
+
+
+                    <span class="text-[9px] font-bold uppercase tracking-wider text-gray-400">
+                        8 Services
+                    </span>
+
+                </div>
+
+
+                <div class="grid grid-cols-4 gap-2 sm:gap-3">
+
+
+                    <a href="#"
+                       class="quick-action protected-feature">
+
+                        <div class="quick-icon">
+                            <i class='bx bxs-wallet-alt'></i>
+                        </div>
+
+                        <span>Buy NFK</span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-action protected-feature">
+
+                        <div class="quick-icon">
+                            <i class='bx bxs-bank'></i>
+                        </div>
+
+                        <span>Withdraw</span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-action protected-feature">
+
+                        <div class="quick-icon">
+                            <i class='bx bxs-send'></i>
+                        </div>
+
+                        <span>Settings</span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-action protected-feature">
+
+                        <div class="quick-icon">
+                            <i class='bx bxs-user-plus'></i>
+                        </div>
+
+                        <span>Referral</span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-action protected-feature">
+
+                        <div class="quick-icon">
+                            <i class='bx bxs-receipt'></i>
+                        </div>
+
+                        <span>Power Flow</span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-action protected-feature">
+
+                        <div class="quick-icon">
+                            <i class='bx bxs-medal'></i>
+                        </div>
+
+                        <span>Watch to Earn</span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-action protected-feature">
+
+                        <div class="quick-icon">
+                            <i class='bx bxs-help-circle'></i>
+                        </div>
+
+                        <span>Support</span>
+
+                    </a>
+
+
+                    <a href="#"
+                       class="quick-action protected-feature">
+
+                        <div class="quick-icon">
+                            <i class='bx bxs-grid-alt'></i>
+                        </div>
+
+                        <span>More</span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             STATISTICS
+        ================================================= -->
+
+        <section class="mt-6">
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+
+
+                <div class="stat-card">
+
+                    <div class="flex items-center justify-between">
+
+                        <div class="stat-icon">
+
+                            <i class='bx bx-trending-up'></i>
+
+                        </div>
+
+                        <span class="text-[9px] text-green-600 font-bold">
+                            +12%
+                        </span>
+
+                    </div>
+
+                    <p class="text-[10px] text-gray-400 mt-4">
+                        Total Earnings
+                    </p>
+
+                    <h3
+                        id="dashboardBalance1"
+                        class="font-bold text-lg mt-1">
+
+                        ₦0.00
+
+                    </h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class='bx bx-transfer-alt'></i>
+
+                    </div>
+
+                    <p class="text-[10px] text-gray-400 mt-4">
+                        Transactions
+                    </p>
+
+                    <h3 class="font-bold text-lg mt-1">
+                        0
+                    </h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class='bx bx-group'></i>
+
+                    </div>
+
+                    <p class="text-[10px] text-gray-400 mt-4">
+                        Referrals
+                    </p>
+
+                    <h3 class="font-bold text-lg mt-1">
+                        0
+                    </h3>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+
+                        <i class='bx bx-gift'></i>
+
+                    </div>
+
+                    <p class="text-[10px] text-gray-400 mt-4">
+                        Rewards
+                    </p>
+
+                    <h3 class="font-bold text-lg mt-1">
+                        ₦0.00
+                    </h3>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             LOWER SECTION
+        ================================================= -->
+
+        <section class="grid lg:grid-cols-2 gap-6 mt-6">
+
+
+            <!-- ACTIVITY -->
+
+            <div class="premium-card p-5 sm:p-6">
+
+                <div class="flex items-center justify-between">
+
+                    <div>
+
+                        <div class="flex items-center gap-2">
+
+                            <h2 class="font-bold">
+                                Recent Activity
+                            </h2>
+
+                            <span
+                                class="px-2 py-1 rounded-full bg-gray-100 text-[8px] font-bold text-gray-500">
+
+                                LATEST
+
+                            </span>
+
+                        </div>
+
+                        <p class="text-[10px] text-gray-400 mt-1">
+                            Your latest account activity
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        class="text-[10px] font-bold text-[#7b0d0d] protected-feature">
+
+                        View all
+
+                    </button>
+
+                </div>
+
+
+                <div class="mt-4">
+
+
+                    <div class="transaction">
+
+                        <div class="flex items-center gap-3">
+
+                            <div class="transaction-icon">
+
+                                <i class='bx bx-wallet text-[#7b0d0d]'></i>
+
+                            </div>
+
+                            <div>
+
+                                <p class="text-xs font-semibold">
+                                    Welcome Bonus
+                                </p>
+
+                                <p class="text-[9px] text-gray-400 mt-1">
+                                    Account credit
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="text-[10px] font-bold text-green-600">
+                            Credited
+                        </span>
+
+                    </div>
+
+
+                    <div class="transaction">
+
+                        <div class="flex items-center gap-3">
+
+                            <div class="transaction-icon">
+
+                                <i class='bx bx-user-plus text-[#7b0d0d]'></i>
+
+                            </div>
+
+                            <div>
+
+                                <p class="text-xs font-semibold">
+                                    Referral
+                                </p>
+
+                                <p class="text-[9px] text-gray-400 mt-1">
+                                    No referral activity
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="text-[10px] text-gray-400">
+                            —
+                        </span>
+
+                    </div>
+
+
+                    <div class="transaction">
+
+                        <div class="flex items-center gap-3">
+
+                            <div class="transaction-icon">
+
+                                <i class='bx bx-transfer text-[#7b0d0d]'></i>
+
+                            </div>
+
+                            <div>
+
+                                <p class="text-xs font-semibold">
+                                    Withdrawal
+                                </p>
+
+                                <p class="text-[9px] text-gray-400 mt-1">
+                                    No withdrawal yet
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="text-[10px] text-gray-400">
+                            —
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACTIVATION -->
+
+            <div class="activation-card p-5 sm:p-6">
+
+                <div class="activation-content">
+
+                    <div class="flex items-start justify-between">
+
+                        <div>
+
+                            <p class="text-[9px] uppercase tracking-[1.7px] text-[#9b7b30] font-bold">
+                                Account Status
+                            </p>
+
+                            <h2 class="font-bold text-xl mt-2">
+                                Complete Your Activation
+                            </h2>
+
+                        </div>
+
+
+                        <div
+                            class="w-11 h-11 rounded-xl bg-[#f4d878] flex items-center justify-center">
+
+                            <i class='bx bx-shield-quarter text-xl text-[#680909]'></i>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-5 flex items-center gap-3">
+
+                        <div class="flex-1 h-2 rounded-full bg-[#eee5cc] overflow-hidden">
+
+                            <div
+                                class="h-full w-[35%] rounded-full bg-[#7b0d0d]">
+                            </div>
+
+                        </div>
+
+                        <span class="text-[9px] font-bold text-[#8b702b]">
+                            35%
+                        </span>
+
+                    </div>
+
+
+                    <p class="text-xs text-gray-500 leading-6 mt-4">
+
+                        Activate your NeoPay account to unlock
+                        withdrawals, transfers and additional platform features.
+
+                    </p>
+
+
+                    <a
+                        href="/payment.html"
+                        class="protected-feature activation-button mt-6">
+
+                        Activate Account
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================= -->
+
+        <div class="text-center py-9">
+
+            <div class="flex items-center justify-center gap-2">
+
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>
+
+                <p class="text-[9px] text-gray-400 font-semibold">
+                    NeoPay Systems Online
+                </p>
+
+            </div>
+
+            <p class="text-[8px] text-gray-300 mt-2">
+                Secure • Simple • Reliable
+            </p>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     MOBILE BOTTOM NAV
+========================================================= -->
+
+<nav
+    class="bottom-navigation fixed bottom-4 left-0 right-0 z-50 px-4">
+
+    <div
+        class="bottom-nav max-w-md mx-auto rounded-[22px] px-5 py-3">
+
+        <div class="flex items-center justify-between">
+
+
+            <a href="#"
+               class="nav-item active protected-feature">
+
+                <i class='bx bxs-home'></i>
+
+                <span>Home</span>
+
+            </a>
+
+
+            <a href="#"
+               class="nav-item protected-feature">
+
+                <i class='bx bxs-wallet'></i>
+
+                <span>Wallet</span>
+
+            </a>
+
+
+            <a href="#"
+               class="protected-feature">
+
+                <div class="center-button">
+
+                    <i class='bx bx-plus'></i>
+
+                </div>
+
+            </a>
+
+
+            <a href="#"
+               class="nav-item protected-feature">
+
+                <i class='bx bxs-receipt'></i>
+
+                <span>History</span>
+
+            </a>
+
+
+            <a href="#"
+               class="nav-item protected-feature">
+
+                <i class='bx bxs-user'></i>
+
+                <span>Profile</span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================================================
+     ACTIVATION MODAL
+========================================================= -->
+
+<div
+    id="activationModal"
+    class="modal fixed inset-0 bg-black/60 backdrop-blur-sm z-[999] hidden items-center justify-center px-5">
+
+    <div
+        class="modal-box w-full max-w-sm bg-white rounded-[28px] p-6 shadow-2xl">
+
+
+        <div class="text-center">
+
+
+            <div class="modal-icon">
+
+                <i class='bx bxs-lock-alt text-3xl'></i>
+
+            </div>
+
+
+            <p class="text-[9px] uppercase tracking-[2px] text-gray-400 font-bold mt-5">
+                Account Security
+            </p>
+
+
+            <h2 class="font-bold text-xl mt-2">
+                Account Not Activated
+            </h2>
+
+
+            <p class="text-sm text-gray-500 leading-6 mt-3">
+
+                Activate your NeoPay account to unlock
+                withdrawals, transfers and other account features.
+
+            </p>
+
+
+            <div class="mt-7 space-y-3">
+
+
+                <a
+                    href="https://paystack.shop/pay/my6ypcp1-x"
+                    class="block py-3.5 rounded-xl bg-[#730909] text-[#f4d878] font-bold text-sm shadow-lg">
+
+                    Activate Account
+
+                </a>
+
+
+                <button
+                    id="closeModal"
+                    class="w-full py-3.5 rounded-xl bg-gray-100 text-gray-600 font-semibold text-sm">
+
+                    Maybe Later
+
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   USER DATA
+========================================================= */
+
+const user =
+    JSON.parse(
+        localStorage.getItem("loggedInUser")
+    );
+
+
+const welcomeBonus =
+    Number(
+        localStorage.getItem("welcomeBonus")
+    ) || 0;
+
+
+
+/* =========================================================
+   USERNAME
+========================================================= */
+
+if (user && user.username) {
+
+    const username =
+        user.username;
+
+    const welcomeName =
+        document.getElementById(
+            "desktopName"
+        );
+
+    if (welcomeName) {
+
+        welcomeName.textContent =
+            username;
+
+    }
+
+
+    const initial =
+        username
+            .charAt(0)
+            .toUpperCase();
+
+
+    const userInitial =
+        document.getElementById(
+            "userInitial"
+        );
+
+    if (userInitial) {
+
+        userInitial.textContent =
+            initial;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   BALANCE
+========================================================= */
+
+const formattedBalance =
+    `₦${welcomeBonus.toLocaleString(
+        "en-NG",
+        {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }
+    )}`;
+
+
+const dashboardBalance =
+    document.getElementById(
+        "dashboardBalance"
+    );
+
+
+const dashboardBalance1 =
+    document.getElementById(
+        "dashboardBalance1"
+    );
+
+
+if (dashboardBalance) {
+
+    dashboardBalance.textContent =
+        formattedBalance;
+
+}
+
+
+if (dashboardBalance1) {
+
+    dashboardBalance1.textContent =
+        formattedBalance;
+
+}
+
+
+
+/* =========================================================
+   GREETING
+========================================================= */
+
+const hour =
+    new Date().getHours();
+
+
+let greetingText;
+
+
+if (hour >= 5 && hour < 12) {
+
+    greetingText =
+        "Good morning";
+
+} else if (hour >= 12 && hour < 17) {
+
+    greetingText =
+        "Good afternoon";
+
+} else if (hour >= 17 && hour < 21) {
+
+    greetingText =
+        "Good evening";
+
+} else {
+
+    greetingText =
+        "Good night";
+
+}
+
+
+const greeting =
+    document.getElementById(
+        "greeting"
+    );
+
+
+if (greeting) {
+
+    greeting.textContent =
+        greetingText;
+
+}
+
+
+
+/* =========================================================
+   ACTIVATION MODAL
+========================================================= */
+
+const modal =
+    document.getElementById(
+        "activationModal"
+    );
+
+
+const closeModal =
+    document.getElementById(
+        "closeModal"
+    );
+
+
+function openActivationModal() {
+
+    if (!modal) return;
+
+    modal.classList.remove(
+        "hidden"
+    );
+
+    modal.classList.add(
+        "flex"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function hideActivationModal() {
+
+    if (!modal) return;
+
+    modal.classList.remove(
+        "flex"
+    );
+
+    modal.classList.add(
+        "hidden"
+    );
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+if (closeModal) {
+
+    closeModal.addEventListener(
+        "click",
+        hideActivationModal
+    );
+
+}
+
+
+if (modal) {
+
+    modal.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === modal
+            ) {
+
+                hideActivationModal();
+
             }
 
-            modal.classList.remove("hidden");
-            modal.classList.add("flex");
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            hideActivationModal();
 
         }
 
-        // Close Modal
-        closeModal.onclick = () => {
-
-            modal.classList.remove("flex");
-            modal.classList.add("hidden");
-
-        }
-
-        // Close when clicking outside
-        modal.onclick = (e) => {
-
-            if (e.target === modal) {
-
-                modal.classList.remove("flex");
-                modal.classList.add("hidden");
-
-            }
+    }
+);
 
 
-        }
 
-        // Check if account is activated
-        const activated = localStorage.getItem("accountActivated") === "true";
+/* =========================================================
+   ACCOUNT ACTIVATION CHECK
+========================================================= */
 
-        // Attach modal to every protected feature
-        document.querySelectorAll(".protected-feature").forEach(item => {
+function checkActivation() {
 
-            item.addEventListener("click", function (e) {
+    return (
+        localStorage.getItem(
+            "accountActivated"
+        ) === "true"
+    );
 
-                if (!activated) {
-                    e.preventDefault();
-                    openActivationModal();
+}
+
+
+document
+    .querySelectorAll(
+        ".protected-feature"
+    )
+    .forEach(
+        function(element) {
+
+            element.addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        !checkActivation()
+                    ) {
+
+                        event.preventDefault();
+
+                        openActivationModal();
+
+                    }
+
                 }
+            );
 
-            });
-
-        });
-    </script>
-
-
-
-    <script>
-        const menuBtn = document.getElementById("menuBtn");
-        const closeMenu = document.getElementById("closeMenu");
-        const sidebar = document.getElementById("sidebar");
-        const overlay = document.getElementById("overlay");
-
-        function openMenu() {
-            sidebar.classList.remove("-translate-x-full");
-            overlay.classList.remove("hidden");
         }
+    );
 
-        function closeSideMenu() {
-            sidebar.classList.add("-translate-x-full");
-            overlay.classList.add("hidden");
+
+
+/* =========================================================
+   MOBILE SIDEBAR
+========================================================= */
+
+const menuBtn =
+    document.getElementById(
+        "menuBtn"
+    );
+
+
+const closeMenu =
+    document.getElementById(
+        "closeMenu"
+    );
+
+
+const mobileSidebar =
+    document.getElementById(
+        "mobileSidebar"
+    );
+
+
+const overlay =
+    document.getElementById(
+        "overlay"
+    );
+
+
+function openMenu() {
+
+    if (!mobileSidebar || !overlay)
+        return;
+
+    mobileSidebar.classList.remove(
+        "-translate-x-full"
+    );
+
+    overlay.classList.remove(
+        "hidden"
+    );
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+function closeSideMenu() {
+
+    if (!mobileSidebar || !overlay)
+        return;
+
+    mobileSidebar.classList.add(
+        "-translate-x-full"
+    );
+
+    overlay.classList.add(
+        "hidden"
+    );
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+if (menuBtn) {
+
+    menuBtn.addEventListener(
+        "click",
+        openMenu
+    );
+
+}
+
+
+if (closeMenu) {
+
+    closeMenu.addEventListener(
+        "click",
+        closeSideMenu
+    );
+
+}
+
+
+if (overlay) {
+
+    overlay.addEventListener(
+        "click",
+        closeSideMenu
+    );
+
+}
+
+
+
+/* =========================================================
+   MOBILE SIDEBAR LINKS
+========================================================= */
+
+document
+    .querySelectorAll(
+        "#mobileSidebar a"
+    )
+    .forEach(
+        function(link) {
+
+            link.addEventListener(
+                "click",
+                function() {
+
+                    closeSideMenu();
+
+                }
+            );
+
         }
+    );
 
-        menuBtn.addEventListener("click", openMenu);
+</script>
 
-        closeMenu.addEventListener("click", closeSideMenu);
 
-        overlay.addEventListener("click", closeSideMenu);
-    </script>
 </body>
 
 </html>

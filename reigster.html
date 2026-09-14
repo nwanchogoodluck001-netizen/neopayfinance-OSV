@@ -1,153 +1,97 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoPay Registration</title>
+
+    <title>Create Account | NeoPay Finance</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- Boxicons -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link
+        href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+        rel="stylesheet">
+
 
     <style>
+
         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Sora', sans-serif;
         }
 
+
+        /* ==========================================
+           BODY
+        ========================================== */
+
         body {
-
-            background-image:
-                linear-gradient(rgba(60, 0, 0, .72), rgba(60, 0, 0, .72)),
-                url("images/bg.jpg");
-
-            background-size: cover;
-
-            background-position: center;
-
-            background-repeat: no-repeat;
-
-            background-attachment: fixed;
-
-            overflow-x: hidden;
-
-            overflow-y: auto;
 
             min-height: 100vh;
 
-        }
+            background:
+                linear-gradient(
+                    rgba(52, 5, 5, .82),
+                    rgba(52, 5, 5, .88)
+                ),
+                url("images/bg.jpg");
 
-        /* Floating Bubbles */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
 
-        .bubble {
+            color: white;
 
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, .08);
-            backdrop-filter: blur(10px);
-            animation: float 12s linear infinite;
-
-        }
-
-        .bubble:nth-child(1) {
-
-            width: 260px;
-            height: 260px;
-            left: -80px;
-            top: -80px;
+            overflow-x: hidden;
 
         }
 
-        .bubble:nth-child(2) {
 
-            width: 170px;
-            height: 170px;
-            right: 8%;
-            top: 10%;
+        /* ==========================================
+           BACKGROUND
+        ========================================== */
 
-            animation-duration: 18s;
+        .background-overlay {
 
-        }
+            position: fixed;
 
-        .bubble:nth-child(3) {
+            inset: 0;
 
-            width: 320px;
-            height: 320px;
-            bottom: -130px;
-            right: -120px;
+            pointer-events: none;
 
-            animation-duration: 20s;
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(255, 215, 0, .08),
+                    transparent 30%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(255, 0, 0, .12),
+                    transparent 35%
+                );
 
-        }
-
-        .bubble:nth-child(4) {
-
-            width: 120px;
-            height: 120px;
-            bottom: 18%;
-            left: 8%;
-
-            animation-duration: 15s;
+            z-index: 0;
 
         }
 
-        .bubble:nth-child(5) {
 
-            width: 70px;
-            height: 70px;
-            left: 50%;
-            top: 12%;
-
-            animation-duration: 10s;
-
-        }
-
-        @keyframes float {
-
-            0% {
-
-                transform: translateY(0px);
-
-            }
-
-            50% {
-
-                transform: translateY(-25px);
-
-            }
-
-            100% {
-
-                transform: translateY(0px);
-
-            }
-
-        }
-
-        .glass {
-
-            background: rgba(255, 255, 255, .12);
-
-            backdrop-filter: blur(25px);
-
-            border: 1px solid rgba(255, 255, 255, .15);
-
-            box-shadow: 0 25px 60px rgba(0, 0, 0, .25);
-
-        }
-
-        input::placeholder {
-
-            color: #d9d9d9;
-
-        }
-
+        /* ==========================================
+           BUBBLES
+        ========================================== */
 
         #bubbles {
 
@@ -157,21 +101,24 @@
 
             overflow: hidden;
 
-            z-index: 0;
-
             pointer-events: none;
 
+            z-index: 1;
+
         }
+
 
         .bubble {
 
             position: absolute;
 
-            bottom: -150px;
+            bottom: -160px;
 
             border-radius: 50%;
 
-            background: rgba(255, 255, 255, .08);
+            background: rgba(255, 255, 255, .06);
+
+            border: 1px solid rgba(255, 255, 255, .05);
 
             backdrop-filter: blur(8px);
 
@@ -179,11 +126,14 @@
 
         }
 
+
         @keyframes rise {
 
             0% {
 
-                transform: translateY(0) scale(.3);
+                transform:
+                    translateY(0)
+                    scale(.4);
 
                 opacity: 0;
 
@@ -191,185 +141,1256 @@
 
             20% {
 
-                opacity: 1;
+                opacity: .8;
 
             }
 
             100% {
 
-                transform: translateY(-120vh) scale(1.4);
+                transform:
+                    translateY(-120vh)
+                    scale(1.2);
 
                 opacity: 0;
 
             }
 
         }
+
+
+        /* ==========================================
+           PAGE WRAPPER
+        ========================================== */
+
+        .page-wrapper {
+
+            position: relative;
+
+            z-index: 5;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 45px 20px;
+
+        }
+
+
+        /* ==========================================
+           REGISTER CARD
+        ========================================== */
+
+        .register-card {
+
+            width: 100%;
+
+            max-width: 560px;
+
+            background:
+                rgba(52, 7, 7, .72);
+
+            border:
+
+                1px solid
+                rgba(255, 255, 255, .12);
+
+            backdrop-filter: blur(30px);
+
+            -webkit-backdrop-filter: blur(30px);
+
+            border-radius: 34px;
+
+            padding: 42px;
+
+            box-shadow:
+
+                0 35px 100px
+                rgba(0, 0, 0, .35),
+
+                inset 0 1px 0
+                rgba(255, 255, 255, .08);
+
+        }
+
+
+        /* ==========================================
+           LOGO
+        ========================================== */
+
+        .logo-wrapper {
+
+            width: 76px;
+            height: 76px;
+
+            margin: 0 auto;
+
+            padding: 4px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd447,
+                    #c99a16
+                );
+
+            box-shadow:
+
+                0 15px 35px
+                rgba(0, 0, 0, .25),
+
+                0 0 35px
+                rgba(255, 215, 0, .12);
+
+        }
+
+
+        .logo-wrapper img {
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            border-radius: 18px;
+
+        }
+
+
+        /* ==========================================
+           HEADER
+        ========================================== */
+
+        .register-header {
+
+            text-align: center;
+
+            margin-bottom: 32px;
+
+        }
+
+
+        .register-header h1 {
+
+            margin-top: 22px;
+
+            font-size: clamp(28px, 5vw, 38px);
+
+            line-height: 1.15;
+
+            font-weight: 800;
+
+            letter-spacing: -1.5px;
+
+        }
+
+
+        .register-header h1 span {
+
+            color: #ffd447;
+
+        }
+
+
+        .register-header p {
+
+            margin-top: 11px;
+
+            color: rgba(255, 255, 255, .58);
+
+            font-size: 13px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* ==========================================
+           FORM
+        ========================================== */
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .form-label {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            color: rgba(255, 255, 255, .88);
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            margin-bottom: 9px;
+
+        }
+
+
+        .form-label i {
+
+            color: #ffd447;
+
+            font-size: 15px;
+
+        }
+
+
+        /* ==========================================
+           INPUT WRAPPER
+        ========================================== */
+
+        .input-wrapper {
+
+            position: relative;
+
+        }
+
+
+        .input-icon {
+
+            position: absolute;
+
+            left: 17px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #e7b92f;
+
+            font-size: 19px;
+
+            z-index: 2;
+
+            pointer-events: none;
+
+        }
+
+
+        .form-input,
+        .country-select {
+
+            width: 100%;
+
+            height: 56px;
+
+            padding: 0 18px 0 49px;
+
+            border-radius: 16px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, .11);
+
+            background:
+                rgba(255, 255, 255, .065);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 12px;
+
+            transition:
+                border-color .25s ease,
+                background .25s ease,
+                box-shadow .25s ease;
+
+        }
+
+
+        .form-input::placeholder {
+
+            color: rgba(255, 255, 255, .36);
+
+        }
+
+
+        .form-input:focus,
+        .country-select:focus {
+
+            border-color: #e9bd35;
+
+            background:
+                rgba(255, 255, 255, .09);
+
+            box-shadow:
+                0 0 0 3px
+                rgba(255, 196, 40, .08);
+
+        }
+
+
+        /* ==========================================
+           COUNTRY SELECT
+        ========================================== */
+
+        .country-select {
+
+            appearance: none;
+
+            -webkit-appearance: none;
+
+            cursor: pointer;
+
+            padding-right: 45px;
+
+        }
+
+
+        .country-select option {
+
+            background: #3d0808;
+
+            color: white;
+
+        }
+
+
+        .select-arrow {
+
+            position: absolute;
+
+            right: 17px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: rgba(255, 255, 255, .55);
+
+            font-size: 18px;
+
+            pointer-events: none;
+
+        }
+
+
+        /* ==========================================
+           PASSWORD EYE
+        ========================================== */
+
+        .password-toggle {
+
+            position: absolute;
+
+            right: 16px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            background: transparent;
+
+            border: none;
+
+            color: #e7b92f;
+
+            font-size: 21px;
+
+            cursor: pointer;
+
+            z-index: 3;
+
+        }
+
+
+        .password-input {
+
+            padding-right: 50px;
+
+        }
+
+
+        /* ==========================================
+           PASSWORD STRENGTH
+        ========================================== */
+
+        .password-strength {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            margin-top: 8px;
+
+        }
+
+
+        .strength-bars {
+
+            display: flex;
+
+            gap: 4px;
+
+            flex: 1;
+
+        }
+
+
+        .strength-bar {
+
+            height: 3px;
+
+            flex: 1;
+
+            border-radius: 999px;
+
+            background: rgba(255, 255, 255, .1);
+
+            transition: .25s ease;
+
+        }
+
+
+        .strength-text {
+
+            min-width: 55px;
+
+            text-align: right;
+
+            font-size: 9px;
+
+            color: rgba(255, 255, 255, .35);
+
+        }
+
+
+        /* ==========================================
+           TERMS
+        ========================================== */
+
+        .terms-row {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 11px;
+
+            margin-top: 6px;
+
+            margin-bottom: 23px;
+
+        }
+
+
+        .terms-checkbox {
+
+            appearance: none;
+
+            -webkit-appearance: none;
+
+            width: 18px;
+
+            height: 18px;
+
+            flex-shrink: 0;
+
+            margin-top: 1px;
+
+            border-radius: 5px;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, .25);
+
+            background:
+                rgba(255, 255, 255, .05);
+
+            cursor: pointer;
+
+            position: relative;
+
+            transition: .2s ease;
+
+        }
+
+
+        .terms-checkbox:checked {
+
+            background: #d4a820;
+
+            border-color: #d4a820;
+
+        }
+
+
+        .terms-checkbox:checked::after {
+
+            content: "✓";
+
+            position: absolute;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%, -55%);
+
+            color: #4a0808;
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+        }
+
+
+        .terms-text {
+
+            color: rgba(255, 255, 255, .52);
+
+            font-size: 10px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .terms-text a {
+
+            color: #e7bd3c;
+
+            font-weight: 600;
+
+            text-decoration: none;
+
+        }
+
+
+        .terms-text a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ==========================================
+           ERROR MESSAGE
+        ========================================== */
+
+        .form-error {
+
+            display: none;
+
+            align-items: center;
+
+            gap: 8px;
+
+            padding: 11px 13px;
+
+            margin-bottom: 17px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(255, 70, 70, .08);
+
+            border:
+                1px solid
+                rgba(255, 90, 90, .15);
+
+            color: #ffb4b4;
+
+            font-size: 10px;
+
+        }
+
+
+        .form-error.show {
+
+            display: flex;
+
+        }
+
+
+        .form-error i {
+
+            font-size: 16px;
+
+        }
+
+
+        /* ==========================================
+           SUBMIT BUTTON
+        ========================================== */
+
+        .register-btn {
+
+            width: 100%;
+
+            height: 58px;
+
+            border: none;
+
+            border-radius: 17px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffd447,
+                    #d5a51c
+                );
+
+            color: #4b0808;
+
+            font-family: 'Sora', sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            box-shadow:
+
+                0 15px 30px
+                rgba(201, 162, 39, .16);
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease;
+
+        }
+
+
+        .register-btn:hover {
+
+            transform: translateY(-2px);
+
+            box-shadow:
+
+                0 20px 40px
+                rgba(201, 162, 39, .23);
+
+        }
+
+
+        .register-btn:active {
+
+            transform: translateY(0);
+
+        }
+
+
+        .register-btn.loading {
+
+            opacity: .75;
+
+            cursor: wait;
+
+        }
+
+
+        /* ==========================================
+           LOGIN
+        ========================================== */
+
+        .login-area {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            padding-top: 23px;
+
+            border-top:
+                1px solid
+                rgba(255, 255, 255, .08);
+
+        }
+
+
+        .login-area p {
+
+            color: rgba(255, 255, 255, .45);
+
+            font-size: 10px;
+
+        }
+
+
+        .login-link {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            margin-top: 8px;
+
+            color: #ffd447;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            text-decoration: none;
+
+            transition: .2s ease;
+
+        }
+
+
+        .login-link:hover {
+
+            color: #fff0a6;
+
+            gap: 8px;
+
+        }
+
+
+        /* ==========================================
+           SECURITY NOTE
+        ========================================== */
+
+        .security-note {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 6px;
+
+            margin-top: 22px;
+
+            color: rgba(255, 255, 255, .28);
+
+            font-size: 9px;
+
+        }
+
+
+        .security-note i {
+
+            color: #c9a227;
+
+            font-size: 13px;
+
+        }
+
+
+        /* ==========================================
+           MOBILE
+        ========================================== */
+
+        @media (max-width: 600px) {
+
+            .page-wrapper {
+
+                padding: 25px 14px;
+
+                align-items: flex-start;
+
+            }
+
+
+            .register-card {
+
+                margin-top: 10px;
+
+                padding: 30px 20px;
+
+                border-radius: 27px;
+
+            }
+
+
+            .register-header {
+
+                margin-bottom: 27px;
+
+            }
+
+
+            .logo-wrapper {
+
+                width: 68px;
+
+                height: 68px;
+
+            }
+
+
+            .form-input,
+            .country-select {
+
+                height: 53px;
+
+                border-radius: 15px;
+
+            }
+
+
+            .register-btn {
+
+                height: 55px;
+
+            }
+
+        }
+
+
+        @media (max-width: 380px) {
+
+            .register-card {
+
+                padding: 27px 16px;
+
+            }
+
+
+            .register-header h1 {
+
+                font-size: 27px;
+
+            }
+
+        }
+
     </style>
 
 </head>
 
+
 <body>
+
+
+    <!-- Background -->
+    <div class="background-overlay"></div>
 
     <div id="bubbles"></div>
 
-    <div class="min-h-screen flex items-center justify-center px-6 py-20">
 
-        <div class="glass rounded-[35px] w-full max-w-lg p-10 relative z-10">
+    <!-- =================================================
+         PAGE
+    ================================================== -->
 
-            <div class="text-center">
+    <main class="page-wrapper">
 
-                <div
-                    class="w-20 h-20 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 mx-auto flex items-center justify-center shadow-xl">
 
-                    <img src="/logo.jpg" alt="">
+        <div class="register-card">
+
+
+            <!-- =================================================
+                 HEADER
+            ================================================== -->
+
+            <div class="register-header">
+
+
+                <div class="logo-wrapper">
+
+                    <img
+                        src="/logo.jpg"
+                        alt="NeoPay Finance Logo">
 
                 </div>
 
-                <h1 class="text-4xl font-bold text-white mt-6">
 
-                    Create Account
-
+                <h1>
+                    Create Your
+                    <span>Account</span>
                 </h1>
 
-                <p class="text-white/70 mt-3">
 
-                    Join NeoPay and start earning today.
-
+                <p>
+                    Join NeoPay and access your digital
+                    opportunities from one simple platform.
                 </p>
 
             </div>
 
-            <form id="registerForm" class="mt-10 space-y-6">
 
-                <!-- Full Name -->
 
-                <div>
+            <!-- =================================================
+                 FORM
+            ================================================== -->
 
-                    <label class="text-white font-medium block mb-2">
+            <form id="registerForm">
+
+
+                <!-- ERROR -->
+
+                <div
+                    id="formError"
+                    class="form-error">
+
+                    <i class='bx bx-error-circle'></i>
+
+                    <span id="errorText">
+                        Please check your information.
+                    </span>
+
+                </div>
+
+
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label
+                        for="fullname"
+                        class="form-label">
+
+                        <i class='bx bx-user'></i>
 
                         Full Name
 
                     </label>
 
-                    <div class="relative">
 
-                        <i class='bx bx-user absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+                    <div class="input-wrapper">
 
-                        <input id="fullname" type="text" required placeholder="Enter your full name"
-                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-5 py-4 text-white outline-none focus:border-yellow-400 transition">
+                        <i class='bx bx-user input-icon'></i>
+
+                        <input
+                            id="fullname"
+                            type="text"
+                            required
+                            autocomplete="name"
+                            placeholder="Enter your full name"
+                            class="form-input">
 
                     </div>
 
                 </div>
 
-                <!-- Username -->
 
-                <div>
 
-                    <label class="text-white font-medium block mb-2">
+                <!-- USERNAME -->
+
+                <div class="form-group">
+
+                    <label
+                        for="username"
+                        class="form-label">
+
+                        <i class='bx bx-id-card'></i>
 
                         Username
 
                     </label>
 
-                    <div class="relative">
 
-                        <i class='bx bx-id-card absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+                    <div class="input-wrapper">
 
-                        <input id="username" type="text" required placeholder="Choose a username"
-                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-5 py-4 text-white outline-none focus:border-yellow-400 transition">
+                        <i class='bx bx-at input-icon'></i>
+
+                        <input
+                            id="username"
+                            type="text"
+                            required
+                            autocomplete="username"
+                            placeholder="Choose a username"
+                            class="form-input">
 
                     </div>
 
                 </div>
 
-                <!-- Email -->
 
-                <div>
 
-                    <label class="text-white font-medium block mb-2">
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label
+                        for="email"
+                        class="form-label">
+
+                        <i class='bx bx-envelope'></i>
 
                         Email Address
 
                     </label>
 
-                    <div class="relative">
 
-                        <i class='bx bx-envelope absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+                    <div class="input-wrapper">
 
-                        <input id="email" type="email" required placeholder="Enter your email"
-                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-5 py-4 text-white outline-none focus:border-yellow-400 transition">
+                        <i class='bx bx-envelope input-icon'></i>
+
+                        <input
+                            id="email"
+                            type="email"
+                            required
+                            autocomplete="email"
+                            placeholder="Enter your email address"
+                            class="form-input">
 
                     </div>
 
                 </div>
 
-                <!-- Phone -->
 
-                <div>
 
-                    <label class="text-white font-medium block mb-2">
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label
+                        for="phone"
+                        class="form-label">
+
+                        <i class='bx bx-phone'></i>
 
                         Phone Number
 
                     </label>
 
-                    <div class="relative">
 
-                        <i class='bx bx-phone absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+                    <div class="input-wrapper">
 
-                        <input id="phone" type="tel" required placeholder="Enter your phone number"
-                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-5 py-4 text-white outline-none focus:border-yellow-400 transition">
+                        <i class='bx bx-phone input-icon'></i>
+
+                        <input
+                            id="phone"
+                            type="tel"
+                            required
+                            autocomplete="tel"
+                            placeholder="Enter your phone number"
+                            class="form-input">
 
                     </div>
 
                 </div>
 
 
-                <!-- Password -->
-                <label class="text-white font-medium block mb-2">
 
-                    Password
+                <!-- COUNTRY -->
 
-                </label>
+                <div class="form-group">
 
-                <div class="relative">
+                    <label
+                        for="country"
+                        class="form-label">
 
-                    <i class='bx bx-lock-alt absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+                        <i class='bx bx-globe'></i>
 
-                    <input id="password" type="password" required
-                        class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-14 py-4 text-white outline-none"
-                        placeholder="Your password">
+                        Country
 
-                    <button type="button" class="absolute right-5 top-1/2 -translate-y-1/2 text-yellow-400">
+                    </label>
 
-                        <i class='bx bx-hide text-2xl toggle-password'></i>
 
-                    </button>
+                    <div class="input-wrapper">
+
+                        <i class='bx bx-map input-icon'></i>
+
+
+                        <select
+                            id="country"
+                            required
+                            class="country-select">
+
+                            <option
+                                value=""
+                                disabled
+                                selected>
+
+                                Select your country
+
+                            </option>
+
+                            <option value="Nigeria">
+                                Nigeria
+                            </option>
+
+                            <option value="Ghana">
+                                Ghana
+                            </option>
+
+                            <option value="Kenya">
+                                Kenya
+                            </option>
+
+                            <option value="South Africa">
+                                South Africa
+                            </option>
+
+                            <option value="United Kingdom">
+                                United Kingdom
+                            </option>
+
+                            <option value="United States">
+                                United States
+                            </option>
+
+                            <option value="Canada">
+                                Canada
+                            </option>
+
+                            <option value="Australia">
+                                Australia
+                            </option>
+
+                            <option value="Germany">
+                                Germany
+                            </option>
+
+                            <option value="France">
+                                France
+                            </option>
+
+                            <option value="United Arab Emirates">
+                                United Arab Emirates
+                            </option>
+
+                            <option value="India">
+                                India
+                            </option>
+
+                            <option value="Other">
+                                Other
+                            </option>
+
+                        </select>
+
+
+                        <i class='bx bx-chevron-down select-arrow'></i>
+
+                    </div>
 
                 </div>
 
 
-                <!-- Confirm Password -->
 
-                <div>
+                <!-- PASSWORD -->
 
-                    <label class="text-white font-medium block mb-2">
+                <div class="form-group">
+
+                    <label
+                        for="password"
+                        class="form-label">
+
+                        <i class='bx bx-lock-alt'></i>
+
+                        Password
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+                        <i class='bx bx-lock-alt input-icon'></i>
+
+
+                        <input
+                            id="password"
+                            type="password"
+                            required
+                            autocomplete="new-password"
+                            placeholder="Create a secure password"
+                            class="form-input password-input">
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="password"
+                            aria-label="Show password">
+
+                            <i class='bx bx-hide'></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- Strength -->
+
+                    <div class="password-strength">
+
+                        <div class="strength-bars">
+
+                            <span class="strength-bar"></span>
+                            <span class="strength-bar"></span>
+                            <span class="strength-bar"></span>
+                            <span class="strength-bar"></span>
+
+                        </div>
+
+                        <span
+                            id="strengthText"
+                            class="strength-text">
+
+                            --
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label
+                        for="confirmPassword"
+                        class="form-label">
+
+                        <i class='bx bx-check-shield'></i>
 
                         Confirm Password
 
                     </label>
 
-                    <div class="relative">
 
-                        <i class='bx bx-lock-alt absolute left-5 top-1/2 -translate-y-1/2 text-yellow-400 text-xl'></i>
+                    <div class="input-wrapper">
 
-                        <input type="password" name="confirmPassword" required placeholder="Confirm your password"
-                            class="w-full bg-white/10 border border-white/15 rounded-2xl pl-14 pr-14 py-4 text-white outline-none focus:border-yellow-400 transition">
+                        <i class='bx bx-lock-alt input-icon'></i>
 
-                        <button type="button" class="absolute right-5 top-1/2 -translate-y-1/2 text-yellow-400">
 
-                            <i class='bx bx-hide text-2xl toggle-password'></i>
+                        <input
+                            id="confirmPassword"
+                            type="password"
+                            required
+                            autocomplete="new-password"
+                            placeholder="Confirm your password"
+                            class="form-input password-input">
+
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="confirmPassword"
+                            aria-label="Show password">
+
+                            <i class='bx bx-hide'></i>
 
                         </button>
 
@@ -378,122 +1399,622 @@
                 </div>
 
 
-                <button type="submit"
-                    class="w-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 font-bold py-4 rounded-2xl text-lg hover:scale-[1.02] transition shadow-2xl mt-5">
 
-                    Create Account
+                <!-- =================================================
+                     TERMS
+                ================================================== -->
+
+                <div class="terms-row">
+
+                    <input
+                        id="terms"
+                        type="checkbox"
+                        class="terms-checkbox"
+                        required>
+
+
+                    <label
+                        for="terms"
+                        class="terms-text">
+
+                        I agree to NeoPay's
+
+                        <a href="terms.html">
+                            Terms & Conditions
+                        </a>
+
+                        and
+
+                        <a href="privacy.html">
+                            Privacy Policy
+                        </a>.
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    id="registerBtn"
+                    type="submit"
+                    class="register-btn">
+
+                    <span id="buttonText">
+                        Create Account
+                    </span>
+
+                    <i
+                        id="buttonIcon"
+                        class='bx bx-right-arrow-alt text-xl'>
+                    </i>
 
                 </button>
 
 
             </form>
 
+
+
+            <!-- =================================================
+                 LOGIN
+            ================================================== -->
+
+            <div class="login-area">
+
+                <p>
+                    Already have a NeoPay account?
+                </p>
+
+
+                <a
+                    href="login.html"
+                    class="login-link">
+
+                    Login to your account
+
+                    <i class='bx bx-right-arrow-alt'></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- SECURITY -->
+
+            <div class="security-note">
+
+                <i class='bx bx-shield-quarter'></i>
+
+                Your information is kept private and secure.
+
+            </div>
+
+
         </div>
 
-    </div>
+    </main>
 
 
 
-
-
+    <!-- =================================================
+         JAVASCRIPT
+    ================================================== -->
 
     <script>
-        const container = document.getElementById("bubbles");
+
+
+        /* ==========================================
+           FLOATING BUBBLES
+        ========================================== */
+
+        const bubbleContainer =
+            document.getElementById("bubbles");
+
 
         function createBubble() {
 
-            const bubble = document.createElement("span");
+            const bubble =
+                document.createElement("span");
+
 
             bubble.classList.add("bubble");
 
-            const size = Math.random() * 90 + 20;
 
-            bubble.style.width = size + "px";
+            const size =
+                Math.random() * 90 + 25;
 
-            bubble.style.height = size + "px";
 
-            bubble.style.left = Math.random() * 100 + "%";
+            bubble.style.width =
+                size + "px";
+
+
+            bubble.style.height =
+                size + "px";
+
+
+            bubble.style.left =
+                Math.random() * 100 + "%";
+
 
             bubble.style.animationDuration =
                 Math.random() * 8 + 10 + "s";
 
-            bubble.style.opacity =
-                Math.random() * .5 + .2;
 
-            container.appendChild(bubble);
+            bubble.style.opacity =
+                Math.random() * .45 + .15;
+
+
+            bubbleContainer.appendChild(bubble);
+
 
             setTimeout(() => {
 
                 bubble.remove();
 
-            }, 18000);
+            }, 19000);
 
         }
 
-        setInterval(createBubble, 350);
+
+        for (let i = 0; i < 8; i++) {
+
+            setTimeout(
+                createBubble,
+                i * 700
+            );
+
+        }
+
+
+        setInterval(
+            createBubble,
+            900
+        );
 
 
 
-        // Show / Hide Password
+        /* ==========================================
+           PASSWORD SHOW / HIDE
+        ========================================== */
 
-        document.querySelectorAll(".toggle-password").forEach(function (icon) {
+        document
+            .querySelectorAll(".password-toggle")
+            .forEach(button => {
 
-            icon.addEventListener("click", function () {
+                button.addEventListener(
+                    "click",
+                    function () {
 
-                // Find the input inside the same parent div
-                const input = this.closest(".relative").querySelector("input");
+                        const targetId =
+                            this.dataset.target;
 
-                if (input.type === "password") {
 
-                    input.type = "text";
+                        const input =
+                            document.getElementById(targetId);
 
-                    this.classList.remove("bx-hide");
-                    this.classList.add("bx-show");
 
-                } else {
+                        const icon =
+                            this.querySelector("i");
 
-                    input.type = "password";
 
-                    this.classList.remove("bx-show");
-                    this.classList.add("bx-hide");
+                        if (
+                            input.type ===
+                            "password"
+                        ) {
 
-                }
+                            input.type = "text";
+
+                            icon.classList.remove(
+                                "bx-hide"
+                            );
+
+                            icon.classList.add(
+                                "bx-show"
+                            );
+
+                            this.setAttribute(
+                                "aria-label",
+                                "Hide password"
+                            );
+
+                        } else {
+
+                            input.type =
+                                "password";
+
+                            icon.classList.remove(
+                                "bx-show"
+                            );
+
+                            icon.classList.add(
+                                "bx-hide"
+                            );
+
+                            this.setAttribute(
+                                "aria-label",
+                                "Show password"
+                            );
+
+                        }
+
+                    }
+                );
 
             });
 
-        });
 
 
-        const form = document.getElementById("registerForm");
+        /* ==========================================
+           PASSWORD STRENGTH
+        ========================================== */
 
-        form.addEventListener("submit", function (e) {
+        const passwordInput =
+            document.getElementById("password");
 
-            e.preventDefault();
 
-            const user = {
+        const strengthBars =
+            document.querySelectorAll(
+                ".strength-bar"
+            );
 
-                fullname: document.getElementById("fullname").value,
 
-                username: document.getElementById("username").value,
+        const strengthText =
+            document.getElementById(
+                "strengthText"
+            );
 
-                email: document.getElementById("email").value,
 
-                phone: document.getElementById("phone").value,
+        passwordInput.addEventListener(
+            "input",
+            function () {
 
-                password: document.getElementById("password").value
+                const password =
+                    this.value;
 
-            };
 
-            localStorage.setItem("loggedInUser", JSON.stringify(user));
+                let score = 0;
 
-            window.location.href = "package.html";
 
-        });
+                if (password.length >= 6)
+                    score++;
+
+
+                if (password.length >= 10)
+                    score++;
+
+
+                if (/[A-Z]/.test(password))
+                    score++;
+
+
+                if (
+                    /[0-9]/.test(password) ||
+                    /[^A-Za-z0-9]/.test(password)
+                )
+                    score++;
+
+
+                strengthBars.forEach(
+                    bar => {
+
+                        bar.style.background =
+                            "rgba(255,255,255,.1)";
+
+                    }
+                );
+
+
+                if (!password) {
+
+                    strengthText.textContent =
+                        "--";
+
+                    return;
+
+                }
+
+
+                if (score <= 1) {
+
+                    strengthText.textContent =
+                        "Weak";
+
+                    strengthBars[0].style.background =
+                        "#e05a5a";
+
+                }
+
+
+                else if (score === 2) {
+
+                    strengthText.textContent =
+                        "Fair";
+
+                    strengthBars[0].style.background =
+                        "#e0a94f";
+
+                    strengthBars[1].style.background =
+                        "#e0a94f";
+
+                }
+
+
+                else if (score === 3) {
+
+                    strengthText.textContent =
+                        "Good";
+
+                    for (let i = 0; i < 3; i++) {
+
+                        strengthBars[i].style.background =
+                            "#d4c052";
+
+                    }
+
+                }
+
+
+                else {
+
+                    strengthText.textContent =
+                        "Strong";
+
+                    strengthBars.forEach(
+                        bar => {
+
+                            bar.style.background =
+                                "#d5b52d";
+
+                        }
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* ==========================================
+           FORM
+        ========================================== */
+
+        const form =
+            document.getElementById(
+                "registerForm"
+            );
+
+
+        const errorBox =
+            document.getElementById(
+                "formError"
+            );
+
+
+        const errorText =
+            document.getElementById(
+                "errorText"
+            );
+
+
+        const registerButton =
+            document.getElementById(
+                "registerBtn"
+            );
+
+
+        const buttonText =
+            document.getElementById(
+                "buttonText"
+            );
+
+
+        const buttonIcon =
+            document.getElementById(
+                "buttonIcon"
+            );
+
+
+        function showError(message) {
+
+            errorText.textContent =
+                message;
+
+            errorBox.classList.add("show");
+
+        }
+
+
+        function hideError() {
+
+            errorBox.classList.remove(
+                "show"
+            );
+
+        }
+
+
+        form.addEventListener(
+            "submit",
+            function (e) {
+
+                e.preventDefault();
+
+
+                hideError();
+
+
+                const fullname =
+                    document
+                        .getElementById("fullname")
+                        .value
+                        .trim();
+
+
+                const username =
+                    document
+                        .getElementById("username")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("email")
+                        .value
+                        .trim();
+
+
+                const phone =
+                    document
+                        .getElementById("phone")
+                        .value
+                        .trim();
+
+
+                const country =
+                    document
+                        .getElementById("country")
+                        .value;
+
+
+                const password =
+                    passwordInput.value;
+
+
+                const confirmPassword =
+                    document
+                        .getElementById(
+                            "confirmPassword"
+                        )
+                        .value;
+
+
+                const terms =
+                    document
+                        .getElementById("terms")
+                        .checked;
+
+
+
+                /* Password Match */
+
+                if (
+                    password !==
+                    confirmPassword
+                ) {
+
+                    showError(
+                        "Your passwords do not match."
+                    );
+
+                    return;
+
+                }
+
+
+                /* Password Length */
+
+                if (password.length < 6) {
+
+                    showError(
+                        "Your password must contain at least 6 characters."
+                    );
+
+                    return;
+
+                }
+
+
+                /* Terms */
+
+                if (!terms) {
+
+                    showError(
+                        "Please agree to the Terms & Conditions before continuing."
+                    );
+
+                    return;
+
+                }
+
+
+
+                /* Loading */
+
+                registerButton.classList.add(
+                    "loading"
+                );
+
+
+                registerButton.disabled =
+                    true;
+
+
+                buttonText.textContent =
+                    "Creating Account...";
+
+
+                buttonIcon.className =
+                    "bx bx-loader-alt bx-spin text-xl";
+
+
+
+                /* User Data */
+
+                const user = {
+
+                    fullname: fullname,
+
+                    username: username,
+
+                    email: email,
+
+                    phone: phone,
+
+                    country: country,
+
+                    password: password
+
+                };
+
+
+                /*
+                 * Save registration data
+                 * to localStorage
+                 */
+
+                localStorage.setItem(
+                    "loggedInUser",
+                    JSON.stringify(user)
+                );
+
+
+                /*
+                 * Small delay gives the
+                 * button a premium loading
+                 * feel before navigation.
+                 */
+
+                setTimeout(() => {
+
+                    window.location.href =
+                        "package.html";
+
+                }, 700);
+
+            }
+        );
+
+
     </script>
-
-
 
 
 </body>
 
 </html>
+

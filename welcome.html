@@ -14,207 +14,1818 @@
 
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
 
-        body {
-            background: #350b0b;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        /* Glow Effects */
-
-        .glow {
-            position: fixed;
-            width: 350px;
-            height: 350px;
-            border-radius: 50%;
-            filter: blur(120px);
-            z-index: 0;
-        }
-
-        .glow-1 {
-            background: #ff0000;
-            top: -120px;
-            right: -120px;
-        }
-
-        .glow-2 {
-            background: #FFD700;
-            bottom: -120px;
-            left: -120px;
-        }
-
-        /* Glass */
-
-        .glass {
-            background: rgba(255, 255, 255, .04);
-            border: 1px solid rgba(255, 255, 255, .08);
-            backdrop-filter: blur(20px);
-        }
-
-        /* Bonus Card Glow */
-
-        .bonus-card {
-            box-shadow: 0 0 50px rgba(255, 0, 0, .2);
-        }
-
-        /* Button */
-
-        .btn {
-            background: linear-gradient(90deg, #ff0000, #c1121f);
-            transition: .3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .logo-box {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #ff0000, #c1121f);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: auto;
-            box-shadow: 0 0 30px rgba(255, 0, 0, .3);
-        }
-
-        .amount {
-            text-shadow: 0 0 25px rgba(255, 0, 0, .5);
-        }
-    </style>
 
 </head>
 
 <body>
 
-    <!-- Glow Background -->
+<!-- =====================================================
+     PREMIUM WELCOME PAGE
+===================================================== -->
 
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
+<div class="welcome-page">
 
-    <div class="min-h-screen flex items-center justify-center px-4 relative z-10">
-
-        <div class="w-full max-w-md">
-
-            <!-- Celebration -->
-
-            <div class="text-center mb-6">
+    <!-- Background Glows -->
+    <div class="premium-glow premium-glow-red"></div>
+    <div class="premium-glow premium-glow-gold"></div>
 
 
-                <div class="logo-box mb-5">
-                    <img src="/logo.jpg" alt="">
-                </div>
+    <div class="welcome-container">
 
-                <h1 class="text-4xl font-black">
-                    NeoPay
-                    <span class="text-red-500">
-                        Finance
-                    </span>
-                </h1>
 
-                <h2 class="text-3xl font-bold mt-5">
-                    Welcome,
-                    <span id="welcomeName" class="text-yellow-400"></span> 👋
-                </h2>
+        <!-- =================================================
+             BRAND / WELCOME HEADER
+        ================================================== -->
 
-                <p class="text-gray-400 mt-3">
-                    Your account has been created successfully
-                </p>
+        <div class="welcome-header">
+
+            <div class="logo-box">
+
+                <img
+                    src="/logo.jpg"
+                    alt="NeoPay Finance">
 
             </div>
 
-            <!-- Bonus Card -->
 
-            <div class="glass bonus-card rounded-3xl p-6 mb-6 text-center">
+            <div class="brand-name">
 
-                <div class="flex justify-center mb-3">
-                    <i class='bx bx-gift text-red-500 text-3xl'></i>
-                </div>
-
-                <p class="text-gray-400 mb-3">
-                    Welcome Bonus
-                </p>
-
-                <div class="bg-black rounded-2xl py-5">
-
-                    <h3 id="bonusAmount" class="amount text-5xl font-black text-red-500 text-center">
-                        ₦0
-                    </h3>
-
-                </div>
-
-                <p class="text-gray-500 mt-4 text-sm">
-                    Added to your wallet balance
-                </p>
+                NeoPay
+                <span>Finance</span>
 
             </div>
 
-            <!-- User Info -->
 
-            <div class="glass rounded-2xl p-5 mb-6">
+            <div class="success-pill">
 
-                <!-- User ID -->
-                <div class="flex justify-between items-center mb-4">
+                <span class="success-dot"></span>
 
-                    <span class="text-gray-400">
-                        User ID
+                Account Created Successfully
+
+            </div>
+
+
+            <h1>
+
+                Welcome,
+                <span id="welcomeName"></span>
+
+                <span class="wave">👋</span>
+
+            </h1>
+
+
+            <p>
+
+                Your NeoPay account is ready.
+                Here's your account information to get started.
+
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             BONUS CARD
+        ================================================== -->
+
+        <div class="bonus-card">
+
+
+            <!-- Top -->
+
+            <div class="bonus-top">
+
+                <div class="bonus-icon">
+
+                    <i class='bx bx-gift'></i>
+
+                </div>
+
+
+                <div>
+
+                    <span class="bonus-label">
+                        WELCOME BONUS
                     </span>
 
-                    <div class="flex items-center gap-2">
+                    <span class="bonus-subtitle">
+                        Added to your wallet
+                    </span>
 
-                        <span id="userId" class="font-semibold"></span>
+                </div>
 
-                        <button onclick="copyText('userId')" class="text-red-500 hover:text-red-400 text-xl">
-                            <i class='bx bx-copy'></i>
-                        </button>
+            </div>
+
+
+            <!-- Amount -->
+
+            <div class="bonus-amount-box">
+
+                <span class="currency">
+                    ₦
+                </span>
+
+                <span
+                    id="bonusAmount"
+                    class="bonus-amount">
+
+                    0
+
+                </span>
+
+            </div>
+
+
+            <!-- Bottom -->
+
+            <div class="bonus-footer">
+
+                <div class="bonus-status">
+
+                    <i class='bx bx-check-circle'></i>
+
+                    Bonus credited
+
+                </div>
+
+
+                <div class="bonus-lock">
+
+                    <i class='bx bx-wallet'></i>
+
+                    Wallet Balance
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             ACCOUNT INFORMATION
+        ================================================== -->
+
+        <div class="account-card">
+
+
+            <div class="account-heading">
+
+                <div>
+
+                    <span class="account-eyebrow">
+                        ACCOUNT DETAILS
+                    </span>
+
+                    <h2>
+                        Your NeoPay Information
+                    </h2>
+
+                </div>
+
+
+                <div class="secure-icon">
+
+                    <i class='bx bx-shield-quarter'></i>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- USER ID -->
+
+            <div class="info-row">
+
+                <div class="info-label">
+
+                    <div class="info-icon">
+
+                        <i class='bx bx-id-card'></i>
 
                     </div>
 
-                </div>
 
-                <!-- Referral Code -->
-                <div class="flex justify-between items-center">
+                    <div>
 
-                    <span class="text-gray-400">
-                        Referral Code
-                    </span>
-
-                    <div class="flex items-center gap-2">
-
-                        <span id="referralCode" class="font-semibold text-red-500">
+                        <span>
+                            User ID
                         </span>
 
-                        <button onclick="copyText('referralCode')" class="text-red-500 hover:text-red-400 text-xl">
-                            <i class='bx bx-copy'></i>
-                        </button>
+                        <small>
+                            Your unique account ID
+                        </small>
 
                     </div>
 
                 </div>
 
+
+                <div class="info-value">
+
+                    <span
+                        id="userId"
+                        class="copy-value">
+
+                    </span>
+
+
+                    <button
+                        type="button"
+                        onclick="copyText('userId')"
+                        class="copy-btn"
+                        aria-label="Copy User ID">
+
+                        <i class='bx bx-copy'></i>
+
+                    </button>
+
+                </div>
+
             </div>
 
-            <!-- Button -->
 
-            <a href="/dashboard.html">
-                <button class="btn w-full py-4 rounded-xl font-bold text-white">
-                    Go To Dashboard →
-                </button>
+
+            <!-- DIVIDER -->
+
+            <div class="info-divider"></div>
+
+
+
+            <!-- REFERRAL -->
+
+            <div class="info-row">
+
+                <div class="info-label">
+
+                    <div class="info-icon">
+
+                        <i class='bx bx-share-alt'></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Referral Code
+                        </span>
+
+                        <small>
+                            Share with your friends
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-value">
+
+                    <span
+                        id="referralCode"
+                        class="copy-value referral">
+
+                    </span>
+
+
+                    <button
+                        type="button"
+                        onclick="copyText('referralCode')"
+                        class="copy-btn"
+                        aria-label="Copy Referral Code">
+
+                        <i class='bx bx-copy'></i>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NEXT STEP
+        ================================================== -->
+
+        <div class="next-step">
+
+            <div class="next-step-icon">
+
+                <i class='bx bx-rocket'></i>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    You're all set
+                </strong>
+
+                <span>
+                    Continue to your NeoPay dashboard
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             DASHBOARD BUTTON
+        ================================================== -->
+
+        <button
+            id="dashboardBtn"
+            class="dashboard-btn">
+
+            <span>
+                Go To Dashboard
+            </span>
+
+            <div class="dashboard-arrow">
+
+                <i class='bx bx-right-arrow-alt'></i>
+
+            </div>
+
+        </button>
+
+
+        <p class="continue-note">
+
+            <i class='bx bx-lock-alt'></i>
+
+            Secure NeoPay experience
+
+        </p>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PREMIUM WELCOME CSS
+===================================================== -->
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family: 'Inter', sans-serif;
+
+}
+
+
+/* =====================================================
+   BODY
+===================================================== */
+
+body {
+
+    background: #260606;
+
+    color: #ffffff;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.welcome-page {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: center;
+
+    padding: 55px 20px 70px;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            circle at 85% 5%,
+            rgba(190, 25, 25, .16),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 10% 90%,
+            rgba(201, 162, 39, .08),
+            transparent 30%
+        ),
+
+        #260606;
+
+}
+
+
+/* =====================================================
+   BACKGROUND GLOWS
+===================================================== */
+
+.premium-glow {
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(110px);
+
+    opacity: .35;
+
+}
+
+
+.premium-glow-red {
+
+    width: 300px;
+
+    height: 300px;
+
+    background: #b51218;
+
+    top: -150px;
+
+    right: -100px;
+
+}
+
+
+.premium-glow-gold {
+
+    width: 280px;
+
+    height: 280px;
+
+    background: #c9a227;
+
+    bottom: -150px;
+
+    left: -100px;
+
+    opacity: .13;
+
+}
+
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.welcome-container {
+
+    width: 100%;
+
+    max-width: 480px;
+
+    position: relative;
+
+    z-index: 5;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.welcome-header {
+
+    text-align: center;
+
+    margin-bottom: 27px;
+
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo-box {
+
+    width: 72px;
+
+    height: 72px;
+
+    margin: 0 auto 17px;
+
+    padding: 4px;
+
+    border-radius: 21px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f4d878,
+            #b88b17
+        );
+
+    box-shadow:
+
+        0 15px 35px
+        rgba(0, 0, 0, .3),
+
+        0 0 35px
+        rgba(201, 162, 39, .12);
+
+}
+
+
+.logo-box img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 17px;
+
+}
+
+
+/* =====================================================
+   BRAND
+===================================================== */
+
+.brand-name {
+
+    color: rgba(255,255,255,.55);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.2px;
+
+    text-transform: uppercase;
+
+}
+
+
+.brand-name span {
+
+    color: #d7b33d;
+
+}
+
+
+/* =====================================================
+   SUCCESS PILL
+===================================================== */
+
+.success-pill {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin-top: 16px;
+
+    padding: 7px 12px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255,255,255,.055);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+}
+
+
+.success-dot {
+
+    width: 6px;
+
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #6fcb83;
+
+    box-shadow:
+        0 0 10px
+        rgba(111,203,131,.6);
+
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.welcome-header h1 {
+
+    margin-top: 19px;
+
+    font-size: clamp(30px, 7vw, 39px);
+
+    line-height: 1.15;
+
+    letter-spacing: -1.5px;
+
+    font-weight: 800;
+
+}
+
+
+.welcome-header h1 span {
+
+    color: #f1cb4c;
+
+}
+
+
+.wave {
+
+    color: #ffffff !important;
+
+}
+
+
+.welcome-header p {
+
+    max-width: 370px;
+
+    margin: 11px auto 0;
+
+    color:
+        rgba(255,255,255,.48);
+
+    font-size: 11px;
+
+    line-height: 1.75;
+
+}
+
+
+/* =====================================================
+   BONUS CARD
+===================================================== */
+
+.bonus-card {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 23px;
+
+    margin-bottom: 15px;
+
+    border-radius: 25px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(139, 12, 12, .88),
+            rgba(66, 6, 6, .94)
+        );
+
+    border:
+        1px solid
+        rgba(244, 216, 120, .14);
+
+    box-shadow:
+
+        0 25px 60px
+        rgba(0,0,0,.28),
+
+        0 0 50px
+        rgba(179, 21, 21, .10);
+
+}
+
+
+/* decorative line */
+
+.bonus-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+
+    left: 25px;
+
+    right: 25px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(244,216,120,.45),
+            transparent
+        );
+
+}
+
+
+/* glow */
+
+.bonus-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+
+    height: 160px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(244,216,120,.08);
+
+    filter: blur(40px);
+
+    top: -90px;
+
+    right: -60px;
+
+}
+
+
+/* =====================================================
+   BONUS TOP
+===================================================== */
+
+.bonus-top {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.bonus-icon {
+
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 13px;
+
+    display: grid;
+
+    place-items: center;
+
+    background:
+        rgba(244,216,120,.10);
+
+    border:
+        1px solid
+        rgba(244,216,120,.13);
+
+    color: #f2cb50;
+
+    font-size: 21px;
+
+}
+
+
+.bonus-top > div:last-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.bonus-label {
+
+    color: #f4d878;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+}
+
+
+.bonus-subtitle {
+
+    color:
+        rgba(255,255,255,.42);
+
+    font-size: 9px;
+
+}
+
+
+/* =====================================================
+   BONUS AMOUNT
+===================================================== */
+
+.bonus-amount-box {
+
+    display: flex;
+
+    align-items: baseline;
+
+    justify-content: center;
+
+    gap: 3px;
+
+    padding: 19px 10px 17px;
+
+}
+
+
+.currency {
+
+    color: #f0ca4d;
+
+    font-size: 25px;
+
+    font-weight: 700;
+
+}
+
+
+.bonus-amount {
+
+    color: #ffffff;
+
+    font-size: clamp(42px, 10vw, 56px);
+
+    line-height: 1;
+
+    font-weight: 800;
+
+    letter-spacing: -2.5px;
+
+    text-shadow:
+        0 0 30px
+        rgba(244,216,120,.16);
+
+}
+
+
+/* =====================================================
+   BONUS FOOTER
+===================================================== */
+
+.bonus-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding-top: 15px;
+
+    border-top:
+        1px solid
+        rgba(255,255,255,.07);
+
+}
+
+
+.bonus-status,
+.bonus-lock {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    color:
+        rgba(255,255,255,.43);
+
+    font-size: 9px;
+
+}
+
+
+.bonus-status i {
+
+    color: #76d38a;
+
+    font-size: 14px;
+
+}
+
+
+.bonus-lock i {
+
+    color: #d8b73d;
+
+    font-size: 13px;
+
+}
+
+
+/* =====================================================
+   ACCOUNT CARD
+===================================================== */
+
+.account-card {
+
+    padding: 21px;
+
+    border-radius: 23px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.09);
+
+    backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 20px 45px
+        rgba(0,0,0,.18);
+
+}
+
+
+/* =====================================================
+   ACCOUNT HEADING
+===================================================== */
+
+.account-heading {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+
+}
+
+
+.account-eyebrow {
+
+    display: block;
+
+    color: #d5b23c;
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.2px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.account-heading h2 {
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+}
+
+
+.secure-icon {
+
+    width: 37px;
+
+    height: 37px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(201,162,39,.08);
+
+    color: #d8b73d;
+
+    font-size: 17px;
+
+}
+
+
+/* =====================================================
+   INFO ROW
+===================================================== */
+
+.info-row {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+}
+
+
+.info-label {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-width: 0;
+
+}
+
+
+.info-icon {
+
+    width: 34px;
+
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,255,255,.05);
+
+    color: #d7b53c;
+
+    font-size: 16px;
+
+}
+
+
+.info-label div:last-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.info-label span {
+
+    color:
+        rgba(255,255,255,.75);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+}
+
+
+.info-label small {
+
+    color:
+        rgba(255,255,255,.3);
+
+    font-size: 8px;
+
+}
+
+
+/* =====================================================
+   INFO VALUE
+===================================================== */
+
+.info-value {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    min-width: 0;
+
+}
+
+
+.copy-value {
+
+    max-width: 120px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+    color: #ffffff;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.copy-value.referral {
+
+    color: #e3c34f;
+
+}
+
+
+.copy-btn {
+
+    width: 31px;
+
+    height: 31px;
+
+    flex-shrink: 0;
+
+    border: 1px solid
+        rgba(255,255,255,.08);
+
+    border-radius: 9px;
+
+    background:
+        rgba(255,255,255,.04);
+
+    color: #d8b73d;
+
+    display: grid;
+
+    place-items: center;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+
+}
+
+
+.copy-btn:hover {
+
+    background:
+        rgba(201,162,39,.12);
+
+    border-color:
+        rgba(201,162,39,.25);
+
+    transform: translateY(-1px);
+
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.info-divider {
+
+    height: 1px;
+
+    margin: 17px 0;
+
+    background:
+        rgba(255,255,255,.07);
+
+}
+
+
+/* =====================================================
+   NEXT STEP
+===================================================== */
+
+.next-step {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    margin: 15px 2px;
+
+}
+
+
+.next-step-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(201,162,39,.08);
+
+    color: #d8b73d;
+
+    font-size: 17px;
+
+}
+
+
+.next-step div:last-child {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+}
+
+
+.next-step strong {
+
+    color: rgba(255,255,255,.8);
+
+    font-size: 10px;
+
+}
+
+
+.next-step span {
+
+    color: rgba(255,255,255,.35);
+
+    font-size: 8px;
+
+}
+
+
+/* =====================================================
+   DASHBOARD BUTTON
+===================================================== */
+
+.dashboard-btn {
+
+    width: 100%;
+
+    height: 58px;
+
+    border: 0;
+
+    border-radius: 17px;
+
+    padding: 0 8px 0 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #f2d267,
+            #c49a25
+        );
+
+    color: #450707;
+
+    font-family: 'Inter', sans-serif;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    box-shadow:
+
+        0 18px 35px
+        rgba(201,162,39,.14);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+.dashboard-btn:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+
+        0 22px 42px
+        rgba(201,162,39,.22);
+
+}
+
+
+.dashboard-btn:active {
+
+    transform: translateY(0);
+
+}
+
+
+.dashboard-arrow {
+
+    width: 43px;
+
+    height: 43px;
+
+    display: grid;
+
+    place-items: center;
+
+    border-radius: 13px;
+
+    background:
+        rgba(69,7,7,.12);
+
+    font-size: 20px;
+
+}
+
+
+/* =====================================================
+   FOOTER NOTE
+===================================================== */
+
+.continue-note {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 15px;
+
+    color:
+        rgba(255,255,255,.25);
+
+    font-size: 8px;
+
+}
+
+
+.continue-note i {
+
+    font-size: 11px;
+
+    color:
+        rgba(216,183,61,.55);
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 500px) {
+
+    .welcome-page {
+
+        padding:
+            32px
+            14px
+            45px;
+
+    }
+
+
+    .welcome-header {
+
+        margin-bottom: 22px;
+
+    }
+
+
+    .logo-box {
+
+        width: 66px;
+
+        height: 66px;
+
+        border-radius: 19px;
+
+    }
+
+
+    .welcome-header h1 {
+
+        font-size: 30px;
+
+    }
+
+
+    .welcome-header p {
+
+        font-size: 10px;
+
+    }
+
+
+    .bonus-card {
+
+        padding: 19px;
+
+        border-radius: 22px;
+
+    }
+
+
+    .bonus-amount {
+
+        font-size: 45px;
+
+    }
+
+
+    .bonus-footer {
+
+        gap: 10px;
+
+    }
+
+
+    .bonus-status,
+    .bonus-lock {
+
+        font-size: 8px;
+
+    }
+
+
+    .account-card {
+
+        padding: 18px;
+
+        border-radius: 21px;
+
+    }
+
+
+    .info-label small {
+
+        display: none;
+
+    }
+
+
+    .info-value {
+
+        max-width: 145px;
+
+    }
+
+
+    .copy-value {
+
+        max-width: 90px;
+
+    }
+
+}
+
+
+@media (max-width: 360px) {
+
+    .welcome-page {
+
+        padding-left: 11px;
+
+        padding-right: 11px;
+
+    }
+
+
+    .bonus-footer {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+    .info-row {
+
+        gap: 8px;
+
+    }
+
+
+    .copy-value {
+
+        max-width: 70px;
+
+    }
+
+}
+
+</style>
+
+
+
+
+
+    <!-- =====================================================
+     PUBLIC CHANNEL POPUP
+===================================================== -->
+
+<!-- ================= PUBLIC CHANNEL POPUP ================= -->
+
+<div
+    id="channelPopup"
+    class="fixed inset-0 z-[9999] hidden items-center justify-center px-5">
+
+    <!-- Overlay -->
+    <div
+        id="popupOverlay"
+        class="absolute inset-0 bg-black/75 backdrop-blur-sm">
+    </div>
+
+    <!-- Popup -->
+    <div
+        class="relative z-10 w-full max-w-sm bg-[#430909] border border-white/10 rounded-[28px] p-6 shadow-2xl">
+
+        <!-- Close Button -->
+        <button
+            id="closePopup"
+            class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/15 transition">
+
+            <i class='bx bx-x text-xl'></i>
+
+        </button>
+
+
+        <!-- Icon -->
+        <div
+            class="w-16 h-16 mx-auto rounded-2xl bg-[#f4d878] flex items-center justify-center">
+
+            <i class='bx bx-broadcast text-3xl text-[#650707]'></i>
+
+        </div>
+
+
+        <!-- Heading -->
+        <div class="text-center mt-5">
+
+            <h2 class="text-xl font-bold text-white">
+                Join Our Public Channels
+            </h2>
+
+            <p class="text-white/60 text-sm leading-6 mt-3">
+                Join any of our official channels to stay updated
+                with NeoPay news, announcements, earning
+                opportunities and important updates.
+            </p>
+
+        </div>
+
+
+        <!-- Channel Options -->
+        <div class="mt-6 space-y-3">
+
+
+            <!-- TELEGRAM -->
+            <a
+                href="https://t.me/+X6c-vUSYUj45MDk8"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-4 w-full p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+
+                <!-- Icon -->
+                <div
+                    class="w-12 h-12 rounded-xl bg-[#229ED9]/20 flex items-center justify-center flex-shrink-0">
+
+                    <i class='bx bxl-telegram text-2xl text-[#42b9f3]'></i>
+
+                </div>
+
+
+                <!-- Text -->
+                <div class="flex-1">
+
+                    <p class="text-white font-semibold text-sm">
+                        Telegram
+                    </p>
+
+                    <p class="text-white/40 text-xs mt-1">
+                        Join our Telegram channel
+                    </p>
+
+                </div>
+
+
+                <i class='bx bx-right-arrow-alt text-white/40 text-xl'></i>
+
+            </a>
+
+
+
+            <!-- WHATSAPP -->
+            <a
+                href="https://whatsapp.com/channel/0029VbDEWnAFcowGKrlIwp0U"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-4 w-full p-4 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition">
+
+                <!-- Icon -->
+                <div
+                    class="w-12 h-12 rounded-xl bg-[#25D366]/15 flex items-center justify-center flex-shrink-0">
+
+                    <i class='bx bxl-whatsapp text-2xl text-[#25D366]'></i>
+
+                </div>
+
+
+                <!-- Text -->
+                <div class="flex-1">
+
+                    <p class="text-white font-semibold text-sm">
+                        WhatsApp
+                    </p>
+
+                    <p class="text-white/40 text-xs mt-1">
+                        Join our WhatsApp community
+                    </p>
+
+                </div>
+
+
+                <i class='bx bx-right-arrow-alt text-white/40 text-xl'></i>
+
             </a>
 
         </div>
 
+
+
+        <!-- Maybe Later -->
+        <button
+            id="laterBtn"
+            class="mt-5 w-full py-3.5 rounded-xl border border-white/10 text-white/70 font-semibold text-sm hover:bg-white/5 transition">
+
+            Maybe Later
+
+        </button>
+
+
+        <!-- Footer -->
+        <p class="text-center text-[10px] text-white/30 mt-5">
+
+            You can join either community whenever you want.
+
+        </p>
+
     </div>
+
+</div>
+
+
+
+
+
+    <script>
+
+        const dashboardBtn =
+            document.getElementById("dashboardBtn");
+
+        const channelPopup =
+            document.getElementById("channelPopup");
+
+        const closePopup =
+            document.getElementById("closePopup");
+
+        const laterBtn =
+            document.getElementById("laterBtn");
+
+        const popupOverlay =
+            document.getElementById("popupOverlay");
+
+
+        // Open popup
+
+        dashboardBtn.addEventListener("click", function () {
+
+            channelPopup.classList.remove("hidden");
+            channelPopup.classList.add("flex");
+
+        });
+
+
+        // Close popup
+
+        function closeChannelPopup() {
+
+            channelPopup.classList.remove("flex");
+            channelPopup.classList.add("hidden");
+
+        }
+
+
+        closePopup.addEventListener(
+            "click",
+            closeChannelPopup
+        );
+
+
+        laterBtn.addEventListener(
+            "click",
+            function () {
+
+                closeChannelPopup();
+
+                // Continue to dashboard
+
+                window.location.href =
+                    "/dashboard.html";
+
+            }
+        );
+
+
+        popupOverlay.addEventListener(
+            "click",
+            closeChannelPopup
+        );
+
+    </script>
 
 
     <script>
