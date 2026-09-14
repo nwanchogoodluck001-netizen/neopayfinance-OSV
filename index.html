@@ -4,21 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NeoPay Finance - Earn While You Engage</title>
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>NeoPay Finance — Earn Smarter. Grow Faster.</title>
 
-    <!-- Boxicons -->
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
     <style>
+        :root {
+            --red: #7f1111;
+            --red-dark: #520909;
+            --red-deep: #350606;
+            --red-light: #fff3f3;
+            --gold: #c9a227;
+            --gold-light: #ead58a;
+            --gold-dark: #a17d10;
+
+            --white: #ffffff;
+            --off-white: #faf9f6;
+            --cream: #f7f4ec;
+            --text: #171717;
+            --muted: #6d6d6d;
+            --border: #e9e5dc;
+
+            --shadow: 0 20px 60px rgba(54, 11, 11, .10);
+            --shadow-sm: 0 8px 30px rgba(54, 11, 11, .07);
+
+            --radius: 24px;
+        }
+
         * {
-            font-family: 'Inter', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -29,1054 +51,3386 @@
         }
 
         body {
-            background: #553232;
-            color: white;
+            font-family: "Inter", sans-serif;
+            background: var(--white);
+            color: var(--text);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .hero-bg {
+        h1,
+        h2,
+        h3,
+        h4,
+        .logo,
+        .nav-links {
+            font-family: "Sora", sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .container {
+            width: min(1180px, calc(100% - 40px));
+            margin: auto;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 18px 0;
+            transition: .3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, .96);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, .06);
+        }
+
+        .nav-inner {
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--red);
+        }
+
+        .logo-mark {
+            width: 39px;
+            height: 39px;
+            border-radius: 12px;
+            background: var(--red);
+            color: var(--gold);
+            display: grid;
+            place-items: center;
+            font-size: 21px;
+            box-shadow: 0 8px 20px rgba(127, 17, 17, .20);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .nav-links a {
+            transition: .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .login-btn {
+            padding: 12px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        .primary-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 21px;
+            border-radius: 12px;
+            background: var(--red);
+            color: white;
+            font-weight: 600;
+            font-size: 13px;
+            border: 1px solid var(--red);
+            cursor: pointer;
+            transition: .25s ease;
+            box-shadow: 0 9px 22px rgba(127, 17, 17, .18);
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-2px);
+            background: var(--red-dark);
+            box-shadow: 0 14px 28px rgba(127, 17, 17, .24);
+        }
+
+        .gold-btn {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #241d07;
+            box-shadow: 0 10px 25px rgba(201, 162, 39, .20);
+        }
+
+        .gold-btn:hover {
+            background: var(--gold-dark);
+            border-color: var(--gold-dark);
+        }
+
+        .menu-btn {
+            display: none;
+            width: 43px;
+            height: 43px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: white;
+            color: var(--red);
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 780px;
+            padding: 150px 0 90px;
             background:
-                radial-gradient(circle at top right, rgba(255, 208, 0, .4), transparent 30%),
-                linear-gradient(135deg, #780000, #c1121f, #f77f00);
+                radial-gradient(circle at 85% 35%, rgba(201, 162, 39, .09), transparent 28%),
+                linear-gradient(180deg, #fff 0%, #fcfaf6 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .glass {
-            background: rgba(255, 255, 255, .08);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, .12);
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            border: 1px solid rgba(201, 162, 39, .10);
+            right: -160px;
+            top: 130px;
         }
 
-        .gold-text {
-            background: linear-gradient(90deg, #FFD700, #FFF3B0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .hero-grid {
+            display: grid;
+            grid-template-columns: .92fr 1.08fr;
+            align-items: center;
+            gap: 65px;
         }
 
-        .nav-blur {
-            background: rgba(0, 0, 0, .3);
-            backdrop-filter: blur(20px);
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 100px;
+            background: var(--red-light);
+            color: var(--red);
+            border: 1px solid #f3dede;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 21px;
         }
 
-        .card {
-            transition: .4s;
+        .eyebrow i {
+            color: var(--gold-dark);
+            font-size: 14px;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
+        .hero h1 {
+            font-size: clamp(42px, 5vw, 66px);
+            line-height: 1.08;
+            letter-spacing: -2.8px;
+            max-width: 640px;
+            margin-bottom: 23px;
         }
 
-        .glow {
-            box-shadow: 0 0 40px rgba(255, 215, 0, .15);
+        .hero h1 span {
+            color: var(--red);
         }
 
-        .floating {
-            animation: float 5s ease-in-out infinite;
+        .hero-text {
+            color: var(--muted);
+            max-width: 540px;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 29px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .outline-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 21px;
+            border: 1px solid #dcd7ca;
+            border-radius: 12px;
+            font-size: 13px;
+            font-weight: 600;
+            background: white;
+            color: #333;
+            transition: .25s;
+        }
+
+        .outline-btn:hover {
+            border-color: var(--gold);
+            color: var(--red);
+            transform: translateY(-2px);
+        }
+
+        .trust-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 25px;
+            color: #777;
+            font-size: 11px;
+            flex-wrap: wrap;
+        }
+
+        .trust-line i {
+            color: var(--gold-dark);
+            font-size: 15px;
+        }
+
+        /* Dashboard visual */
+
+        .dashboard-stage {
+            position: relative;
+            min-height: 510px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashboard-card {
+            width: min(510px, 100%);
+            background: white;
+            border: 1px solid #e8e1d4;
+            border-radius: 27px;
+            padding: 23px;
+            box-shadow: 0 35px 80px rgba(66, 20, 20, .15);
+            position: relative;
+            z-index: 2;
+            transform: perspective(1200px) rotateY(-3deg) rotateX(1deg);
+        }
+
+        .dashboard-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .dash-brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            font-family: Sora;
+            font-weight: 700;
+            color: var(--red);
+            font-size: 13px;
+        }
+
+        .dash-brand-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 9px;
+            display: grid;
+            place-items: center;
+            background: var(--red);
+            color: var(--gold);
+        }
+
+        .status {
+            font-size: 10px;
+            padding: 6px 9px;
+            border-radius: 100px;
+            background: #f0f9f2;
+            color: #25803a;
+            font-weight: 600;
+        }
+
+        .balance-box {
+            border-radius: 20px;
+            padding: 24px;
+            color: white;
+            background: linear-gradient(135deg, var(--red-deep), var(--red));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .balance-box::after {
+            content: "";
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border: 1px solid rgba(234, 213, 138, .2);
+            border-radius: 50%;
+            right: -80px;
+            top: -80px;
+        }
+
+        .balance-label {
+            font-size: 10px;
+            color: #d9c4c4;
+            margin-bottom: 7px;
+        }
+
+        .balance-value {
+            font-family: Sora;
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .balance-footer {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 19px;
+            font-size: 9px;
+            color: #dbcaca;
+        }
+
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .mini-card {
+            padding: 14px;
+            border: 1px solid #eeeae2;
+            border-radius: 15px;
+        }
+
+        .mini-card i {
+            font-size: 18px;
+            color: var(--gold-dark);
+        }
+
+        .mini-card span {
+            display: block;
+            color: #999;
+            font-size: 8px;
+            margin-top: 8px;
+        }
+
+        .mini-card strong {
+            display: block;
+            font-family: Sora;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        .activity {
+            margin-top: 15px;
+            border-top: 1px solid #eeeae2;
+            padding-top: 16px;
+        }
+
+        .activity-head {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .activity-head span {
+            color: var(--red);
+        }
+
+        .activity-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 11px;
+        }
+
+        .activity-left {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .activity-icon {
+            width: 31px;
+            height: 31px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: var(--red-light);
+            color: var(--red);
+        }
+
+        .activity-name {
+            font-size: 9px;
+            font-weight: 600;
+        }
+
+        .activity-time {
+            color: #aaa;
+            font-size: 8px;
+        }
+
+        .activity-amount {
+            color: #21813b;
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: white;
+            border: 1px solid #eee5d8;
+            border-radius: 16px;
+            padding: 12px 15px;
+            box-shadow: 0 15px 35px rgba(66, 20, 20, .12);
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 9px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .floating-card i {
+            width: 32px;
+            height: 32px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: var(--red-light);
+            color: var(--red);
+            font-size: 17px;
+        }
+
+        .floating-card strong {
+            display: block;
+            font-size: 10px;
+            color: #222;
+        }
+
+        .floating-card small {
+            color: #999;
+        }
+
+        .float-one {
+            top: 38px;
+            right: -4px;
+        }
+
+        .float-two {
+            bottom: 53px;
+            left: -10px;
+            animation-delay: 1s;
+        }
+
+        .float-three {
+            bottom: 105px;
+            right: -28px;
+            animation-delay: 2s;
         }
 
         @keyframes float {
 
             0%,
             100% {
-                transform: translateY(0px);
+                transform: translateY(0);
             }
 
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-8px);
             }
         }
 
-        .hero-circle {
+        /* =========================
+           TRUST BAR
+        ========================= */
+
+        .trust-section {
+            padding: 28px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: white;
+        }
+
+        .trust-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .trust-title {
+            font-family: Sora;
+            font-size: 13px;
+            font-weight: 600;
+            max-width: 240px;
+        }
+
+        .trust-items {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #777;
+            font-size: 11px;
+        }
+
+        .trust-item i {
+            color: var(--gold-dark);
+            font-size: 17px;
+        }
+
+        /* =========================
+           GENERAL SECTIONS
+        ========================= */
+
+        section {
+            scroll-margin-top: 100px;
+        }
+
+        .section {
+            padding: 110px 0;
+        }
+
+        .section-alt {
+            background: var(--off-white);
+        }
+
+        .section-heading {
+            max-width: 680px;
+            margin-bottom: 52px;
+        }
+
+        .section-heading.center {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-tag {
+            color: var(--red);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.15;
+            letter-spacing: -1.7px;
+            margin-bottom: 15px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-visual {
+            min-height: 420px;
+            background: var(--red-deep);
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            padding: 35px;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .about-visual::before {
+            content: "";
             position: absolute;
+            width: 330px;
+            height: 330px;
+            border: 1px solid rgba(234, 213, 138, .18);
             border-radius: 50%;
-            filter: blur(100px);
+            top: -140px;
+            right: -90px;
         }
 
-        .hero-circle-1 {
-            width: 350px;
-            height: 350px;
-            background: #ffcc00;
-            top: -50px;
-            right: -50px;
+        .about-visual::after {
+            content: "";
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            border: 1px solid rgba(234, 213, 138, .10);
+            border-radius: 50%;
+            bottom: -120px;
+            left: -100px;
         }
 
-        .hero-circle-2 {
-            width: 300px;
-            height: 300px;
-            background: #ff4500;
-            bottom: -50px;
-            left: -50px;
+        .about-card {
+            width: 100%;
+            background: rgba(255, 255, 255, .08);
+            border: 1px solid rgba(255, 255, 255, .12);
+            backdrop-filter: blur(10px);
+            border-radius: 22px;
+            padding: 25px;
+            color: white;
+            position: relative;
+            z-index: 2;
         }
 
-        .section-title {
-            font-size: clamp(2rem, 5vw, 4rem);
-            font-weight: 900;
+        .about-card .big-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 15px;
+            background: var(--gold);
+            color: var(--red-deep);
+            display: grid;
+            place-items: center;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+
+        .about-card h3 {
+            font-size: 22px;
+            margin-bottom: 9px;
+        }
+
+        .about-card p {
+            font-size: 12px;
+            color: #dbcaca;
+            line-height: 1.8;
+        }
+
+        .about-points {
+            margin-top: 25px;
+            display: grid;
+            gap: 12px;
+        }
+
+        .about-point {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+        }
+
+        .about-point i {
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 17px;
+        }
+
+        .step {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            padding: 27px;
+            transition: .3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            border-color: #dfcb8b;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .step-number {
+            font-family: Sora;
+            color: var(--gold-dark);
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 35px;
+        }
+
+        .step-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: var(--red-light);
+            color: var(--red);
+            font-size: 22px;
+            margin-bottom: 19px;
+        }
+
+        .step h3 {
+            font-size: 16px;
+            margin-bottom: 9px;
+        }
+
+        .step p {
+            font-size: 11px;
+            color: #777;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .feature-card {
+            padding: 29px;
+            border: 1px solid var(--border);
+            border-radius: 23px;
+            background: white;
+            transition: .3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-sm);
+            border-color: #ddcb92;
         }
 
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 15px;
-            background: rgba(255, 255, 255, .08);
-            color: #FFD700;
-            font-size: 28px;
-        }
-
-        .gradient-btn {
-            background: linear-gradient(90deg, #FFD700, #ffbf00);
-            color: black;
-            font-weight: 700;
-        }
-
-        .gradient-btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 800;
-        }
-
-
-        /* Notification Popup */
-        .notification-container {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            transform: translateX(500px);
-            opacity: 0;
-            transition: all .7s ease;
-        }
-
-        .notification-container.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .notification-card {
-            min-width: 340px;
-            max-width: 400px;
-            background: rgba(0, 0, 0, .8);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 215, 0, .2);
-            border-radius: 18px;
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 10px 40px rgba(255, 215, 0, .15);
-        }
-
-        .notification-avatar {
             width: 50px;
             height: 50px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: var(--red-light);
+            color: var(--red);
+            font-size: 23px;
+            margin-bottom: 21px;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #777;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           DASHBOARD SHOWCASE
+        ========================= */
+
+        .showcase {
+            background: var(--red-deep);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .showcase::before {
+            content: "";
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border: 1px solid rgba(234, 213, 138, .10);
             border-radius: 50%;
-            background: linear-gradient(135deg, #FFD700, #ff9f1c);
+            right: -300px;
+            top: -200px;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: .75fr 1.25fr;
+            gap: 70px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .showcase .section-tag {
+            color: var(--gold-light);
+        }
+
+        .showcase h2 {
+            font-size: clamp(30px, 4vw, 44px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 17px;
+        }
+
+        .showcase-text {
+            color: #d8c8c8;
+            font-size: 13px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .showcase-list {
+            display: grid;
+            gap: 13px;
+        }
+
+        .showcase-list div {
             display: flex;
             align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+            gap: 10px;
+            font-size: 12px;
+            color: #eee;
         }
 
-        .notification-avatar i {
-            font-size: 24px;
-            color: #000;
+        .showcase-list i {
+            color: var(--gold);
         }
 
-        .notification-name {
-            font-weight: 700;
-            color: #fff;
-            font-size: 15px;
+        .showcase-dashboard {
+            background: #fff;
+            border-radius: 25px;
+            padding: 18px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, .25);
         }
 
-        .notification-action {
-            color: #d1d5db;
-            font-size: 13px;
-            margin-top: 2px;
+        .showcase-dashboard img {
+            width: 100%;
         }
 
-        .notification-time {
-            color: #9ca3af;
-            font-size: 11px;
+        .mock-window {
+            border: 1px solid #e8e4db;
+            border-radius: 17px;
+            padding: 17px;
+            color: #222;
+        }
+
+        .mock-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 17px;
+        }
+
+        .mock-head strong {
+            font-family: Sora;
+            font-size: 12px;
+        }
+
+        .mock-head span {
+            font-size: 9px;
+            color: #999;
+        }
+
+        .mock-balance {
+            padding: 19px;
+            border-radius: 15px;
+            background: var(--red);
+            color: white;
+        }
+
+        .mock-balance small {
+            font-size: 8px;
+            color: #e3cfcf;
+        }
+
+        .mock-balance h3 {
+            font-size: 25px;
             margin-top: 4px;
         }
 
-        @media(max-width:640px) {
-
-            .notification-container {
-                right: 10px;
-                left: 10px;
-                bottom: 10px;
-            }
-
-            .notification-card {
-                min-width: 100%;
-            }
-
+        .mock-stat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 9px;
         }
+
+        .mock-stat {
+            border: 1px solid #ece8df;
+            padding: 13px;
+            border-radius: 12px;
+        }
+
+        .mock-stat small {
+            display: block;
+            color: #999;
+            font-size: 7px;
+        }
+
+        .mock-stat strong {
+            display: block;
+            font-family: Sora;
+            font-size: 11px;
+            margin-top: 3px;
+        }
+
+        .chart-box {
+            height: 105px;
+            margin-top: 9px;
+            padding: 13px;
+            border: 1px solid #ece8df;
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .chart-label {
+            font-size: 8px;
+            font-weight: 600;
+        }
+
+        .chart {
+            position: absolute;
+            left: 13px;
+            right: 13px;
+            bottom: 13px;
+            height: 55px;
+        }
+
+        .chart svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .chart polyline {
+            fill: none;
+            stroke: var(--gold-dark);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* =========================
+           OPPORTUNITIES
+        ========================= */
+
+        .opportunities {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .opportunity {
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 23px 18px;
+            background: white;
+            transition: .3s;
+        }
+
+        .opportunity:hover {
+            transform: translateY(-5px);
+            border-color: #dcc98b;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .opportunity i {
+            color: var(--gold-dark);
+            font-size: 25px;
+            margin-bottom: 30px;
+        }
+
+        .opportunity h3 {
+            font-size: 13px;
+            margin-bottom: 7px;
+        }
+
+        .opportunity p {
+            color: #888;
+            font-size: 9px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            background: var(--cream);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .stat {
+            text-align: center;
+            padding: 25px;
+            border-right: 1px solid #dfd9cc;
+        }
+
+        .stat:last-child {
+            border-right: 0;
+        }
+
+        .stat h3 {
+            color: var(--red);
+            font-size: 31px;
+            letter-spacing: -1px;
+            margin-bottom: 3px;
+        }
+
+        .stat p {
+            color: #777;
+            font-size: 10px;
+        }
+
+        /* =========================
+           TESTIMONIALS
+        ========================= */
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 17px;
+        }
+
+        .testimonial {
+            padding: 27px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            background: white;
+        }
+
+        .stars {
+            color: var(--gold-dark);
+            font-size: 13px;
+            margin-bottom: 19px;
+        }
+
+        .testimonial p {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 22px;
+        }
+
+        .person {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .avatar {
+            width: 39px;
+            height: 39px;
+            border-radius: 50%;
+            background: var(--red-light);
+            color: var(--red);
+            display: grid;
+            place-items: center;
+            font-family: Sora;
+            font-weight: 700;
+            font-size: 11px;
+        }
+
+        .person strong {
+            display: block;
+            font-size: 11px;
+        }
+
+        .person span {
+            font-size: 9px;
+            color: #999;
+        }
+
+        /* =========================
+           SECURITY
+        ========================= */
+
+        .security-box {
+            background: var(--red);
+            border-radius: 30px;
+            padding: 60px;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .security-box::after {
+            content: "";
+            width: 370px;
+            height: 370px;
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, .08);
+            border-radius: 50%;
+            right: -150px;
+            bottom: -200px;
+        }
+
+        .security-box h2 {
+            font-size: clamp(30px, 4vw, 43px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 15px;
+        }
+
+        .security-box p {
+            color: #e1cece;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .security-list {
+            display: grid;
+            gap: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .security-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .09);
+            font-size: 11px;
+        }
+
+        .security-item i {
+            color: var(--gold);
+            font-size: 20px;
+        }
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        .faq {
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 21px 0;
+            border: 0;
+            background: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            cursor: pointer;
+            text-align: left;
+            font-family: Sora;
+            font-size: 13px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .faq-question i {
+            color: var(--red);
+            font-size: 20px;
+            transition: .25s;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+
+        .faq-answer p {
+            color: #777;
+            font-size: 11px;
+            line-height: 1.8;
+            padding: 0 30px 20px 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(45deg);
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            padding: 100px 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--red-deep), var(--red));
+            color: white;
+            border-radius: 30px;
+            padding: 70px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before,
+        .cta-box::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(234, 213, 138, .13);
+            border-radius: 50%;
+        }
+
+        .cta-box::before {
+            width: 400px;
+            height: 400px;
+            left: -210px;
+            top: -230px;
+        }
+
+        .cta-box::after {
+            width: 300px;
+            height: 300px;
+            right: -130px;
+            bottom: -200px;
+        }
+
+        .cta-box>* {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-box .section-tag {
+            color: var(--gold-light);
+        }
+
+        .cta-box h2 {
+            font-size: clamp(31px, 4vw, 46px);
+            line-height: 1.15;
+            letter-spacing: -1.7px;
+            margin-bottom: 15px;
+        }
+
+        .cta-box p {
+            max-width: 580px;
+            margin: auto auto 27px;
+            color: #dbcaca;
+            font-size: 13px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #250404;
+            color: white;
+            padding: 70px 0 25px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 50px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            max-width: 320px;
+            color: #bfaeae;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .footer-col h4 {
+            color: var(--gold-light);
+            font-size: 11px;
+            margin-bottom: 18px;
+            font-family: Sora;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #bfaeae;
+            font-size: 10px;
+            margin-bottom: 11px;
+            transition: .2s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: 22px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            color: #8f7d7d;
+            font-size: 9px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 8px;
+        }
+
+        .socials a {
+            width: 31px;
+            height: 31px;
+            border: 1px solid rgba(255, 255, 255, .1);
+            border-radius: 9px;
+            display: grid;
+            place-items: center;
+            font-size: 16px;
+            transition: .2s;
+        }
+
+        .socials a:hover {
+            color: var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: .7s ease;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        /* MOBILE MENU - HIDDEN ON DESKTOP */
+        .mobile-menu {
+            display: none !important;
+        }
+
+        @media (max-width: 1000px) {
+
+            .nav-links {
+                gap: 17px;
+            }
+
+            .hero-grid,
+            .about-grid,
+            .showcase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 130px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-text {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions,
+            .trust-line {
+                justify-content: center;
+            }
+
+            .dashboard-stage {
+                min-height: 480px;
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .opportunities {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .security-box {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1.5fr 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+
+            .container {
+                width: min(100% - 28px, 600px);
+            }
+
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .nav-inner {
+                height: 58px;
+            }
+
+            .nav-links,
+            .nav-actions {
+                display: none;
+            }
+
+            .menu-btn {
+                display: grid;
+                place-items: center;
+            }
+
+            .mobile-menu {
+                position: absolute;
+                top: 75px;
+                left: 14px;
+                right: 14px;
+                background: white;
+                border: 1px solid var(--border);
+                border-radius: 18px;
+                padding: 10px;
+                box-shadow: 0 20px 50px rgba(0, 0, 0, .12);
+            }
+
+            .mobile-menu.active {
+                display: block !important;
+            }
+
+            /* rest of your mobile CSS... */
+
+
+            .mobile-menu a {
+                display: block;
+                padding: 13px 14px;
+                border-radius: 10px;
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            .mobile-menu a:hover {
+                background: var(--red-light);
+                color: var(--red);
+            }
+
+            .mobile-menu .mobile-login {
+                border-top: 1px solid var(--border);
+                margin-top: 5px;
+                padding-top: 13px;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 125px 0 65px;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+                letter-spacing: -2px;
+            }
+
+            .hero-text {
+                font-size: 14px;
+            }
+
+            .dashboard-stage {
+                min-height: 410px;
+                margin-top: 25px;
+            }
+
+            .dashboard-card {
+                padding: 15px;
+                border-radius: 21px;
+                transform: none;
+            }
+
+            .balance-value {
+                font-size: 26px;
+            }
+
+            .floating-card {
+                transform: scale(.85);
+            }
+
+            .float-one {
+                right: -17px;
+                top: 22px;
+            }
+
+            .float-two {
+                left: -22px;
+                bottom: 28px;
+            }
+
+            .float-three {
+                display: none;
+            }
+
+            .trust-wrap {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .trust-items {
+                justify-content: flex-start;
+                gap: 14px;
+            }
+
+            .section {
+                padding: 75px 0;
+            }
+
+            .section-heading {
+                margin-bottom: 35px;
+            }
+
+            .section-heading h2 {
+                font-size: 31px;
+            }
+
+            .about-visual {
+                min-height: 360px;
+            }
+
+            .features-grid,
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .opportunities {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat {
+                border-right: 0;
+                border-bottom: 1px solid #dfd9cc;
+            }
+
+            .stat:nth-child(odd) {
+                border-right: 1px solid #dfd9cc;
+            }
+
+            .security-box {
+                padding: 38px 25px;
+                border-radius: 24px;
+                gap: 35px;
+            }
+
+            .cta {
+                padding: 70px 0;
+            }
+
+            .cta-box {
+                padding: 55px 20px;
+                border-radius: 24px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px 25px;
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .hero h1 {
+                font-size: 35px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .hero-actions a {
+                width: 100%;
+            }
+
+            .mini-card {
+                padding: 10px;
+            }
+
+            .mini-card strong {
+                font-size: 10px;
+            }
+
+            .opportunities {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .opportunity {
+                padding: 19px 14px;
+            }
+
+            .opportunity i {
+                margin-bottom: 22px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+        /* =========================
+   ABOUT - PREMIUM LAYOUT
+========================= */
+
+.about-section {
+    background: #fff;
+    overflow: hidden;
+}
+
+.about-layout {
+    display: grid;
+    grid-template-columns: .95fr 1.05fr;
+    align-items: center;
+    gap: 80px;
+}
+
+/* TEXT */
+
+.about-content {
+    max-width: 610px;
+}
+
+.about-content .section-tag {
+    color: var(--gold-dark);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    margin-bottom: 15px;
+}
+
+.about-content h2 {
+    font-family: "Sora", sans-serif;
+    font-size: clamp(38px, 4.5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -2.5px;
+    margin-bottom: 25px;
+}
+
+.about-content h2 span {
+    color: var(--red);
+}
+
+.about-description {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.85;
+    margin-bottom: 17px;
+    max-width: 580px;
+}
+
+/* CHECKLIST */
+
+.about-checklist {
+    display: grid;
+    gap: 13px;
+    margin-top: 27px;
+}
+
+.about-check {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #333;
+    font-size: 13px;
+}
+
+.about-check i {
+    width: 22px;
+    height: 22px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--red-deep);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* FLYER */
+
+.about-flyer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+
+.flyer-frame {
+    width: min(480px, 100%);
+    position: relative;
+    z-index: 2;
+    border-radius: 28px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid #eadfca;
+    box-shadow: 0 30px 75px rgba(54, 11, 11, .14);
+    transform: rotate(1deg);
+    transition: .35s ease;
+}
+
+.flyer-frame:hover {
+    transform: rotate(0deg) translateY(-5px);
+    box-shadow: 0 35px 85px rgba(54, 11, 11, .18);
+}
+
+.flyer-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Decorative background behind flyer */
+
+.about-flyer::before {
+    content: "";
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    border: 1px solid rgba(201, 162, 39, .18);
+    right: -30px;
+    top: 30px;
+}
+
+.about-flyer::after {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    border-radius: 50%;
+    background: var(--red-light);
+    left: 20px;
+    bottom: 20px;
+    z-index: 0;
+}
+
+
+/* =========================
+   ABOUT RESPONSIVE
+========================= */
+
+@media (max-width: 1000px) {
+
+    .about-layout {
+        grid-template-columns: 1fr;
+        gap: 55px;
+    }
+
+    .about-content {
+        max-width: 700px;
+        margin: auto;
+        text-align: center;
+    }
+
+    .about-description {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .about-checklist {
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
+    }
+
+    .about-flyer {
+        min-height: auto;
+    }
+
+    .flyer-frame {
+        width: min(500px, 90%);
+    }
+}
+
+
+@media (max-width: 760px) {
+
+    .about-layout {
+        gap: 40px;
+    }
+
+    .about-content h2 {
+        font-size: 38px;
+        letter-spacing: -1.8px;
+    }
+
+    .about-description {
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .about-check {
+        font-size: 12px;
+    }
+
+    .about-flyer {
+        min-height: 390px;
+    }
+
+    .flyer-frame {
+        width: 92%;
+        border-radius: 22px;
+    }
+
+    .about-flyer::before {
+        width: 250px;
+        height: 250px;
+        right: -60px;
+    }
+
+    .about-flyer::after {
+        width: 180px;
+        height: 180px;
+        left: -30px;
+    }
+}
+
+
+@media (max-width: 430px) {
+
+    .about-content h2 {
+        font-size: 34px;
+    }
+
+    .about-check {
+        align-items: flex-start;
+    }
+
+    .about-check i {
+        margin-top: 1px;
+    }
+
+    .about-flyer {
+        min-height: 320px;
+    }
+
+    .flyer-frame {
+        width: 100%;
+    }
+}
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 left-0 w-full z-50 nav-blur border-b border-white/10">
+    <!-- =========================
+     NAVBAR
+========================= -->
 
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <header class="navbar" id="navbar">
+        <div class="container nav-inner">
 
-            <div class="flex items-center gap-3">
-
-                <div
-                    class="w-12 h-12 rounded-xl bg-gradient-to-r from-yellow-300 to-yellow-500 flex items-center justify-center">
-                    <img src="/logo.jpg" alt="">
-                </div>
-
-                <div>
-                    <h2 class="font-bold text-lg">NeoPay Finance</h2>
-                    <p class="text-xs text-gray-300">Where Users Earn Without Stress</p>
-                </div>
-
-            </div>
-
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#about" class="hover:text-yellow-400">About</a>
-                <a href="#features" class="hover:text-yellow-400">Features</a>
-                <a href="#how" class="hover:text-yellow-400">How It Works</a>
-                <a href="#join" class="hover:text-yellow-400">Join</a>
-            </div>
-
-            <a class='hidden md:inline-block gradient-btn px-6 py-3 rounded-full transition' href='/reigster.html'>
-                Start Now
+            <a href="#home" class="logo">
+                <span class="logo-mark">
+                    <i class='bx bx-line-chart'></i>
+                </span>
+                NeoPay
             </a>
 
-            <button id="menuBtn" class="md:hidden text-3xl">
-                <i class='bx bx-menu'></i>
-            </button>
-
-        </div>
-
-        <div id="mobileMenu" class="hidden md:hidden px-6 pb-5">
-            <div class="flex flex-col gap-4">
+            <nav class="nav-links">
+                <a href="#home">Home</a>
                 <a href="#about">About</a>
                 <a href="#features">Features</a>
-                <a href="#how">How It Works</a>
-                <a href="#join">Join</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a href="/login.html" class="login-btn">Login</a>
+                <a href="/reigster.html" class="primary-btn">
+                    Create Account
+                    <i class='bx bx-right-arrow-alt'></i>
+                </a>
             </div>
+
+            <button class="menu-btn" id="menuBtn">
+                <i class='bx bx-menu'></i>
+            </button>
         </div>
 
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero-bg min-h-screen relative overflow-hidden flex items-center">
-
-        <div class="hero-circle hero-circle-1"></div>
-        <div class="hero-circle hero-circle-2"></div>
-
-        <div class="max-w-7xl mx-auto px-6 py-32">
-
-            <div class="grid lg:grid-cols-2 gap-14 items-center">
-
-                <div>
-
-                    <span class="glass px-5 py-2 rounded-full inline-block mb-6">
-                        #NeoPayFinance2026
-                    </span>
-
-                    <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6">
-                        Earn Rewards
-                        <span class="gold-text">Just By</span>
-                        Enjoying Content
-                    </h1>
-
-                    <p class="text-lg text-white/80 mb-8 max-w-xl">
-                        NeoPay Finance is an African fintech platform that rewards users for
-                        watching videos, playing games, reviewing content, streaming music,
-                        learning digital skills and completing simple online tasks.
-                    </p>
-
-                    <div class="flex flex-wrap gap-4">
-
-                        <a class='gradient-btn px-8 py-4 rounded-full transition' href='/reigster.html'>
-                            Start Earning
-                        </a>
-
-                        <a href="#about" class="glass px-8 py-4 rounded-full">
-                            Learn More
-                        </a>
-
-                    </div>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
-
-                        <div>
-                            <div class="stat-number">10K+</div>
-                            <p class="text-gray-300">Users</p>
-                        </div>
-
-                        <div>
-                            <div class="stat-number">24/7</div>
-                            <p class="text-gray-300">Access</p>
-                        </div>
-
-                        <div>
-                            <div class="stat-number">₦</div>
-                            <p class="text-gray-300">Rewards</p>
-                        </div>
-
-                        <div>
-                            <div class="stat-number">100%</div>
-                            <p class="text-gray-300">Digital</p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="floating">
-
-                    <div class="glass p-8 rounded-3xl glow">
-
-                        <h3 class="text-2xl font-bold mb-6">
-                            Ways To Earn
-                        </h3>
-
-                        <div class="space-y-4">
-
-                            <div class="glass rounded-xl p-4 flex items-center gap-3">
-                                <i class='bx bx-video text-2xl text-yellow-400'></i>
-                                <span>Watch Funny Videos</span>
-                            </div>
-
-                            <div class="glass rounded-xl p-4 flex items-center gap-3">
-                                <i class='bx bx-like text-2xl text-yellow-400'></i>
-                                <span>Like Videos</span>
-                            </div>
-
-                            <div class="glass rounded-xl p-4 flex items-center gap-3">
-                                <i class='bx bx-message-square-detail text-2xl text-yellow-400'></i>
-                                <span>Share Reviews</span>
-                            </div>
-
-                            <div class="glass rounded-xl p-4 flex items-center gap-3">
-                                <i class='bx bx-joystick text-2xl text-yellow-400'></i>
-                                <span>Play Games</span>
-                            </div>
-
-                            <div class="glass rounded-xl p-4 flex items-center gap-3">
-                                <i class='bx bx-music text-2xl text-yellow-400'></i>
-                                <span>Stream Songs & Beats</span>
-                            </div>
-
-                            <div class="glass rounded-xl p-4 flex items-center gap-3">
-                                <i class='bx bx-wallet text-2xl text-yellow-400'></i>
-                                <span>Get Paid In Naira</span>
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#faq">FAQ</a>
+            <a href="/login.html" class="mobile-login">Login</a>
+            <a href="/reigster.html">Create Account</a>
         </div>
+    </header>
 
-    </section>
 
-    <!-- ABOUT -->
-    <section id="about" class="py-24 bg-[#0f0f0f]">
+    <!-- =========================
+     HERO
+========================= -->
 
-        <div class="max-w-7xl mx-auto px-6">
+    <section class="hero" id="home">
+        <div class="container hero-grid">
 
-            <div class="text-center mb-16">
-                <h2 class="section-title">
-                    What Is <span class="gold-text">NeoPay Finance?</span>
-                </h2>
-            </div>
+            <div class="hero-content reveal">
 
-            <div class="grid md:grid-cols-2 gap-8">
-
-                <div class="glass p-8 rounded-3xl">
-                    <p class="text-lg text-gray-300 leading-8">
-                        NeoPay Finance is an African company designed to help Africans learn
-                        digital skills, perform simple tasks and earn rewards online.
-                    </p>
+                <div class="eyebrow">
+                    <i class='bx bxs-shield-check'></i>
+                    Digital earning platform
                 </div>
 
-                <div class="glass p-8 rounded-3xl">
-                    <p class="text-lg text-gray-300 leading-8">
-                        Users can post engaging content, play games, download and review files,
-                        watch short videos, stream songs and spend time on the platform while
-                        earning rewards.
-                    </p>
-                </div>
+                <h1>
+                    Earn Smarter.<br>
+                    <span>Grow Faster.</span><br>
+                    Build Your Digital Future.
+                </h1>
 
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- FEATURES -->
-    <section id="features" class="py-24">
-
-        <div class="max-w-7xl mx-auto px-6">
-
-            <div class="text-center mb-16">
-                <h2 class="section-title">
-                    Platform Features
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                <div class="glass p-8 rounded-3xl card">
-                    <div class="feature-icon mb-5">
-                        <i class='bx bx-video'></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Watch & Earn</h3>
-                    <p class="text-gray-300">Earn rewards while enjoying videos.</p>
-                </div>
-
-                <div class="glass p-8 rounded-3xl card">
-                    <div class="feature-icon mb-5">
-                        <i class='bx bx-joystick'></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Gaming Tasks</h3>
-                    <p class="text-gray-300">Turn entertainment into rewards.</p>
-                </div>
-
-                <div class="glass p-8 rounded-3xl card">
-                    <div class="feature-icon mb-5">
-                        <i class='bx bx-edit'></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Reviews</h3>
-                    <p class="text-gray-300">Share reviews and earn.</p>
-                </div>
-
-                <div class="glass p-8 rounded-3xl card">
-                    <div class="feature-icon mb-5">
-                        <i class='bx bx-music'></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Streaming</h3>
-                    <p class="text-gray-300">Listen to songs and beats.</p>
-                </div>
-
-                <div class="glass p-8 rounded-3xl card">
-                    <div class="feature-icon mb-5">
-                        <i class='bx bx-book-open'></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Digital Skills</h3>
-                    <p class="text-gray-300">Learn useful digital skills.</p>
-                </div>
-
-                <div class="glass p-8 rounded-3xl card">
-                    <div class="feature-icon mb-5">
-                        <i class='bx bx-credit-card'></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Fintech Rewards</h3>
-                    <p class="text-gray-300">Modern reward ecosystem.</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section id="how" class="py-24 bg-[#0f0f0f]">
-
-        <div class="max-w-6xl mx-auto px-6">
-
-            <div class="text-center mb-16">
-                <h2 class="section-title">
-                    How It Works
-                </h2>
-            </div>
-
-            <div class="grid md:grid-cols-4 gap-8">
-
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
-                        1
-                    </div>
-                    <h3 class="font-bold">Create Account</h3>
-                </div>
-
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
-                        2
-                    </div>
-                    <h3 class="font-bold">Engage Content</h3>
-                </div>
-
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
-                        3
-                    </div>
-                    <h3 class="font-bold">Complete Tasks</h3>
-                </div>
-
-                <div class="text-center">
-                    <div
-                        class="w-20 h-20 mx-auto rounded-full bg-yellow-400 text-black flex items-center justify-center text-3xl font-black mb-4">
-                        4
-                    </div>
-                    <h3 class="font-bold">Earn Rewards</h3>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- CTA -->
-    <section id="join" class="hero-bg py-28">
-
-        <div class="max-w-4xl mx-auto px-6 text-center">
-
-            <h2 class="text-5xl md:text-6xl font-black mb-6">
-                Join The NeoPay Movement
-            </h2>
-
-            <p class="text-xl text-white/80 mb-10">
-                Start earning rewards while enjoying content and building your digital future.
-            </p>
-
-            <a class='inline-flex items-center gap-3 gradient-btn px-10 py-5 rounded-full text-lg transition'
-                href='/reigster.html'>
-
-                Start Now
-
-                <i class='bx bx-right-arrow-alt text-2xl'></i>
-
-            </a>
-
-        </div>
-
-    </section>
-
-
-
-        <!-- ===================================
-        FAQ SECTION
-==================================== -->
-
-    <section id="faq" class="py-24 bg-white">
-
-        <div class="max-w-5xl mx-auto px-6">
-
-            <!-- Heading -->
-
-            <div class="text-center mb-16">
-
-                <span class="inline-block px-5 py-2 rounded-full bg-red-100 text-red-700 font-semibold">
-
-                    FREQUENTLY ASKED QUESTIONS
-
-                </span>
-
-                <h2 class="text-5xl font-bold text-[#3B0A0A] mt-6">
-
-                    Got Questions?
-
-                    <span class="text-[#D4AF37]">
-
-                        We've Got Answers
-
-                    </span>
-
-                </h2>
-
-                <p class="text-gray-600 text-lg mt-6">
-
-                    Everything you need to know about NeoPay.
-
+                <p class="hero-text">
+                    NeoPay gives you access to digital tasks, rewards,
+                    referrals and online opportunities designed to help
+                    you participate and grow your earnings online.
                 </p>
 
+                <div class="hero-actions">
+                    <a href="register.html" class="primary-btn gold-btn">
+                        Get Started
+                        <i class='bx bx-right-arrow-alt'></i>
+                    </a>
+
+                    <a href="#how-it-works" class="outline-btn">
+                        Explore NeoPay
+                        <i class='bx bx-play-circle'></i>
+                    </a>
+                </div>
+
+                <div class="trust-line">
+                    <i class='bx bx-check-shield'></i>
+                    Secure Platform
+                    <span>•</span>
+                    Easy Registration
+                    <span>•</span>
+                    Multiple Opportunities
+                </div>
+
             </div>
 
 
+            <!-- Dashboard -->
+            <div class="dashboard-stage reveal">
 
-            <!-- Accordion -->
+                <div class="floating-card float-one">
+                    <i class='bx bx-trending-up'></i>
+                    <div>
+                        <strong>+₦25,000</strong>
+                        <small>Earnings added</small>
+                    </div>
+                </div>
 
-            <div class="space-y-5">
+                <div class="floating-card float-two">
+                    <i class='bx bx-check-circle'></i>
+                    <div>
+                        <strong>Task Completed</strong>
+                        <small>Reward processed</small>
+                    </div>
+                </div>
 
-                <!-- Item -->
+                <div class="floating-card float-three">
+                    <i class='bx bx-wallet'></i>
+                    <div>
+                        <strong>Withdrawal</strong>
+                        <small>Successfully processed</small>
+                    </div>
+                </div>
 
-                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
+                <div class="dashboard-card">
 
-                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
+                    <div class="dashboard-top">
+                        <div class="dash-brand">
+                            <span class="dash-brand-icon">
+                                <i class='bx bx-line-chart'></i>
+                            </span>
+                            NeoPay
+                        </div>
 
-                        <span class="text-xl font-semibold text-[#3B0A0A]">
-
-                            How do I create a NeoPay account?
-
+                        <span class="status">
+                            ● Account Active
                         </span>
+                    </div>
 
-                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
+                    <div class="balance-box">
+                        <div class="balance-label">
+                            Available Balance
+                        </div>
 
-                    </button>
+                        <div class="balance-value">
+                            ₦185,450.00
+                        </div>
 
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
+                        <div class="balance-footer">
+                            <span>Current balance</span>
+                            <span>Updated today</span>
+                        </div>
+                    </div>
 
-                        <p class="px-7 pb-7 text-gray-600 leading-8">
+                    <div class="mini-grid">
 
-                            Click the "Get Started" button, complete the registration
-                            form, verify your details and activate your account to
-                            begin enjoying NeoPay services.
+                        <div class="mini-card">
+                            <i class='bx bx-trending-up'></i>
+                            <span>Total Earnings</span>
+                            <strong>₦245,800</strong>
+                        </div>
 
-                        </p>
+                        <div class="mini-card">
+                            <i class='bx bx-task'></i>
+                            <span>Tasks Done</span>
+                            <strong>128</strong>
+                        </div>
+
+                        <div class="mini-card">
+                            <i class='bx bx-group'></i>
+                            <span>Referrals</span>
+                            <strong>24</strong>
+                        </div>
 
                     </div>
 
-                </div>
+                    <div class="activity">
 
+                        <div class="activity-head">
+                            <strong>Recent Activity</strong>
+                            <span>View all</span>
+                        </div>
 
+                        <div class="activity-row">
+                            <div class="activity-left">
+                                <div class="activity-icon">
+                                    <i class='bx bx-check'></i>
+                                </div>
 
-                <!-- Item -->
+                                <div>
+                                    <div class="activity-name">
+                                        Task Reward
+                                    </div>
+                                    <div class="activity-time">
+                                        Today, 10:42 AM
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
+                            <div class="activity-amount">
+                                +₦2,500
+                            </div>
+                        </div>
 
-                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
+                        <div class="activity-row">
+                            <div class="activity-left">
+                                <div class="activity-icon">
+                                    <i class='bx bx-user-plus'></i>
+                                </div>
 
-                        <span class="text-xl font-semibold text-[#3B0A0A]">
+                                <div>
+                                    <div class="activity-name">
+                                        Referral Reward
+                                    </div>
+                                    <div class="activity-time">
+                                        Yesterday
+                                    </div>
+                                </div>
+                            </div>
 
-                            How do referrals work?
+                            <div class="activity-amount">
+                                +₦1,500
+                            </div>
+                        </div>
 
-                        </span>
+                        <div class="activity-row">
+                            <div class="activity-left">
+                                <div class="activity-icon">
+                                    <i class='bx bx-wallet'></i>
+                                </div>
 
-                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
+                                <div>
+                                    <div class="activity-name">
+                                        Withdrawal
+                                    </div>
+                                    <div class="activity-time">
+                                        Yesterday
+                                    </div>
+                                </div>
+                            </div>
 
-                    </button>
-
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
-
-                        <p class="px-7 pb-7 text-gray-600 leading-8">
-
-                            Every member receives a unique referral link.
-                            Share it with friends and earn rewards whenever
-                            someone joins through your link.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- Item -->
-
-                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
-
-                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
-
-                        <span class="text-xl font-semibold text-[#3B0A0A]">
-
-                            How long do withdrawals take?
-
-                        </span>
-
-                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
-
-                    </button>
-
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
-
-                        <p class="px-7 pb-7 text-gray-600 leading-8">
-
-                            Withdrawal times depend on your payment method.
-                            Most approved withdrawals are processed quickly
-                            after verification.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- Item -->
-
-                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
-
-                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
-
-                        <span class="text-xl font-semibold text-[#3B0A0A]">
-
-                            Is NeoPay secure?
-
-                        </span>
-
-                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
-
-                    </button>
-
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
-
-                        <p class="px-7 pb-7 text-gray-600 leading-8">
-
-                            Yes. NeoPay uses modern security practices to help
-                            protect user information and transactions while
-                            providing a reliable digital finance experience.
-
-                        </p>
+                            <div style="color:#555;font-size:10px;font-weight:700;">
+                                -₦15,000
+                            </div>
+                        </div>
 
                     </div>
-
                 </div>
-
-
-
-                <!-- Item -->
-
-                <div class="faq-item bg-[#FFF8F8] rounded-3xl shadow-md overflow-hidden">
-
-                    <button class="faq-btn w-full flex justify-between items-center p-7 text-left">
-
-                        <span class="text-xl font-semibold text-[#3B0A0A]">
-
-                            How can I contact customer support?
-
-                        </span>
-
-                        <i class='bx bx-plus text-3xl text-red-700 transition-all duration-300'></i>
-
-                    </button>
-
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-500">
-
-                        <p class="px-7 pb-7 text-gray-600 leading-8">
-
-                            You can reach our support team through the Contact
-                            page or the official support channels available
-                            inside your NeoPay dashboard.
-
-                        </p>
-
-                    </div>
-
-                </div>
-
             </div>
 
         </div>
-
     </section>
 
 
+    <!-- =========================
+     TRUST
+========================= -->
 
-    <!-- ===================================
-        FAQ SCRIPT
-==================================== -->
+    <section class="trust-section">
+        <div class="container trust-wrap">
 
-    <script>
-
-        const faqButtons = document.querySelectorAll(".faq-btn");
-
-        faqButtons.forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                const item = button.parentElement;
-                const content = item.querySelector(".faq-content");
-                const icon = button.querySelector("i");
-
-                // Close other FAQs
-
-                document.querySelectorAll(".faq-item").forEach(faq => {
-
-                    if (faq !== item) {
-
-                        faq.querySelector(".faq-content").style.maxHeight = null;
-
-                        faq.querySelector("i").classList.remove("bx-minus");
-
-                        faq.querySelector("i").classList.add("bx-plus");
-
-                    }
-
-                });
-
-                // Toggle current FAQ
-
-                if (content.style.maxHeight) {
-
-                    content.style.maxHeight = null;
-
-                    icon.classList.remove("bx-minus");
-                    icon.classList.add("bx-plus");
-
-                } else {
-
-                    content.style.maxHeight = content.scrollHeight + "px";
-
-                    icon.classList.remove("bx-plus");
-                    icon.classList.add("bx-minus");
-
-                }
-
-            });
-
-        });
-
-    </script>
-
-
-    <!-- FOOTER -->
-    <footer class="bg-black border-t border-white/10 py-10">
-
-        <div class="max-w-7xl mx-auto px-6 text-center">
-
-            <h2 class="gold-text text-3xl font-black mb-3">
-                NeoPay Finance
-            </h2>
-
-            <p class="text-gray-500">
-                © 2026 NeoPay Finance. All Rights Reserved.
-            </p>
-
-        </div>
-
-    </footer>
-
-    <script>
-        const menuBtn = document.getElementById("menuBtn");
-        const mobileMenu = document.getElementById("mobileMenu");
-
-        menuBtn.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
-    </script>
-
-
-    <!-- LIVE NOTIFICATION -->
-
-    <div id="notification" class="notification-container">
-
-        <div class="notification-card">
-
-            <div class="notification-avatar">
-                <i class='bx bxs-check-shield'></i>
+            <div class="trust-title">
+                Built for the New Generation of Digital Earners
             </div>
 
-            <div>
-                <div id="notifyName" class="notification-name"></div>
+            <div class="trust-items">
 
-                <div id="notifyAction" class="notification-action"></div>
-
-                <div class="notification-time">
-                    Few seconds ago
+                <div class="trust-item">
+                    <i class='bx bx-shield-quarter'></i>
+                    Secure Platform
                 </div>
+
+                <div class="trust-item">
+                    <i class='bx bx-time-five'></i>
+                    Fast Processing
+                </div>
+
+                <div class="trust-item">
+                    <i class='bx bx-grid-alt'></i>
+                    Multiple Opportunities
+                </div>
+
+                <div class="trust-item">
+                    <i class='bx bx-support'></i>
+                    24/7 Support
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+     ABOUT
+========================= -->
+<!-- =========================
+     ABOUT SECTION
+========================= -->
+<section class="section about-section" id="about">
+    <div class="container">
+
+        <div class="about-layout">
+
+            <!-- LEFT: TEXT -->
+            <div class="about-content reveal">
+
+                <div class="section-tag">
+                    ABOUT US
+                </div>
+
+                <h2>
+                    What is <span>NeoPay?</span>
+                </h2>
+
+                <p class="about-description">
+                    NeoPay is a digital platform designed to give people access
+                    to modern earning opportunities, digital services, and
+                    tools that help them grow in today's connected economy.
+                </p>
+
+                <p class="about-description">
+                    We provide a simple and structured environment where users
+                    can participate in digital opportunities, discover new
+                    ways to earn, and manage their activities from one
+                    convenient platform.
+                </p>
+
+                <div class="about-checklist">
+
+                    <div class="about-check">
+                        <i class='bx bx-check'></i>
+                        <span>Simple and transparent digital opportunities</span>
+                    </div>
+
+                    <div class="about-check">
+                        <i class='bx bx-check'></i>
+                        <span>Easy-to-use platform and dashboard</span>
+                    </div>
+
+                    <div class="about-check">
+                        <i class='bx bx-check'></i>
+                        <span>Multiple ways to participate and earn</span>
+                    </div>
+
+                    <div class="about-check">
+                        <i class='bx bx-check'></i>
+                        <span>Designed for modern digital users</span>
+                    </div>
+
+                    <div class="about-check">
+                        <i class='bx bx-check'></i>
+                        <span>Focused on growth, opportunity and accessibility</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RIGHT: FLYER -->
+            <div class="about-flyer reveal">
+
+                <div class="flyer-frame">
+
+                    <!-- Replace this with your flyer -->
+                    <img src="/logo.jpg"
+                         alt="NeoPay platform">
+
+                </div>
+
             </div>
 
         </div>
 
     </div>
+</section>
 
+
+    <!-- =========================
+     HOW IT WORKS
+========================= -->
+
+    <section class="section section-alt" id="how-it-works">
+        <div class="container">
+
+            <div class="section-heading center reveal">
+                <div class="section-tag">How It Works</div>
+
+                <h2>
+                    Getting Started Is Simple
+                </h2>
+
+                <p>
+                    Follow a straightforward process to create
+                    your account and explore the NeoPay ecosystem.
+                </p>
+            </div>
+
+            <div class="steps">
+
+                <div class="step reveal">
+                    <div class="step-number">01</div>
+
+                    <div class="step-icon">
+                        <i class='bx bx-user-plus'></i>
+                    </div>
+
+                    <h3>Create Your Account</h3>
+
+                    <p>
+                        Register your NeoPay account and provide
+                        the required information to get started.
+                    </p>
+                </div>
+
+                <div class="step reveal">
+                    <div class="step-number">02</div>
+
+                    <div class="step-icon">
+                        <i class='bx bx-badge-check'></i>
+                    </div>
+
+                    <h3>Activate Your Account</h3>
+
+                    <p>
+                        Complete the required account activation
+                        process to access the available platform features.
+                    </p>
+                </div>
+
+                <div class="step reveal">
+                    <div class="step-number">03</div>
+
+                    <div class="step-icon">
+                        <i class='bx bx-grid-alt'></i>
+                    </div>
+
+                    <h3>Explore Opportunities</h3>
+
+                    <p>
+                        Discover available tasks, activities,
+                        referrals and other opportunities.
+                    </p>
+                </div>
+
+                <div class="step reveal">
+                    <div class="step-number">04</div>
+
+                    <div class="step-icon">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                    </div>
+
+                    <h3>Track Your Progress</h3>
+
+                    <p>
+                        Monitor your account activity, rewards
+                        and progress directly from your dashboard.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+     FEATURES
+========================= -->
+
+    <section class="section" id="features">
+        <div class="container">
+
+            <div class="section-heading center reveal">
+                <div class="section-tag">Platform Features</div>
+
+                <h2>
+                    Everything You Need in One Place
+                </h2>
+
+                <p>
+                    A simple and organized experience designed
+                    around digital participation and account management.
+                </p>
+            </div>
+
+            <div class="features-grid">
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class='bx bx-task'></i>
+                    </div>
+
+                    <h3>Digital Tasks</h3>
+
+                    <p>
+                        Discover available activities and tasks
+                        through your NeoPay account.
+                    </p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class='bx bx-gift'></i>
+                    </div>
+
+                    <h3>Rewards</h3>
+
+                    <p>
+                        Receive rewards for eligible platform
+                        activities and completed opportunities.
+                    </p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class='bx bx-group'></i>
+                    </div>
+
+                    <h3>Referral Program</h3>
+
+                    <p>
+                        Invite others and participate in the
+                        NeoPay referral system.
+                    </p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class='bx bx-layout'></i>
+                    </div>
+
+                    <h3>Personal Dashboard</h3>
+
+                    <p>
+                        Manage your account and track your
+                        activities from one organized dashboard.
+                    </p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class='bx bx-lock-alt'></i>
+                    </div>
+
+                    <h3>Secure Account</h3>
+
+                    <p>
+                        Keep your account information protected
+                        with modern account security practices.
+                    </p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class='bx bx-wallet'></i>
+                    </div>
+
+                    <h3>Easy Withdrawals</h3>
+
+                    <p>
+                        Access a clear interface for eligible
+                        withdrawal requests.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+     DASHBOARD SHOWCASE
+========================= -->
+
+    <section class="section showcase">
+        <div class="container showcase-grid">
+
+            <div class="reveal">
+
+                <div class="section-tag">
+                    NeoPay Dashboard
+                </div>
+
+                <h2>
+                    Your Financial Activity, Simplified
+                </h2>
+
+                <p class="showcase-text">
+                    Keep your NeoPay experience organized with
+                    a personal dashboard designed to help you
+                    understand your activity and monitor your progress.
+                </p>
+
+                <div class="showcase-list">
+
+                    <div>
+                        <i class='bx bx-check-circle'></i>
+                        Balance and earnings overview
+                    </div>
+
+                    <div>
+                        <i class='bx bx-check-circle'></i>
+                        Task statistics
+                    </div>
+
+                    <div>
+                        <i class='bx bx-check-circle'></i>
+                        Referral statistics
+                    </div>
+
+                    <div>
+                        <i class='bx bx-check-circle'></i>
+                        Recent activity
+                    </div>
+
+                    <div>
+                        <i class='bx bx-check-circle'></i>
+                        Quick account actions
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="showcase-dashboard reveal">
+
+                <div class="mock-window">
+
+                    <div class="mock-head">
+                        <strong>NeoPay Dashboard</strong>
+                        <span>Overview</span>
+                    </div>
+
+                    <div class="mock-balance">
+                        <small>Available Balance</small>
+                        <h3>₦185,450.00</h3>
+                    </div>
+
+                    <div class="mock-stat-grid">
+
+                        <div class="mock-stat">
+                            <small>Earnings</small>
+                            <strong>₦245,800</strong>
+                        </div>
+
+                        <div class="mock-stat">
+                            <small>Tasks</small>
+                            <strong>128</strong>
+                        </div>
+
+                        <div class="mock-stat">
+                            <small>Referrals</small>
+                            <strong>24</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="chart-box">
+
+                        <div class="chart-label">
+                            Earnings Overview
+                        </div>
+
+                        <div class="chart">
+                            <svg viewBox="0 0 500 100" preserveAspectRatio="none">
+                                <polyline points="0,80 60,67 110,74 165,43 215,57 270,35 325,47 380,21 435,30 500,8">
+                                </polyline>
+                            </svg>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+     OPPORTUNITIES
+========================= -->
+
+    <section class="section section-alt">
+        <div class="container">
+
+            <div class="section-heading center reveal">
+
+                <div class="section-tag">
+                    Opportunities
+                </div>
+
+                <h2>
+                    Multiple Ways to Participate
+                </h2>
+
+                <p>
+                    Explore different activities available within
+                    the NeoPay ecosystem.
+                </p>
+
+            </div>
+
+            <div class="opportunities">
+
+                <div class="opportunity reveal">
+                    <i class='bx bx-task'></i>
+                    <h3>Complete Tasks</h3>
+                    <p>
+                        Participate in eligible digital tasks.
+                    </p>
+                </div>
+
+                <div class="opportunity reveal">
+                    <i class='bx bx-devices'></i>
+                    <h3>Digital Activities</h3>
+                    <p>
+                        Explore available platform activities.
+                    </p>
+                </div>
+
+                <div class="opportunity reveal">
+                    <i class='bx bx-group'></i>
+                    <h3>Referral Rewards</h3>
+                    <p>
+                        Participate in the referral program.
+                    </p>
+                </div>
+
+                <div class="opportunity reveal">
+                    <i class='bx bx-globe'></i>
+                    <h3>Platform Opportunities</h3>
+                    <p>
+                        Discover opportunities within NeoPay.
+                    </p>
+                </div>
+
+                <div class="opportunity reveal">
+                    <i class='bx bx-gift'></i>
+                    <h3>Special Rewards</h3>
+                    <p>
+                        Watch for eligible promotional rewards.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+     STATS
+========================= -->
+
+    <section class="stats">
+        <div class="container stats-grid">
+
+            <div class="stat reveal">
+                <h3 class="counter" data-target="10">0</h3>
+                <p>Active Members (K+)</p>
+            </div>
+
+            <div class="stat reveal">
+                <h3 class="counter" data-target="50">0</h3>
+                <p>Tasks Completed (K+)</p>
+            </div>
+
+            <div class="stat reveal">
+                <h3>₦XXM+</h3>
+                <p>Rewards Distributed</p>
+            </div>
+
+            <div class="stat reveal">
+                <h3>24/7</h3>
+                <p>Platform Availability</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+     TESTIMONIALS
+========================= -->
+
+    <section class="section">
+        <div class="container">
+
+            <div class="section-heading center reveal">
+
+                <div class="section-tag">
+                    Community
+                </div>
+
+                <h2>
+                    Trusted by a Growing Community
+                </h2>
+
+                <p>
+                    See how members describe their experience
+                    using the NeoPay platform.
+                </p>
+
+            </div>
+
+            <div class="testimonials">
+
+                <div class="testimonial reveal">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "The dashboard makes it easy for me to
+                        keep track of my activities and account
+                        progress."
+                    </p>
+
+                    <div class="person">
+                        <div class="avatar">DA</div>
+
+                        <div>
+                            <strong>David A.</strong>
+                            <span>NeoPay Member</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="testimonial reveal">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "I like how everything is organized in
+                        one place. The interface is simple to use."
+                    </p>
+
+                    <div class="person">
+                        <div class="avatar">SM</div>
+
+                        <div>
+                            <strong>Sarah M.</strong>
+                            <span>NeoPay Member</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="testimonial reveal">
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <p>
+                        "The platform gives me a clear view of
+                        my activities and referral progress."
+                    </p>
+
+                    <div class="person">
+                        <div class="avatar">JO</div>
+
+                        <div>
+                            <strong>John O.</strong>
+                            <span>NeoPay Member</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+     SECURITY
+========================= -->
+
+    <section class="section section-alt">
+        <div class="container">
+
+            <div class="security-box reveal">
+
+                <div>
+                    <div class="section-tag">
+                        Security & Trust
+                    </div>
+
+                    <h2>
+                        Your Account.<br>
+                        Your Progress.<br>
+                        Your Control.
+                    </h2>
+
+                    <p>
+                        NeoPay is designed around a clear and
+                        organized user experience, giving members
+                        visibility into their account activity.
+                    </p>
+                </div>
+
+                <div class="security-list">
+
+                    <div class="security-item">
+                        <i class='bx bx-lock-alt'></i>
+                        Secure authentication
+                    </div>
+
+                    <div class="security-item">
+                        <i class='bx bx-shield-check'></i>
+                        Protected account information
+                    </div>
+
+                    <div class="security-item">
+                        <i class='bx bx-transfer-alt'></i>
+                        Transparent platform experience
+                    </div>
+
+                    <div class="security-item">
+                        <i class='bx bx-bar-chart-alt-2'></i>
+                        Activity tracking
+                    </div>
+
+                    <div class="security-item">
+                        <i class='bx bx-support'></i>
+                        Responsive support
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+     FAQ
+========================= -->
+
+    <section class="section" id="faq">
+        <div class="container">
+
+            <div class="section-heading center reveal">
+
+                <div class="section-tag">
+                    FAQ
+                </div>
+
+                <h2>
+                    Frequently Asked Questions
+                </h2>
+
+                <p>
+                    Find answers to common questions about NeoPay.
+                </p>
+
+            </div>
+
+            <div class="faq">
+
+                <div class="faq-item reveal">
+
+                    <button class="faq-question">
+                        What is NeoPay?
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            NeoPay is a digital platform that brings
+                            together tasks, rewards, referrals and
+                            other online opportunities in one place.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="faq-item reveal">
+
+                    <button class="faq-question">
+                        How do I create an account?
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Click the Create Account button, complete
+                            the registration form and follow the
+                            instructions provided by NeoPay.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="faq-item reveal">
+
+                    <button class="faq-question">
+                        How does NeoPay work?
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            After creating and activating your account,
+                            you can explore available tasks, activities,
+                            referrals and other eligible opportunities.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="faq-item reveal">
+
+                    <button class="faq-question">
+                        Is account activation required?
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Account activation requirements depend on
+                            the current NeoPay platform configuration.
+                            Follow the activation instructions shown
+                            in your account.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="faq-item reveal">
+
+                    <button class="faq-question">
+                        What earning opportunities are available?
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Available opportunities may include digital
+                            tasks, platform activities, referrals and
+                            eligible rewards.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="faq-item reveal">
+
+                    <button class="faq-question">
+                        How do referrals work?
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Eligible members can participate in the
+                            NeoPay referral program by inviting others
+                            through their referral tools.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="faq-item reveal">
+
+                    <button class="faq-question">
+                        How can I track my earnings?
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Your dashboard provides an organized view
+                            of your balance, activities and available
+                            account information.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="faq-item reveal">
+
+                    <button class="faq-question">
+                        How do I contact support?
+                        <i class='bx bx-plus'></i>
+                    </button>
+
+                    <div class="faq-answer">
+                        <p>
+                            Use the official NeoPay support channel
+                            provided on the platform to request assistance.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+     CTA
+========================= -->
+
+    <section class="cta">
+        <div class="container">
+
+            <div class="cta-box reveal">
+
+                <div class="section-tag">
+                    Start Today
+                </div>
+
+                <h2>
+                    Ready to Start Your<br>
+                    NeoPay Journey?
+                </h2>
+
+                <p>
+                    Create your account and explore a smarter way
+                    to participate in digital earning opportunities.
+                </p>
+
+                <a href="register.html" class="primary-btn gold-btn">
+                    Create Your Account
+                    <i class='bx bx-right-arrow-alt'></i>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="footer-grid">
+
+                <div class="footer-brand">
+
+                    <a href="#home" class="logo">
+                        <span class="logo-mark">
+                            <i class='bx bx-line-chart'></i>
+                        </span>
+                        NeoPay Finance
+                    </a>
+
+                    <p>
+                        A modern digital platform connecting users
+                        with tasks, rewards, referrals and online
+                        opportunities.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-col">
+
+                    <h4>Platform</h4>
+
+                    <a href="#home">Home</a>
+                    <a href="#features">Features</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#faq">FAQ</a>
+
+                </div>
+
+
+                <div class="footer-col">
+
+                    <h4>Account</h4>
+
+                    <a href="login.html">Login</a>
+                    <a href="register.html">Register</a>
+                    <a href="dashboard.html">Dashboard</a>
+
+                </div>
+
+
+                <div class="footer-col">
+
+                    <h4>Support</h4>
+
+                    <a href="#">Help Center</a>
+                    <a href="#">Contact Support</a>
+                    <a href="#">Terms</a>
+                    <a href="#">Privacy</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <div>
+                    © 2026 NeoPay Finance. All rights reserved.
+                </div>
+
+                <div class="socials">
+
+                    <a href="#">
+                        <i class='bx bxl-facebook'></i>
+                    </a>
+
+                    <a href="#">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+
+                    <a href="#">
+                        <i class='bx bxl-twitter'></i>
+                    </a>
+
+                    <a href="#">
+                        <i class='bx bxl-telegram'></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+     JAVASCRIPT
+========================= -->
 
     <script>
 
-        const activities = [
+        /* =========================
+           NAVBAR SCROLL
+        ========================= */
 
-            {
-                name: "Goodluck • Aba",
-                action: "just activated his account"
-            },
+        const navbar = document.getElementById("navbar");
 
-            {
-                name: "Chiamaka • Lagos",
-                action: "just withdrawal her Welcome bonus"
-            },
+        window.addEventListener("scroll", () => {
 
-            {
-                name: "Favour • Abuja",
-                action: "just access full features"
-            },
-
-            {
-                name: "Emmanuel • Port Harcourt",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Blessing • Enugu",
-                action: "just withdrawal her Welcome bonus"
-            },
-
-            {
-                name: "Ifeanyi • Owerri",
-                action: "just access full features"
-            },
-
-            {
-                name: "Samuel • Kano",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Amaka • Awka",
-                action: "just access full features"
-            },
-
-            {
-                name: "John • Uyo",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Peace • Benin",
-                action: "just withdrawal her Welcome bonus"
-            },
-
-            {
-                name: "Kelvin • Aba",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Cynthia • Lagos",
-                action: "just withdrawal her Welcome bonus"
-            },
-
-            {
-                name: "Esther • Calabar",
-                action: "just activated her account"
-            },
-
-            {
-                name: "Daniel • Abuja",
-                action: "just withdrawal her Welcome bonus"
-            },
-
-            {
-                name: "Miracle • Asaba",
-                action: "just access full features"
-            },
-
-            {
-                name: "Kingsley • Aba",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Jennifer • Lagos",
-                action: "just withdrawal her Welcome bonus"
-            },
-
-            {
-                name: "David • Enugu",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Patience • Owerri",
-                action: "just withdrawal her Welcome bonus"
-            },
-
-            {
-                name: "Victor • Kaduna",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Grace • Port Harcourt",
-                action: "just withdrawal her Welcome bonus"
-            },
-
-            {
-                name: "Michael • Lagos",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Sophia • Benin",
-                action: "just withdrawal her Welcome bonus"
-            },
-
-            {
-                name: "Moses • Abuja",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Loveth • Aba",
-                action: "just access full features"
-            },
-
-            {
-                name: "Philip • Uyo",
-                action: "just activated his account"
-            },
-
-            {
-                name: "Chioma • Enugu",
-                action: "just withdrawal her Welcome bonus"
-            },
-
-            {
-                name: "Ebere • Aba",
-                action: "just activated her account"
-            },
-
-            {
-                name: "Promise • Lagos",
-                action: "just withdrawal his Welcome bonus"
-            },
-
-            {
-                name: "Bright • Port Harcourt",
-                action: "just activated his account"
+            if (window.scrollY > 30) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
             }
 
-        ];
+        });
 
-        const popup = document.getElementById("notification");
-        const notifyName = document.getElementById("notifyName");
-        const notifyAction = document.getElementById("notifyAction");
 
-        function showNotification() {
+        /* =========================
+           MOBILE MENU
+        ========================= */
 
-            const random =
-                activities[Math.floor(Math.random() * activities.length)];
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
 
-            notifyName.textContent = random.name;
-            notifyAction.textContent = random.action;
+        menuBtn.addEventListener("click", () => {
 
-            popup.classList.add("show");
+            mobileMenu.classList.toggle("active");
 
-            setTimeout(() => {
+            const icon = menuBtn.querySelector("i");
 
-                popup.classList.remove("show");
+            if (mobileMenu.classList.contains("active")) {
+                icon.className = "bx bx-x";
+            } else {
+                icon.className = "bx bx-menu";
+            }
 
-            }, 5000);
+        });
 
-        }
 
-        /* First Popup */
-        setTimeout(() => {
+        document.querySelectorAll(".mobile-menu a").forEach(link => {
 
-            showNotification();
+            link.addEventListener("click", () => {
 
-        }, 2000);
+                mobileMenu.classList.remove("active");
 
-        /* Continuous Popups */
-        setInterval(() => {
+                menuBtn.querySelector("i").className = "bx bx-menu";
 
-            showNotification();
+            });
 
-        }, 8000);
+        });
+
+
+        /* =========================
+           FAQ
+        ========================= */
+
+        document.querySelectorAll(".faq-question").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                const item = button.parentElement;
+
+                document.querySelectorAll(".faq-item").forEach(other => {
+
+                    if (other !== item) {
+                        other.classList.remove("active");
+                    }
+
+                });
+
+                item.classList.toggle("active");
+
+            });
+
+        });
+
+
+        /* =========================
+           SCROLL REVEAL
+        ========================= */
+
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("show");
+
+                        revealObserver.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
+        });
+
+
+        /* =========================
+           COUNTERS
+        ========================= */
+
+        const counters = document.querySelectorAll(".counter");
+
+        const counterObserver = new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) return;
+
+                    const counter = entry.target;
+                    const target = Number(counter.dataset.target);
+
+                    let current = 0;
+
+                    const duration = 1300;
+                    const startTime = performance.now();
+
+                    function updateCounter(time) {
+
+                        const progress = Math.min(
+                            (time - startTime) / duration,
+                            1
+                        );
+
+                        const eased = 1 - Math.pow(1 - progress, 3);
+
+                        current = Math.floor(target * eased);
+
+                        counter.textContent = current;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            counter.textContent = target;
+                        }
+                    }
+
+                    requestAnimationFrame(updateCounter);
+
+                    counterObserver.unobserve(counter);
+
+                });
+
+            },
+            {
+                threshold: .7
+            }
+        );
+
+        counters.forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+
+        /* =========================
+           PREVENT EMPTY # LINKS
+           FROM JUMPING
+        ========================= */
+
+        document.querySelectorAll('a[href="#"]').forEach(link => {
+
+            link.addEventListener("click", event => {
+                event.preventDefault();
+            });
+
+        });
 
     </script>
 
